@@ -1,0 +1,25 @@
+/*
+ * Automate.h
+ *
+ *  Created on: 4 mars 2015
+ *      Author: Huber
+ */
+
+#ifndef AUTOMATE_H_
+#define AUTOMATE_H_
+
+#include "Symbole.h"
+#include <boost/lockfree/stack.hpp>
+
+class Automate {
+
+public:
+	Automate();
+	virtual ~Automate();
+	void lecture();
+
+private:
+	boost::lockfree::stack symboles;
+	boost::lockfree::stack etats;
+
+#endif /* AUTOMATE_H_ */

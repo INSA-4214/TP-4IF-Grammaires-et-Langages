@@ -1,0 +1,16 @@
+/*
+ * Automate.cpp
+ *
+ *  Created on: 4 mars 2015
+ *      Author: Huber
+ */
+
+#include "Automate.h"
+
+Automate::~Automate() {
+
+}
+
+Automate::Automate() {
+	this->etats = new boost::lockfree::stack<Etat>();
+}

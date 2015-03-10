@@ -1,0 +1,18 @@
+/*
+ * Etat1.h
+ *
+ *  Created on: 8 mars 2015
+ *      Author: Huber
+ */
+
+#ifndef ETAT1_H_
+#define ETAT1_H_
+
+class Etat1 : Etat {
+public:
+	Etat1();
+	virtual ~Etat1();
+	transition(Automate & automate, Symbole *s);
+};
+
+#endif /* ETAT1_H_ */

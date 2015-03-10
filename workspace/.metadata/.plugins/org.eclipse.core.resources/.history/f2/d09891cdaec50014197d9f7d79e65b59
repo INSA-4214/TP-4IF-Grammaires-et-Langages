@@ -1,0 +1,17 @@
+/*
+ * Etat.h
+ *
+ *  Created on: 8 mars 2015
+ *      Author: Huber
+ */
+
+#ifndef ETAT_H_
+#define ETAT_H_
+
+class Etat {
+public:
+	Etat();
+	virtual ~Etat();
+};
+
+#endif /* ETAT_H_ */

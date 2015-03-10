@@ -1,0 +1,16 @@
+/*
+ * Etat1.cpp
+ *
+ *  Created on: 8 mars 2015
+ *      Author: Huber
+ */
+
+#include "Etat1.h"
+
+Etat1::~Etat1() {
+	// TODO Auto-generated destructor stub
+}
+
+Etat1::void transition(Automate &automate, Symbole *s){
+}
+

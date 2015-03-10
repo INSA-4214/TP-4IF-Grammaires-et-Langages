@@ -1,0 +1,61 @@
+11:47:21 **** Incremental Build of configuration Debug for project Lutin ****
+Info: Internal Builder is used for build
+g++ "-IC:\\boost\\boost_1_57_0" -O0 -g3 -Wall -c -fmessage-length=0 -o Automate.o "..\\Automate.cpp" 
+In file included from C:\boost\boost_1_57_0/boost/iterator/iterator_categories.hpp:22:0,
+                 from C:\boost\boost_1_57_0/boost/iterator/iterator_facade.hpp:14,
+                 from C:\boost\boost_1_57_0/boost/range/iterator_range_core.hpp:27,
+                 from C:\boost\boost_1_57_0/boost/range/iterator_range.hpp:13,
+                 from C:\boost\boost_1_57_0/boost/range/as_literal.hpp:22,
+                 from C:\boost\boost_1_57_0/boost/algorithm/string/trim.hpp:19,
+                 from C:\boost\boost_1_57_0/boost/algorithm/string.hpp:19,
+                 from ..\Etat.h:11,
+                 from ..\Automate.h:12,
+                 from ..\Automate.cpp:8:
+C:\boost\boost_1_57_0/boost/lockfree/stack.hpp: In instantiation of 'class boost::lockfree::stack<Etat>':
+..\Automate.h:24:31:   required from here
+C:\boost\boost_1_57_0/boost/lockfree/stack.hpp:73:5: error: invalid application of 'sizeof' to incomplete type 'boost::STATIC_ASSERTION_FAILURE<false>'
+     BOOST_STATIC_ASSERT(boost::has_trivial_assign<T>::value);
+     ^
+C:\boost\boost_1_57_0/boost/lockfree/stack.hpp:74:5: error: invalid application of 'sizeof' to incomplete type 'boost::STATIC_ASSERTION_FAILURE<false>'
+     BOOST_STATIC_ASSERT(boost::has_trivial_destructor<T>::value);
+     ^
+C:\boost\boost_1_57_0/boost/lockfree/stack.hpp: In instantiation of 'class boost::lockfree::stack<Symbole>':
+..\Automate.h:25:34:   required from here
+C:\boost\boost_1_57_0/boost/lockfree/stack.hpp:73:5: error: invalid application of 'sizeof' to incomplete type 'boost::STATIC_ASSERTION_FAILURE<false>'
+     BOOST_STATIC_ASSERT(boost::has_trivial_assign<T>::value);
+     ^
+C:\boost\boost_1_57_0/boost/lockfree/stack.hpp:74:5: error: invalid application of 'sizeof' to incomplete type 'boost::STATIC_ASSERTION_FAILURE<false>'
+     BOOST_STATIC_ASSERT(boost::has_trivial_destructor<T>::value);
+     ^
+In file included from ..\Automate.h:13:0,
+                 from ..\Automate.cpp:8:
+C:\boost\boost_1_57_0/boost/lockfree/stack.hpp: In instantiation of 'boost::lockfree::stack<T, A0, A1, A2>::~stack() [with T = Etat; A0 = boost::parameter::void_; A1 = boost::parameter::void_; A2 = boost::parameter::void_]':
+..\Automate.cpp:10:21:   required from here
+C:\boost\boost_1_57_0/boost/lockfree/stack.hpp:209:11: error: cannot declare variable 'dummy' to be of abstract type 'Etat'
+         T dummy;
+           ^
+In file included from ..\Automate.h:12:0,
+                 from ..\Automate.cpp:8:
+..\Etat.h:16:7: note:   because the following virtual functions are pure within 'Etat':
+ class Etat {
+       ^
+..\Etat.h:23:15: note: 	virtual bool Etat::transition(Automate&, Symbole*)
+  virtual bool transition(Automate & automate, Symbole *s) = 0;
+               ^
+In file included from ..\Automate.h:13:0,
+                 from ..\Automate.cpp:8:
+C:\boost\boost_1_57_0/boost/lockfree/stack.hpp: In instantiation of 'struct boost::lockfree::stack<Etat>::node':
+C:\boost\boost_1_57_0/boost/lockfree/detail/freelist.hpp:125:49:   required from 'boost::lockfree::detail::freelist_stack<T, Alloc>::~freelist_stack() [with T = boost::lockfree::stack<Etat>::node; Alloc = std::allocator<boost::lockfree::stack<Etat>::node>]'
+C:\boost\boost_1_57_0/boost/lockfree/stack.hpp:212:5:   required from 'boost::lockfree::stack<T, A0, A1, A2>::~stack() [with T = Etat; A0 = boost::parameter::void_; A1 = boost::parameter::void_; A2 = boost::parameter::void_]'
+..\Automate.cpp:10:21:   required from here
+C:\boost\boost_1_57_0/boost/lockfree/stack.hpp:92:17: error: cannot declare field 'boost::lockfree::stack<Etat>::node::v' to be of abstract type 'Etat'
+         const T v;
+                 ^
+In file included from ..\Automate.h:12:0,
+                 from ..\Automate.cpp:8:
+..\Etat.h:16:7: note:   since type 'Etat' has pure virtual functions
+ class Etat {
+       ^
+
+11:47:23 Build Finished (took 2s.289ms)
+

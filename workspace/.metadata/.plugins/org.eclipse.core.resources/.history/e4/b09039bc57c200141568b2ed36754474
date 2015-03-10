@@ -1,0 +1,17 @@
+/*
+ * Automate.h
+ *
+ *  Created on: 4 mars 2015
+ *      Author: Huber
+ */
+
+#ifndef AUTOMATE_H_
+#define AUTOMATE_H_
+
+class Automate {
+public:
+	Automate();
+	virtual ~Automate();
+};
+
+#endif /* AUTOMATE_H_ */

@@ -1,0 +1,22 @@
+/*
+ * Etat.cpp
+ *
+ *  Created on: 8 mars 2015
+ *      Author: Huber
+ */
+
+#include "Etat.h"
+
+Etat::Etat() {
+	// TODO Auto-generated constructor stub
+
+}
+
+Etat::Etat(std::string name) {
+
+}
+
+Etat::~Etat() {
+	// TODO Auto-generated destructor stub
+}
+
