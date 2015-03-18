@@ -8,7 +8,6 @@
 #ifndef ETAT_H_
 #define ETAT_H_
 
-#include <boost/algorithm/string.hpp>
 #include <string>
 #include "Symbole.h"
 class Automate;
