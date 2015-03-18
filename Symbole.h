@@ -9,7 +9,7 @@
 #define SYMBOLE_H_
 
 #include <map>
-
+#include <string>
 // Symboles terminaux
 
 
