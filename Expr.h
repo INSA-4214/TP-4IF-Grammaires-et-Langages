@@ -33,14 +33,14 @@ class Variable : public Expr {
 
 class Number : public Expr {
  public:
-    explicit Number(Token::Id id) : Expr(id) { }
+    explicit Number(Symbole::Id id) : Expr(id) { }
 
  private:
 };
 
 class BinExpr : public Expr {
  public:
-    explicit BinExpr(Token::Id id) : Expr(id) { }
+    explicit BinExpr(Symbole::Id id) : Expr(id) { }
 
  private:
     Expr *left;
@@ -49,7 +49,7 @@ class BinExpr : public Expr {
 
 class AddExpr : public BinExpr {
  public:
-    explicit AddExpr(Token::Id id) : BinExpr(id) { }
+    explicit AddExpr(Symbole::Id id) : BinExpr(id) { }
     virtual uint64_t eval(const std::map<std::string, uint64_t> & values);
 
  private:
@@ -57,7 +57,7 @@ class AddExpr : public BinExpr {
 
 class SubExpr : public BinExpr {
  public:
-    explicit SubExpr(Token::Id id) : BinExpr(id) { }
+    explicit SubExpr(Symbole::Id id) : BinExpr(id) { }
     virtual uint64_t eval(const std::map<std::string, uint64_t> & values);
 
  private:
@@ -65,7 +65,7 @@ class SubExpr : public BinExpr {
 
 class MulExpr : public BinExpr {
  public:
-    explicit MulExpr(Token::Id id) : BinExpr(id) { }
+    explicit MulExpr(Symbole::Id id) : BinExpr(id) { }
     virtual uint64_t eval(const std::map<std::string, uint64_t> & values);
 
  private:
@@ -73,7 +73,7 @@ class MulExpr : public BinExpr {
 
 class DivExpr : public BinExpr {
  public:
-    explicit DivExpr(Token::Id id) : BinExpr(id) { }
+    explicit DivExpr(Symbole::Id id) : BinExpr(id) { }
     virtual uint64_t eval(const std::map<std::string, uint64_t> & values);
 
  private:
