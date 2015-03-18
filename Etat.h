@@ -15,50 +15,16 @@ class Automate;
 
 class Etat {
 public:
-	Etat():
-		name(""){}
-	Etat(std::string name);
-	virtual ~Etat();
-	void print() const;
-	virtual bool transition(Automate & automate, Symbole *s) = 0;
 
-protected:
-	std::string name;
-};
+	enum EtatId { E0, E2, E3, E5, E6, E7, E8, E9, E12, E13, E14, E17, E18, E19,
+		E20, E22, E23, E24, E25, E26, E28, E29, E31, E32, E33, E34, E36,
+		E38, E41, E42 };
 
-class Etat0: public Etat {
-public:
+	Etat(Etat::EtatId unId): Id(unId){}
 
+	Etat::EtatId Id;
 
-};
-
-class Etat1: public Etat {
-public:
-
-
-};
-
-class Etat2: public Etat {
-public:
-
-
-};
-
-class Etat3: public Etat {
-public:
-
-
-};
-
-class Etat4: public Etat {
-public:
-
-
-};
-
-class Etat5: public Etat {
-public:
-
+	Etat::EtatId getId(){return Id;};
 
 };
 

@@ -7,11 +7,6 @@
 
 #include "Etat.h"
 
-Etat::Etat(std::string name) {
-	this->name = name;
-}
+Etat::~Etat() {}
 
-Etat::~Etat() {
-	// TODO Auto-generated destructor stub
-}
 
