@@ -8,7 +8,7 @@
 #include "Symbole.h"
 
 
-static const std::map<Symbole::Id, std::string> ID_NAMES = new const std::map<Symbole::Id, std::string> {
+static const std::map<Symbole::Id, std::string> ID_NAMES = {
 		{Symbole::D, "D"}, {Symbole::r, "lire"}, {Symbole::aff, ":="},
 		{Symbole::plus, "+"}, {Symbole::moins, "-"}, {Symbole::cst, "const"},
 		{Symbole::var, "var"}, {Symbole::parf, ")"}, {Symbole::pv, ";"},
