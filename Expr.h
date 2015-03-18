@@ -15,9 +15,8 @@
 class Expr : public Symbole {
 
 public:
-	const int EXPR = 1;
 
-	Expr():Symbole(EXPR){}
+	Expr(Symbole::Id id) : Symbole(id){}
 	virtual ~Expr();
 
 	virtual double eval(const std::map<std::string, double> &valeurs) = 0;
