@@ -8,6 +8,8 @@
 #ifndef SYMBOLE_H_
 #define SYMBOLE_H_
 
+#include <map>
+
 // Symboles terminaux
 
 
@@ -48,7 +50,7 @@ public:
        // Non-terminaux
        P, Lv, Lc, Ld, Li, D, I, E,
        // Terminaux
-       r, aff, plus, moins, cst, var, parf, pv, egal, w, multi, divi, paro, virg, var, nb
+       r, aff, plus, moins, cst, var, parf, pv, egal, w, multi, divi, paro, virg, nb
 
    };
 
