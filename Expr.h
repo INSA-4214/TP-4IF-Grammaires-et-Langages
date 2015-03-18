@@ -39,11 +39,22 @@ class Number : public Expr {
 
 class BinExpr : public Expr {
  public:
-    explicit BinExpr(Symbole::Id id) : Expr(id) { }
+	explicit BinExpr(Symbole::Id id,
+	                     Expr * left = nullptr,
+	                     Expr * right = nullptr);
+	    ~BinExpr() {
+	    	delete sym_gauche;
+	    	delete sym_droite;
+	    }
+
+	    void left(Expr * left, bool shouldDelete = true);
+	    void right(Expr * right, bool shouldDelete = true);
+	    Expr * left() const { return sym_gauche; }
+	    Expr * right() const { return sym_droite; }
 
  private:
-    Expr *left;
-    Expr *right;
+    Expr *sym_gauche;
+    Expr *sym_droite;
 };
 
 class AddExpr : public BinExpr {
