@@ -29,15 +29,17 @@
 // 'virg' = `,`
 // 'var' = variable
 // `nb` = nombre
+//  idvar = id
 
 // Symboles non-terminaux
 // --------------------
 
+// Pprim =P'
 // 'P' = Program
 // 'Lv' = Liste de variables
 // 'Lc' = Liste de constantes
-// 'Ld' = Liste de declarations
-// 'Li' = Liste d'nstructions
+// 'Bd' = Bloc de declarations
+// 'Bi' = Bloc d'nstructions
 // 'D' = Declaration
 // 'I' = Instruction
 // 'E' = Expression
@@ -48,22 +50,22 @@ public:
    enum Id {
 
        // Non-terminaux
-       P, Lv, Lc, Ld, Li, D, I, E,
+       Pprim,P, Lv, Lc, Bd, Bi, D, I, E,
        // Terminaux
-       r, aff, plus, moins, cst, var, parf, pv, egal, w, multi, divi, paro, virg, nb
+       r, aff, plus, moins, cst, var, parf, pv, egal, w, multi, divi, paro, virg, nb, idvar
 
    };
 
-	Symbole(int id) : ident(id){}
+	Symbole(Symbole::Id id) : ident(id){}
 
-	virtual ~Symbole();
+	virtual ~Symbole(){}
 
 	void print();
 
-	operator int() const { return ident; }
+	operator Symbole::Id() const { return ident; }
 
 protected:
-	int ident;
+	Symbole::Id ident;
 
 private:
     static const std::map<Symbole::Id, std::string> ID_NAMES;
