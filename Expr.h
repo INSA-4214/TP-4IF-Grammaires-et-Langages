@@ -42,15 +42,18 @@ class BinExpr : public Expr {
 	explicit BinExpr(Symbole::Id id,
 	                     Expr * left = nullptr,
 	                     Expr * right = nullptr);
+
 	    ~BinExpr() {
 	    	delete sym_gauche;
 	    	delete sym_droite;
 	    }
 
-	    void left(Expr * left, bool shouldDelete = true);
-	    void right(Expr * right, bool shouldDelete = true);
 	    Expr * left() const { return sym_gauche; }
 	    Expr * right() const { return sym_droite; }
+	    void left(Expr * left);
+	    void right(Expr * right);
+
+	    virtual double eval(const std::map<std::string, double> & values)=0;
 
  private:
     Expr *sym_gauche;
@@ -59,32 +62,33 @@ class BinExpr : public Expr {
 
 class AddExpr : public BinExpr {
  public:
-    explicit AddExpr(Symbole::Id id) : BinExpr(id) { }
-    virtual uint64_t eval(const std::map<std::string, uint64_t> & values);
+    explicit AddExpr(Symbole::Id id, Expr *left = nullptr, Expr *right = nullptr);
+
+    virtual double eval(const std::map<std::string, double> & values);
 
  private:
 };
 
 class SubExpr : public BinExpr {
  public:
-    explicit SubExpr(Symbole::Id id) : BinExpr(id) { }
-    virtual uint64_t eval(const std::map<std::string, uint64_t> & values);
+	explicit SubExpr(Symbole::Id id, Expr *left = nullptr, Expr *right = nullptr);
+    virtual double eval(const std::map<std::string, double> & values);
 
  private:
 };
 
-class MulExpr : public BinExpr {
+class MultExpr : public BinExpr {
  public:
-    explicit MulExpr(Symbole::Id id) : BinExpr(id) { }
-    virtual uint64_t eval(const std::map<std::string, uint64_t> & values);
+	explicit MultExpr(Symbole::Id id, Expr *left = nullptr, Expr *right = nullptr);
+    virtual double eval(const std::map<std::string, double> & values);
 
  private:
 };
 
 class DivExpr : public BinExpr {
  public:
-    explicit DivExpr(Symbole::Id id) : BinExpr(id) { }
-    virtual uint64_t eval(const std::map<std::string, uint64_t> & values);
+	explicit DivExpr(Symbole::Id id, Expr *left = nullptr, Expr *right = nullptr);
+    virtual double eval(const std::map<std::string, double> & values);
 
  private:
 };
