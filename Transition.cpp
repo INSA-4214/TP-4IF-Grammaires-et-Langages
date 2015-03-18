@@ -7,26 +7,25 @@
 
 #include "Transition.h"
 
-Transition::Transition() {
-	// TODO Auto-generated constructor stub
-
-}
-
 Transition::~Transition() {}
 
-void DeplacerTrans::doTransition(Transition::TableTransition & tableTrans, std::stack<Etat> * PileEtats){
+bool DeplacerTrans::doTransition(Transition::TableTransition & tableTrans, std::stack<Etat> * PileEtats){
 
 PileEtats->push(cible);
+return false;
 }
 
-void ReduireTrans::doTransition(Transition::TableTransition & tableTrans, std::stack<Etat> * PileEtats){
+bool ReduireTrans::doTransition(Transition::TableTransition & tableTrans, std::stack<Etat> * PileEtats){
 
 	for(int i=0;i < depile; i++){
 
 		PileEtats->pop();
-
-		tableTrans.find(PileEtats->top())->second.find(precedent)->second->doTransition(tableTrans, PileEtats);
 	}
-
+		return tableTrans.find(PileEtats->top())->second.find(precedent)->second->doTransition(tableTrans, PileEtats);
 }
 
+bool AcceptTrans::doTransition(Transition::TableTransition & tableTrans, std::stack<Etat> * PileEtats){
+
+	return true;
+
+}
