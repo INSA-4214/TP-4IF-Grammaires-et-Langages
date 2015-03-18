@@ -12,4 +12,6 @@ Automate::~Automate() {
 }
 
 Automate::Automate() {
+
+	transitions[Etat::E0][Symbole::P] = new AcceptTrans;
 }
