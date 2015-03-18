@@ -10,9 +10,14 @@
 
 #include <map>
 #include <stack>
+#include "Symbole.h"
+#include "Etat.h"
+
 
 class Transition {
 public:
+	 typedef std::map<Etat::Id, std::map<Symbole::ident, Transition *>> TableTransition;
+
 	Transition();
 	virtual ~Transition();
 };
