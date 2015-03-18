@@ -10,7 +10,7 @@
 
 #include "Symbole.h"
 #include "Etat.h"
-#include <boost/lockfree/stack.hpp>
+#include <deque>
 
 class Automate {
 
@@ -21,8 +21,8 @@ public:
 
 private:
 
-	boost::lockfree::stack<Etat> etats;
-	boost::lockfree::stack<Symbole> symboles;
+	std::deque<Etat> etats;
+	std::deque<Symbole> symboles;
 
 };
 

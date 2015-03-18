@@ -8,7 +8,6 @@
 #ifndef ETAT_H_
 #define ETAT_H_
 
-#include <boost/algorithm/string.hpp>
 #include <string>
 #include "Symbole.h"
 class Automate;
@@ -24,42 +23,6 @@ public:
 
 protected:
 	std::string name;
-};
-
-class Etat0: public Etat {
-public:
-
-
-};
-
-class Etat1: public Etat {
-public:
-
-
-};
-
-class Etat2: public Etat {
-public:
-
-
-};
-
-class Etat3: public Etat {
-public:
-
-
-};
-
-class Etat4: public Etat {
-public:
-
-
-};
-
-class Etat5: public Etat {
-public:
-
-
 };
 
 #endif /* ETAT_H_ */
