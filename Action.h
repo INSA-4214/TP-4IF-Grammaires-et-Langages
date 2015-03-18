@@ -10,6 +10,7 @@
 
 class Action {
 public:
+	virtual Action::Action() {}
 	virtual ~Action() {};
 
 
