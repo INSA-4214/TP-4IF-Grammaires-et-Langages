@@ -6,6 +6,8 @@
  */
 
 #include "Expr.h"
+#include <map>
+#include <cstdlib>
 
 void BinExpr::left(Expr *left) {
 	sym_gauche = left;
@@ -33,6 +35,14 @@ DivExpr::DivExpr(Symbole::Id id, Expr * left, Expr * right)
     : BinExpr(id, left, right) { }
 
 // ----- FIN Constructeurs -----
+
+double Variable::eval(const std::map<std::string, double> &valeurs) {
+	std::map<std::string, double>::iterator it=valeurs.find(nom);
+	if (it == valeurs.end() || !(it->second())) {
+		std::exit(EXIT_FAILURE);
+	}
+	return it->second();
+}
 
 double AddExpr::eval(const std::map<std::string, double> & valeurs) {
 	double resultat = sym_gauche->eval(valeurs) + sym_droite->eval(valeurs);

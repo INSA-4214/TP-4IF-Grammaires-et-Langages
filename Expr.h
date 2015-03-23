@@ -26,8 +26,12 @@ public:
 class Variable : public Expr {
  public:
     Variable(Symbole::Id id) : Expr(id) { }
+    virtual double eval(const std::map<std::string, double> &valeurs);
 
- private:
+    std::string name() { return nom; }
+
+ protected:
+	std::string nom;
 };
 
 class Number : public Expr {
@@ -55,7 +59,7 @@ class BinExpr : public Expr {
 
 	    virtual double eval(const std::map<std::string, double> & values)=0;
 
- private:
+ protected:
     Expr *sym_gauche;
     Expr *sym_droite;
 };
