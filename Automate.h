@@ -10,7 +10,8 @@
 
 #include "Symbole.h"
 #include "Etat.h"
-#include <deque>
+#include "Transition.h"
+#include <stack>
 
 class Automate {
 
@@ -21,8 +22,9 @@ public:
 
 private:
 
-	std::deque<Etat> etats;
-	std::deque<Symbole> symboles;
+	std::stack<Etat> etats;
+	std::stack<Symbole> symboles;
+	Transition::TableTransition transitions;
 
 };
 

@@ -10,11 +10,47 @@
 
 #include <map>
 #include <stack>
+#include "Symbole.h"
+#include "Etat.h"
+
 
 class Transition {
 public:
-	Transition();
-	virtual ~Transition();
+	 typedef std::map<Etat::Id, std::map<Symbole::ident, Transition *>> TableTransition;
+
+	 virtual bool doTransition(Transition::TableTransition & tableTrans, std::stack<Etat> * PileEtats) = 0;
+	 virtual ~Transition();
 };
 
+class DeplacerTrans: public Transition {
+public:
+
+	DeplacerTrans(Etat::Etat uneCible): cible(cible){}
+
+	bool doTransition(Transition::TableTransition & tableTrans, std::stack<Etat> * PileEtats);
+
+protected:
+	Etat::Etat cible;
+
+
+};
+
+class ReduireTrans: public Transition{
+public:
+
+	ReduireTrans(int depile):depile(depile){}
+
+	bool doTransition(Transition::TableTransition & tableTrans, std::stack<Etat> * PileEtats);
+
+protected:
+	int depile;
+	Symbole::ident precedent;
+};
+
+class AcceptTrans: public Transition{
+public:
+
+	AcceptTrans();
+	bool doTransition(Transition::TableTransition & tableTrans, std::stack<Etat> * PileEtats);
+};
 #endif /* TRANSITION_H_ */

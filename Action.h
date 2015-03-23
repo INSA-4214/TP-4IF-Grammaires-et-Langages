@@ -7,10 +7,13 @@
 
 #ifndef ACTION_H_
 #define ACTION_H_
-
+#include <map>
+#include "Etat.h"
+#include "Symbole.h"
 class Action {
 public:
-	virtual Action::Action() {}
+	 typedef std::map<Etat::Id, std::map<Symbole::ident, Action *>> TableAction;
+
 	virtual ~Action() {};
 
 
