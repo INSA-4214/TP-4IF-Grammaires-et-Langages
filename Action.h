@@ -14,6 +14,7 @@ class Action {
 public:
 	 typedef std::map<Etat::Id, std::map<Symbole::ident, Action *>> TableAction;
 
+	 Action(){}
 	virtual ~Action() {};
 
 

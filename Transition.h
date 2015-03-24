@@ -16,7 +16,7 @@
 
 class Transition {
 public:
-	 typedef std::map<Etat::Id, std::map<Symbole::ident, Transition *>> TableTransition;
+	 typedef static const std::map<Etat::EtatId, std::map<Symbole::Id, Transition*> > TableTransition;
 
 	 virtual bool doTransition(Transition::TableTransition & tableTrans, std::stack<Etat> * PileEtats) = 0;
 	 virtual ~Transition();
@@ -25,12 +25,12 @@ public:
 class DeplacerTrans: public Transition {
 public:
 
-	DeplacerTrans(Etat::Etat uneCible): cible(cible){}
+	DeplacerTrans(Etat uneCible): cible(uneCible){}
 
 	bool doTransition(Transition::TableTransition & tableTrans, std::stack<Etat> * PileEtats);
 
 protected:
-	Etat::Etat cible;
+	Etat cible;
 
 
 };
@@ -44,7 +44,7 @@ public:
 
 protected:
 	int depile;
-	Symbole::ident precedent;
+	Symbole::Id precedent;
 };
 
 class AcceptTrans: public Transition{

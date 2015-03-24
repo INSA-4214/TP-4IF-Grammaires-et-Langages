@@ -64,7 +64,6 @@ public:
 
 	operator Symbole::Id() const { return ident; }
 
-protected:
 	Symbole::Id ident;
 
 private:
