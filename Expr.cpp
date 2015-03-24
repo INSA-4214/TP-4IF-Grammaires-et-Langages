@@ -37,7 +37,7 @@ DivExpr::DivExpr(Symbole::Id id, Expr * left, Expr * right)
 // ----- FIN Constructeurs -----
 
 double Variable::eval(const std::map<std::string, double> &valeurs) {
-	std::map<std::string, double>::iterator it=valeurs.find(nom);
+	std::map<std::string, double>::const_iterator it=valeurs.find(nom);
 	if (it == valeurs.end() || !(it->second)) {
 		std::exit(EXIT_FAILURE);
 	}
