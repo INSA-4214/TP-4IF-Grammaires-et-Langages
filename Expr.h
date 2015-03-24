@@ -44,8 +44,8 @@ class Number : public Expr {
 class BinExpr : public Expr {
  public:
 	explicit BinExpr(Symbole::Id id,
-	                     Expr * left = nullptr,
-	                     Expr * right = nullptr);
+	                     Expr * left = NULL,
+	                     Expr * right = NULL);
 
 	    ~BinExpr() {
 	    	delete sym_gauche;

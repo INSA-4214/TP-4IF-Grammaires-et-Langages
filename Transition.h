@@ -16,7 +16,7 @@
 
 class Transition {
 public:
-	 typedef static const std::map<Etat::EtatId, std::map<Symbole::Id, Transition*> > TableTransition;
+	 typedef std::map<Etat::EtatId, std::map<Symbole::Id, Transition*> > TableTransition;
 
 	 virtual bool doTransition(Transition::TableTransition & tableTrans, std::stack<Etat> * PileEtats) = 0;
 	 virtual ~Transition();
