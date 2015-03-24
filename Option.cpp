@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {
         }
     }
     if (fileName == NULL) {
-        cerr << "Pas de fichier d'entré fourni" << endl;
+        cerr << "Pas de fichier d'entrée fourni" << endl;
         return 1;
     }
         // LEXER
