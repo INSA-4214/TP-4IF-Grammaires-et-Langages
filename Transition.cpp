@@ -11,8 +11,8 @@ Transition::~Transition() {}
 
 bool DeplacerTrans::doTransition(Transition::TableTransition & tableTrans, std::stack<Etat> * PileEtats){
 
-PileEtats->push(cible);
-return false;
+	PileEtats->push(cible);
+	return false;
 }
 
 bool ReduireTrans::doTransition(Transition::TableTransition & tableTrans, std::stack<Etat> * PileEtats){

@@ -66,7 +66,7 @@ class BinExpr : public Expr {
 
 class AddExpr : public BinExpr {
  public:
-    explicit AddExpr(Symbole::Id id, Expr *left = nullptr, Expr *right = nullptr);
+    explicit AddExpr(Symbole::Id id, Expr *left = NULL, Expr *right = NULL);
 
     virtual double eval(const std::map<std::string, double> & values);
 
@@ -75,7 +75,7 @@ class AddExpr : public BinExpr {
 
 class SubExpr : public BinExpr {
  public:
-	explicit SubExpr(Symbole::Id id, Expr *left = nullptr, Expr *right = nullptr);
+	explicit SubExpr(Symbole::Id id, Expr *left = NULL, Expr *right = NULL);
     virtual double eval(const std::map<std::string, double> & values);
 
  private:
@@ -83,7 +83,7 @@ class SubExpr : public BinExpr {
 
 class MultExpr : public BinExpr {
  public:
-	explicit MultExpr(Symbole::Id id, Expr *left = nullptr, Expr *right = nullptr);
+	explicit MultExpr(Symbole::Id id, Expr *left = NULL, Expr *right = NULL);
     virtual double eval(const std::map<std::string, double> & values);
 
  private:
@@ -91,7 +91,7 @@ class MultExpr : public BinExpr {
 
 class DivExpr : public BinExpr {
  public:
-	explicit DivExpr(Symbole::Id id, Expr *left = nullptr, Expr *right = nullptr);
+	explicit DivExpr(Symbole::Id id, Expr *left = NULL, Expr *right = NULL);
     virtual double eval(const std::map<std::string, double> & values);
 
  private:

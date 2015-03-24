@@ -38,10 +38,10 @@ DivExpr::DivExpr(Symbole::Id id, Expr * left, Expr * right)
 
 double Variable::eval(const std::map<std::string, double> &valeurs) {
 	std::map<std::string, double>::iterator it=valeurs.find(nom);
-	if (it == valeurs.end() || !(it->second())) {
+	if (it == valeurs.end() || !(it->second)) {
 		std::exit(EXIT_FAILURE);
 	}
-	return it->second();
+	return it->second;
 }
 
 double AddExpr::eval(const std::map<std::string, double> & valeurs) {
