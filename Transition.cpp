@@ -21,7 +21,7 @@ bool ReduireTrans::doTransition(Transition::TableTransition & tableTrans, std::s
 
 		PileEtats->pop();
 	}
-		return tableTrans.find(PileEtats->top())->second.find(precedent)->second->doTransition(tableTrans, PileEtats);
+		return false;
 }
 
 bool AcceptTrans::doTransition(Transition::TableTransition & tableTrans, std::stack<Etat> * PileEtats){
