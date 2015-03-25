@@ -21,14 +21,23 @@ class Lexer
     public:
         Lexer(std::istream * stream);
         virtual ~Lexer();
-        bool analyze();
+
+        /**
+         * Décale la tête de lecture d'un mot vers la droite
+         */
         void shift();
     protected:
     private:
+
+        /**
+         * Regarde le prochain symbole terminal sans déplacer la tête de lecture
+         */
+        bool analyze();
+        bool hasNext();
         std::istream& m_stream;
         std::string m_str;
-        std::string m_currentTokenStr;
-        Symbole * m_currentToken;
+        std::string m_symboleCourantStr;
+        Symbole * m_symboleCourant;
 };
 
 #endif // LEXER_H
