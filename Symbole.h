@@ -52,7 +52,7 @@ public:
        // Non-terminaux
        Pprim,P, Lv, Lc, Bd, Bi, D, I, E,
        // Terminaux
-       r, aff, plus, moins, cst, var, parf, pv, egal, w, multi, divi, paro, virg, nb, idvar
+       r, aff, plus, moins, cst, var, parf, pv, egal, w, multi, divi, paro, virg, nb, idvar, ERR
 
    };
     Symbole(Symbole::Id id);
