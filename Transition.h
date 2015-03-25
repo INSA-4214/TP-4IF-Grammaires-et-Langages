@@ -13,7 +13,7 @@
 #include "Symbole.h"
 #include "Etat.h"
 
-
+/*
 class Transition {
 public:
 	 typedef std::map<Etat::EtatId, std::map<Symbole::Id, Transition*> > TableTransition;
@@ -53,4 +53,5 @@ public:
 	AcceptTrans();
 	bool doTransition(Transition::TableTransition & tableTrans, std::stack<Etat> * PileEtats);
 };
+*/
 #endif /* TRANSITION_H_ */

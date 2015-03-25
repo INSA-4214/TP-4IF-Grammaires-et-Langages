@@ -47,7 +47,7 @@
 class Symbole {
 
 public:
-   enum Id {
+    enum Id {
 
        // Non-terminaux
        Pprim,P, Lv, Lc, Bd, Bi, D, I, E,
@@ -55,25 +55,23 @@ public:
        r, aff, plus, moins, cst, var, parf, pv, egal, w, multi, divi, paro, virg, nb, idvar
 
    };
-
-	Symbole(Symbole::Id id) : ident(id){}
-
-	Symbole(Symbole::Id id, std::string s) : ident(id), str(s) {}
-
-	Symbole(Symbole::Id id, double val) : ident(id), value(val) {}
+    Symbole(Symbole::Id id);
+	Symbole(Symbole::Id id, std::string s ) : ident(id), str(s) {}
 
 	virtual ~Symbole(){}
 
 	void print();
+    std::string getStr();
+    Symbole::Id getIdent();
 
-	operator Symbole::Id() const { return ident; }
 
-	Symbole::Id ident;
-	std::string str;
-	double value;
+private:
+   Symbole::Id ident;
+   std::string str;
 
-    static const std::map<Symbole::Id, std::string> ID_NAMES;
+
 
 };
+
 
 #endif /* SYMBOLE_H_ */

@@ -12,7 +12,7 @@
 #include "Symbole.h"
 class Action {
 public:
-	 typedef std::map<Etat::EtatId, std::map<Symbole::Id, Action * > > TableAction;
+	// typedef std::map<Etat::EtatId, std::map<Symbole::Id, Action * > > TableAction;
 
 	 Action(){}
 	virtual ~Action() {};

@@ -11,64 +11,38 @@ Automate::~Automate() {
 
 }
 
-Automate::Automate() {
+Automate::Automate(std::istream * stream) {
 
-	//Etat 0
-	transitions[Etat::E0][Symbole::P] = new DeplacerTrans(Etat::E1);
-	transitions[Etat::E0][Symbole::Bd] = new DeplacerTrans(Etat::E2);
+	lexer = new Lexer(stream);
+	//TODO init pileEtat
+	accepte = false;
 
-	//Etat 2
-	transitions[Etat::E2][Symbole::D] = new DeplacerTrans(Etat::E5);
-	transitions[Etat::E2][Symbole::Bi] = new DeplacerTrans(Etat::E4);
+}
 
-	//Etat 4
-	transitions[Etat::E4][Symbole::I] = new DeplacerTrans(Etat::E9);
+void Automate::decalage(Symbole s, Etat e){
 
-	//Etat 10
-	transitions[Etat::E10][Symbole::E] = new DeplacerTrans(Etat::E19);
+	this->pileEtats.push(e);
+	this->pileSymboles.push(s);
 
-	//Etat 19
-	transitions[Etat::E19][Symbole::moins] = new DeplacerTrans(Etat::E28);
-	transitions[Etat::E19][Symbole::plus] = new DeplacerTrans(Etat::E28);
-	transitions[Etat::E19][Symbole::multi] = new DeplacerTrans(Etat::E29);
-	transitions[Etat::E19][Symbole::divi] = new DeplacerTrans(Etat::E29);
+}
+bool Automate::lecture(){
+	//TODO get Token de la pile
+	//TODO boucle exploration
+	lexer.shift();
+	if( pileEtats.empty() )
+		return false;
+	return accepte;
+}
 
-	//Etat 20
-	transitions[Etat::E20][Symbole::E] = new DeplacerTrans(Etat::E30);
+std::stack<Etat> Automate::getPileEtats(){
 
-	//Etat 21
-	transitions[Etat::E21][Symbole::E] = new DeplacerTrans(Etat::E31);
+	return this->pileEtats;
+}
+std::stack<Symbole> Automate::getPileSymboles(){
 
-	//Etat 28
-	transitions[Etat::E28][Symbole::E] = new DeplacerTrans(Etat::E34);
+	return this->pileSymboles;
+}
 
-	//Etat 29
-	transitions[Etat::E29][Symbole::E] = new DeplacerTrans(Etat::E35);
-
-	//Etat 30
-	transitions[Etat::E30][Symbole::plus] = new DeplacerTrans(Etat::E28);
-	transitions[Etat::E30][Symbole::moins] = new DeplacerTrans(Etat::E28);
-	transitions[Etat::E30][Symbole::multi] = new DeplacerTrans(Etat::E29);
-	transitions[Etat::E30][Symbole::divi] = new DeplacerTrans(Etat::E29);
-
-	//Etat 31
-	transitions[Etat::E31][Symbole::plus] = new DeplacerTrans(Etat::E28);
-	transitions[Etat::E31][Symbole::moins] = new DeplacerTrans(Etat::E28);
-	transitions[Etat::E31][Symbole::multi] = new DeplacerTrans(Etat::E29);
-	transitions[Etat::E31][Symbole::divi] = new DeplacerTrans(Etat::E29);
-
-	//Etat 33
-	transitions[Etat::E33][Symbole::Lc] = new DeplacerTrans(Etat::E38);
-
-	//Etat 34
-	transitions[Etat::E34][Symbole::plus] = new DeplacerTrans(Etat::E28);
-	transitions[Etat::E34][Symbole::moins] = new DeplacerTrans(Etat::E28);
-	transitions[Etat::E34][Symbole::multi] = new DeplacerTrans(Etat::E29);
-	transitions[Etat::E34][Symbole::divi] = new DeplacerTrans(Etat::E29);
-
-	//Etat 35
-	transitions[Etat::E35][Symbole::plus] = new DeplacerTrans(Etat::E28);
-	transitions[Etat::E35][Symbole::moins] = new DeplacerTrans(Etat::E28);
-	transitions[Etat::E35][Symbole::multi] = new DeplacerTrans(Etat::E29);
-	transitions[Etat::E35][Symbole::divi] = new DeplacerTrans(Etat::E29);
+void Automate::setAccepter(bool b){
+	this->accepte = b;
 }
