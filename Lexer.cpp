@@ -72,8 +72,7 @@ bool Lexer::analyze()
     }
     else if (regex_search(premierMot.c_str(), matches, number)) {
     	m_symboleCourantStr = matches[1];
-        double value = boost::lexical_cast<double>(m_symboleCourantStr); // string to unsigned long long
-        m_symboleCourant = new Symbole(Symbole::nb, value);
+        m_symboleCourant = new Symbole(Symbole::nb, m_symboleCourantStr);
     }
     else
     {

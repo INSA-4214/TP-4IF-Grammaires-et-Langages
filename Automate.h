@@ -20,8 +20,8 @@ public:
 	Automate(std::istream * stream);
 	bool lecture();
 	void decalage(Symbole *s,Etat *e);
-	std::stack<Etat*> getPileEtats();
-	std::stack<Symbole*> getPileSymboles();
+	std::stack<Etat*> *getPileEtats();
+	std::stack<Symbole*> *getPileSymboles();
 	void setAccepter(bool b);
 	virtual ~Automate();
 
