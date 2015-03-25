@@ -12,31 +12,19 @@
 #include "Etat.h"
 #include "Transition.h"
 #include <stack>
-#include <string>
+
 class Automate {
 
 public:
-	Automate(std::istream * stream);
-	bool lecture();
-	void decalage(Symbole s,Etat e);
-	std::stack<Etat> getPileEtats();
-	std::stack<Symbole> getPileSymboles();
-	void setAccepter(bool b);
+	Automate();
 	virtual ~Automate();
+	void lecture();
 
-protected:
+private:
 
-/*La classe automate est défini par :
--une pile d'etats
--une pile de symbole (token)
--un analyseur lexical (lexer)
--un etat d'avancement (valider/refuser l'analyse)
-*/
-
-	std::stack<Etat> pileEtats;
-	std::stack<Symbole> pileSymboles;
-	bool accepte;
-	Lexer lexer;
+	std::stack<Etat> etats;
+	std::stack<Symbole> symboles;
+	Transition::TableTransition transitions;
 
 };
 

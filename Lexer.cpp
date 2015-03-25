@@ -1,5 +1,7 @@
 
 #include "Lexer.h"
+#include<fstream>
+#include<sstream>
 
 using namespace std;
 
@@ -9,15 +11,20 @@ const boost::regex single_operator("^(\\+|-|\\*|\\/|\\(|\\)|;|=|,)");
 const boost::regex id("^([a-zA-Z][a-zA-Z0-9]*)");
 const boost::regex number("([-+]?[0-9]*\\.?[0-9]+)");
 
-Lexer::Lexer(std::istream * stream)
-                     : m_stream(*stream)
+Lexer::Lexer(string* filename)
 {
+	parse(filename);
+}
+
+void Lexer::parse(string* filename) {
+	ifstream t (filename->c_str());
+	stringstream buffer;
+	buffer << t.rdbuf();
+	m_str = buffer.str();
 }
 
 bool Lexer::analyze()
 {
-    if (m_str == "")
-        getline(m_stream, m_str);
 
     boost::cmatch matches;
 

@@ -9,6 +9,7 @@
 #define LEXER_H
 
 #include <iostream>
+#include <ios>
 #include <string>
 
 #include <boost/regex.hpp>
@@ -19,22 +20,22 @@
 class Lexer
 {
     public:
-        Lexer(std::istream * stream);
+        Lexer(std::string* filename);
         virtual ~Lexer();
 
         /**
          * Décale la tête de lecture d'un mot vers la droite
          */
         void shift();
-    protected:
-    private:
 
         /**
          * Regarde le prochain symbole terminal sans déplacer la tête de lecture
          */
         bool analyze();
+    private:
+
         bool hasNext();
-        std::istream& m_stream;
+        void parse(std::string *filename);
         std::string m_str;
         std::string m_symboleCourantStr;
         Symbole * m_symboleCourant;
