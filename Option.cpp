@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "Lexer.h"
 #define OPT_TRANSFORM "-o"
 #define OPT_PRINT "-p"
 #define OPT_STATIC "-a"
@@ -58,6 +59,11 @@ int main(int argc, char* argv[]) {
     if (execActive) {
         cout << "Execute" << endl;
         // EXEC
+    }
+
+    Lexer lexer = Lexer(fileName);
+    while (lexer.analyze()) {
+    	lexer.shift();
     }
     return 0;
 }

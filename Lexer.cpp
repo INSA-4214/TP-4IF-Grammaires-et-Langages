@@ -5,7 +5,7 @@
 
 using namespace std;
 
-const boost::regex keyword("^(const |var |ecrire |lire ).*");
+const boost::regex keyword("^(const|var|ecrire|lire).*");
 const boost::regex affect("^(:=).*");
 const boost::regex single_operator("^(\\+|-|\\*|\\/|\\(|\\)|;|=|,)");
 const boost::regex id("^([a-zA-Z][a-zA-Z0-9]*)");
@@ -17,21 +17,26 @@ Lexer::Lexer(string* filename)
 }
 
 void Lexer::parse(string* filename) {
+
+	cout << "Parsing du fichier..." <<endl;
 	ifstream t (filename->c_str());
 	stringstream buffer;
 	buffer << t.rdbuf();
 	m_str = buffer.str();
+	// On enlève les espaces au début du fichier
+    m_str.erase(0, m_str.find_first_not_of(" \t\n\r\f\v"));
 }
 
 bool Lexer::analyze()
 {
 
     boost::cmatch matches;
-
-    if (regex_match(m_str.c_str(), matches, keyword)) {
-        for (unsigned i = 0; i < matches.size(); i++) {
-            std::cout << matches[i] << std::endl;
-        }
+    string premierMot = m_str.substr(0, m_str.find_first_of(" \t\n\r\f\v"));
+    cout << "\"" << premierMot << "\"" << endl;
+    if (regex_search(premierMot.c_str(), matches, keyword)) {
+        //for (unsigned i = 0; i < matches.size(); i++) {
+        //    std::cout << matches[i] << std::endl;
+        //}
         m_symboleCourantStr = matches[1];
         switch (m_symboleCourantStr[0]) {
             case 'c': m_symboleCourant = new Symbole(Symbole::cst); break;
@@ -41,11 +46,11 @@ bool Lexer::analyze()
             default: break;
         }
     }
-    else if (regex_match(m_str.c_str(), matches, affect)) {
+    else if (regex_search(premierMot.c_str(), matches, affect)) {
     	m_symboleCourantStr = matches[1];
     	m_symboleCourant = new Symbole(Symbole::aff);
     }
-    else if (regex_match(m_str.c_str(), matches, single_operator)) {
+    else if (regex_search(premierMot.c_str(), matches, single_operator)) {
     	m_symboleCourantStr = matches[1];
         switch (m_symboleCourantStr[0]) {
             case '+': m_symboleCourant = new Symbole(Symbole::plus); break;
@@ -60,18 +65,19 @@ bool Lexer::analyze()
             default: break;
         }
     }
-    else if (regex_match(m_str.c_str(), matches, id))
+    else if (regex_search(premierMot.c_str(), matches, id))
     {
     	m_symboleCourantStr = matches[1];
     	m_symboleCourant = new Symbole(Symbole::idvar, m_symboleCourantStr);
     }
-    else if (regex_match(m_str.c_str(), matches, number)) {
+    else if (regex_search(premierMot.c_str(), matches, number)) {
     	m_symboleCourantStr = matches[1];
         double value = boost::lexical_cast<double>(m_symboleCourantStr); // string to unsigned long long
         m_symboleCourant = new Symbole(Symbole::nb, value);
     }
     else
     {
+    	cerr << "AIE !" << endl;
         return false;
     }
     return true;
@@ -83,15 +89,8 @@ void Lexer::shift() {
     	return;
     }
 
-    if (!analyze()) {
-    	cout << "Erreur de Syntaxe" <<endl;
-    	*(m_symboleCourant) = Symbole(Symbole::ERR);
-    	m_symboleCourantStr = "";
-    	return;
-    }
-
-    m_str=m_str.substr(m_str.find_first_of(" \t\n\r\f\v")+1);
-
+    m_str=m_str.substr(m_str.find_first_of(" \t\n\r\f\v"));
+    m_str.erase(0, m_str.find_first_not_of(" \t\n\r\f\v"));
 }
 
 bool Lexer::hasNext(){
