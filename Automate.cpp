@@ -6,7 +6,7 @@
  */
 
 #include "Automate.h"
-
+/*
 Automate::~Automate() {
 
 }
@@ -17,14 +17,15 @@ Automate::Automate(std::istream * stream) {
 	//TODO init pileEtat
 	accepte = false;
 
-}
+}*/
 
-void Automate::decalage(Symbole s, Etat e){
+void Automate::decalage(Symbole *s, Etat *e){
 
 	this->pileEtats.push(e);
 	this->pileSymboles.push(s);
 
 }
+/*
 bool Automate::lecture(){
 	//TODO get Token de la pile
 	//TODO boucle exploration
@@ -33,12 +34,12 @@ bool Automate::lecture(){
 		return false;
 	return accepte;
 }
-
-std::stack<Etat> Automate::getPileEtats(){
+*/
+std::stack<Etat*> Automate::getPileEtats(){
 
 	return this->pileEtats;
 }
-std::stack<Symbole> Automate::getPileSymboles(){
+std::stack<Symbole*> Automate::getPileSymboles(){
 
 	return this->pileSymboles;
 }

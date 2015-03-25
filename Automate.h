@@ -19,9 +19,9 @@ class Automate {
 public:
 	Automate(std::istream * stream);
 	bool lecture();
-	void decalage(Symbole s,Etat e);
-	std::stack<Etat> getPileEtats();
-	std::stack<Symbole> getPileSymboles();
+	void decalage(Symbole *s,Etat *e);
+	std::stack<Etat*> getPileEtats();
+	std::stack<Symbole*> getPileSymboles();
 	void setAccepter(bool b);
 	virtual ~Automate();
 
@@ -34,8 +34,8 @@ protected:
 -un etat d'avancement (valider/refuser l'analyse)
 */
 
-	std::stack<Etat> pileEtats;
-	std::stack<Symbole> pileSymboles;
+	std::stack<Etat*> pileEtats;
+	std::stack<Symbole*> pileSymboles;
 	bool accepte;
 	Lexer lexer;
 
