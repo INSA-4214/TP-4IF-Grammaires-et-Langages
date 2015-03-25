@@ -58,6 +58,10 @@ public:
 
 	Symbole(Symbole::Id id) : ident(id){}
 
+	Symbole(Symbole::Id id, std::string s) : ident(id), str(s) {}
+
+	Symbole(Symbole::Id id, double val) : ident(id), value(val) {}
+
 	virtual ~Symbole(){}
 
 	void print();
@@ -65,8 +69,9 @@ public:
 	operator Symbole::Id() const { return ident; }
 
 	Symbole::Id ident;
+	std::string str;
+	double value;
 
-private:
     static const std::map<Symbole::Id, std::string> ID_NAMES;
 
 };
