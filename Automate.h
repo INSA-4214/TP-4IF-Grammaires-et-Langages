@@ -22,9 +22,9 @@ public:
 
 private:
 
-	std::stack<Etat> etats;
+//	std::stack<Etat> etats;
 	std::stack<Symbole> symboles;
-	Transition::TableTransition transitions;
+//	Transition::TableTransition transitions;
 
 };
 
