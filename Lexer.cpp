@@ -1,6 +1,8 @@
 
 #include "Lexer.h"
 
+using namespace std;
+
 const boost::regex keyword("^(const |var |ecrire |lire ).*");
 const boost::regex affect("^(:=).*");
 const boost::regex single_operator("^(\\+|-|\\*|\\/|\\(|\\)|;|=|,)");
@@ -12,7 +14,7 @@ Lexer::Lexer(std::istream * stream)
 {
 }
 
-bool Lexer::analyze() // regarde le prochain symbole terminal sans déplacer la tête de lecture
+bool Lexer::analyze()
 {
     if (m_str == "")
         getline(m_stream, m_str);
@@ -23,43 +25,43 @@ bool Lexer::analyze() // regarde le prochain symbole terminal sans déplacer la t
         for (unsigned i = 0; i < matches.size(); i++) {
             std::cout << matches[i] << std::endl;
         }
-        m_currentTokenStr = matches[1];
-        switch (m_currentTokenStr[0]) {
-            case 'c': m_currentToken = new Symbole(Symbole::cst); break;
-            case 'v': m_currentToken = new Symbole(Symbole::var); break;
-            case 'e': m_currentToken = new Symbole(Symbole::w); break;
-            case 'l': m_currentToken = new Symbole(Symbole::r); break;
+        m_symboleCourantStr = matches[1];
+        switch (m_symboleCourantStr[0]) {
+            case 'c': m_symboleCourant = new Symbole(Symbole::cst); break;
+            case 'v': m_symboleCourant = new Symbole(Symbole::var); break;
+            case 'e': m_symboleCourant = new Symbole(Symbole::w); break;
+            case 'l': m_symboleCourant = new Symbole(Symbole::r); break;
             default: break;
         }
     }
     else if (regex_match(m_str.c_str(), matches, affect)) {
-        m_currentTokenStr = matches[1];
-        m_currentToken = new Symbole(Symbole::aff);
+    	m_symboleCourantStr = matches[1];
+    	m_symboleCourant = new Symbole(Symbole::aff);
     }
     else if (regex_match(m_str.c_str(), matches, single_operator)) {
-        m_currentTokenStr = matches[1];
-        switch (m_currentTokenStr[0]) {
-            case '+': m_currentToken = new Symbole(Symbole::plus); break;
-            case '-': m_currentToken = new Symbole(Symbole::moins); break;
-            case '*': m_currentToken = new Symbole(Symbole::multi); break;
-            case '/': m_currentToken = new Symbole(Symbole::divi); break;
-            case '=': m_currentToken = new Symbole(Symbole::egal); break;
-            case '(': m_currentToken = new Symbole(Symbole::parf); break;
-            case ')': m_currentToken = new Symbole(Symbole::paro); break;
-            case ',': m_currentToken = new Symbole(Symbole::virg); break;
-            case ';': m_currentToken = new Symbole(Symbole::pv); break;
+    	m_symboleCourantStr = matches[1];
+        switch (m_symboleCourantStr[0]) {
+            case '+': m_symboleCourant = new Symbole(Symbole::plus); break;
+            case '-': m_symboleCourant = new Symbole(Symbole::moins); break;
+            case '*': m_symboleCourant = new Symbole(Symbole::multi); break;
+            case '/': m_symboleCourant = new Symbole(Symbole::divi); break;
+            case '=': m_symboleCourant = new Symbole(Symbole::egal); break;
+            case '(': m_symboleCourant = new Symbole(Symbole::parf); break;
+            case ')': m_symboleCourant = new Symbole(Symbole::paro); break;
+            case ',': m_symboleCourant = new Symbole(Symbole::virg); break;
+            case ';': m_symboleCourant = new Symbole(Symbole::pv); break;
             default: break;
         }
     }
     else if (regex_match(m_str.c_str(), matches, id))
     {
-        m_currentTokenStr = matches[1];
-        m_currentToken = new Symbole(Symbole::idvar, m_currentTokenStr);
+    	m_symboleCourantStr = matches[1];
+    	m_symboleCourant = new Symbole(Symbole::idvar, m_symboleCourantStr);
     }
     else if (regex_match(m_str.c_str(), matches, number)) {
-        m_currentTokenStr = matches[1];
-        double value = boost::lexical_cast<double>(m_currentTokenStr); // string to unsigned long long
-        m_currentToken = new Symbole(Symbole::nb, value);
+    	m_symboleCourantStr = matches[1];
+        double value = boost::lexical_cast<double>(m_symboleCourantStr); // string to unsigned long long
+        m_symboleCourant = new Symbole(Symbole::nb, value);
     }
     else
     {
@@ -68,24 +70,27 @@ bool Lexer::analyze() // regarde le prochain symbole terminal sans déplacer la t
     return true;
 }
 
-void Lexer::shift() // empile le prochain symbole terminal et déplace la tête de lecture sur le suivant
-{
-    unsigned int bufferSize = 30;
-    // Vérifier qu'il y a un token après celui-là
-    // Créer buffer (taille 30 par ex) et ajouter le flux dedans
-    std::string buffer;
-    while (buffer.size() < bufferSize)
-    {
-        //buffer +=
+void Lexer::shift() {
+
+    if (!hasNext()) {
+    	return;
     }
-    // Trouver le premier symbole terminal
-    // Empiler le symbole et l'état associé
-    // Retirer le symbole du buffer, les éventuels espaces après et ajouter des caractères pour ramener le buffer à la longueur 30
-    // Vérifier si réduction, si oui alors dépiler
+
+    if (!analyze()) {
+    	cout << "Erreur de Syntaxe" <<endl;
+    	*(m_symboleCourant) = Symbole(Symbole::ERR);
+    	m_symboleCourantStr = "";
+    	return;
+    }
+
+    m_str=m_str.substr(m_str.find_first_of(" \t\n\r\f\v")+1);
+
 }
 
+bool Lexer::hasNext(){
+	return (m_str.length() > 0);
+}
 
 Lexer::~Lexer()
 {
-    //dtor
 }
