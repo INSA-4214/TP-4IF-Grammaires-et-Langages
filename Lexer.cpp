@@ -36,11 +36,8 @@ bool Lexer::analyze()
 
     boost::cmatch matches;
     string premierMot = m_str.substr(0, m_str.find_first_of(" \t\n\r\f\v"));
-    cout << "\"" << premierMot << "\"" << endl;
+    cout << "\"" << m_symboleCourantStr << "\"" << endl;
     if (regex_search(premierMot.c_str(), matches, keyword)) {
-        //for (unsigned i = 0; i < matches.size(); i++) {
-        //    std::cout << matches[i] << std::endl;
-        //}
         m_symboleCourantStr = matches[1];
         switch (m_symboleCourantStr[0]) {
             case 'c': m_symboleCourant = new Symbole(Symbole::cst); break;
@@ -96,7 +93,7 @@ void Lexer::shift() {
     	return;
     }
 
-    m_str=m_str.substr(m_str.find_first_of(" \t\n\r\f\v"));
+    m_str=m_str.substr(m_symboleCourantStr.size());
     m_str.erase(0, m_str.find_first_not_of(" \t\n\r\f\v"));
 }
 
