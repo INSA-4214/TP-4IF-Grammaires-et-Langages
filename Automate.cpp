@@ -37,13 +37,13 @@ bool Automate::lecture(){
 	//return accepte;
 }
 
-std::stack<Etat*> Automate::getPileEtats(){
+std::stack<Etat*> *Automate::getPileEtats(){
 
-	return this->pileEtats;
+	return &this->pileEtats;
 }
-std::stack<Symbole*> Automate::getPileSymboles(){
+std::stack<Symbole*> *Automate::getPileSymboles(){
 
-	return this->pileSymboles;
+	return &this->pileSymboles;
 }
 
 void Automate::setAccepter(bool b){
