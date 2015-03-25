@@ -17,11 +17,11 @@
 class Automate {
 
 public:
-	Automate(std::istream * stream);
+	Automate(Lexer *lexer);
 	bool lecture();
 	void decalage(Symbole *s,Etat *e);
-	std::stack<Etat*> *getPileEtats();
-	std::stack<Symbole*> *getPileSymboles();
+	std::stack<Etat*> getPileEtats();
+	std::stack<Symbole*> getPileSymboles();
 	void setAccepter(bool b);
 	virtual ~Automate();
 
@@ -37,7 +37,7 @@ protected:
 	std::stack<Etat*> pileEtats;
 	std::stack<Symbole*> pileSymboles;
 	bool accepte;
-	Lexer lexer;
+	Lexer *lexer;
 
 };
 

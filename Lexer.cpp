@@ -16,6 +16,10 @@ Lexer::Lexer(string* filename)
 	parse(filename);
 }
 
+Symbole* Lexer::getSymboleCourant(){
+	return m_symboleCourant;
+}
+
 void Lexer::parse(string* filename) {
 
 	cout << "Parsing du fichier..." <<endl;
@@ -88,12 +92,20 @@ void Lexer::shift() {
     	return;
     }
 
+    if (!analyze()) {
+    	return;
+    }
+
     m_str=m_str.substr(m_str.find_first_of(" \t\n\r\f\v"));
     m_str.erase(0, m_str.find_first_not_of(" \t\n\r\f\v"));
 }
 
 bool Lexer::hasNext(){
-	return (m_str.length() > 0);
+	bool continuer = m_str.length() > 0;
+	if (!continuer) {
+		m_symboleCourant = new Symbole(Symbole::FILEEND);
+	}
+	return continuer;
 }
 
 Lexer::~Lexer()

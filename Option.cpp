@@ -1,9 +1,7 @@
 #include <iostream>
 #include <string>
-#include <fstream>
-
 #include "Lexer.h"
-
+#include "Automate.h"
 #define OPT_TRANSFORM "-o"
 #define OPT_PRINT "-p"
 #define OPT_STATIC "-a"
@@ -42,34 +40,8 @@ int main(int argc, char* argv[]) {
         }
     }
     if (fileName == NULL) {
-        std::ofstream fic_err("stderr", std::ios::out | std::ios::trunc);
-
-        if (fic_err)
-        {
-            fic_err << "Erreur, veuillez specifier des arguments" << endl;
-            fic_err << "  Utilisation :" << endl;
-            fic_err << "    ../lut [-p] [-a] [-e] [-o] source.lt" << endl;
-            fic_err << "      [-p] affiche le code source reconnu" << endl;
-            fic_err << "      [-a] analyse le programme de maniere statique" << endl;
-            fic_err << "      [-e] execute interactivement le programme" << endl;
-            fic_err << "      [-o] optimise les expressions et instructions" << endl;
-        }
+        cerr << "Pas de fichier d'entrée fourni" << endl;
         return 1;
-    }
-    else {
-        std::ifstream fichier(fileName->c_str(), std::ios::in);
-
-        if (!fichier)
-        {
-            std::ofstream fic_err("stderr", std::ios::out | std::ios::trunc);
-
-            if (fic_err)
-            {
-                fic_err << "Erreur a l'ouverture du fichier ";
-                fic_err << fileName << endl;
-            }
-            return 1;
-        }
     }
         // LEXER
         // PARSER
@@ -91,9 +63,8 @@ int main(int argc, char* argv[]) {
     }
 
     Lexer lexer = Lexer(fileName);
-    while (lexer.analyze()) {
-    	lexer.shift();
-    }
+    Automate automate = Automate(&lexer);
+    automate.lecture();
     return 0;
 }
 

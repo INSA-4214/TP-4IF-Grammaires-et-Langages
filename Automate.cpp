@@ -6,18 +6,18 @@
  */
 
 #include "Automate.h"
-/*
+
 Automate::~Automate() {
 
 }
 
-Automate::Automate(std::istream * stream) {
+Automate::Automate(Lexer *unlexer) {
 
-	lexer = new Lexer(stream);
+	lexer = unlexer;
 	//TODO init pileEtat
 	accepte = false;
 
-}*/
+}
 
 void Automate::decalage(Symbole *s, Etat *e){
 
@@ -25,23 +25,25 @@ void Automate::decalage(Symbole *s, Etat *e){
 	this->pileSymboles.push(s);
 
 }
-/*
+
 bool Automate::lecture(){
 	//TODO get Token de la pile
 	//TODO boucle exploration
-	lexer.shift();
-	if( pileEtats.empty() )
-		return false;
-	return accepte;
+    while (lexer->getSymboleCourant()->getIdent() != Symbole::FILEEND) {
+    	lexer->shift();
+    }
+	//if( pileEtats.empty() )
+	//	return false;
+	//return accepte;
 }
-*/
-std::stack<Etat*> *Automate::getPileEtats(){
 
-	return &this->pileEtats;
+std::stack<Etat*> Automate::getPileEtats(){
+
+	return this->pileEtats;
 }
-std::stack<Symbole*> *Automate::getPileSymboles(){
+std::stack<Symbole*> Automate::getPileSymboles(){
 
-	return &this->pileSymboles;
+	return this->pileSymboles;
 }
 
 void Automate::setAccepter(bool b){

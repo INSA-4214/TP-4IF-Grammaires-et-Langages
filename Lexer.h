@@ -32,6 +32,9 @@ class Lexer
          * Regarde le prochain symbole terminal sans déplacer la tête de lecture
          */
         bool analyze();
+
+        Symbole *getSymboleCourant();
+
     private:
 
         bool hasNext();
