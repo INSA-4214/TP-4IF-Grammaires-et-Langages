@@ -11,19 +11,16 @@
 #include "Symbole.h"
 #include "Etat.h"
 #include "Transition.h"
-#include "Lexer.h"
 #include <stack>
 #include <string>
-#include <iostream>
 class Automate {
 
 public:
-	Automate(std::istream * stream);
+	Automate(std::string inString);
 	bool lecture();
 	void decalage(Symbole s,Etat e);
 	std::stack<Etat> getPileEtats();
 	std::stack<Symbole> getPileSymboles();
-	void setAccepter(bool b);
 	virtual ~Automate();
 
 protected:
@@ -38,7 +35,7 @@ protected:
 	std::stack<Etat> pileEtats;
 	std::stack<Symbole> pileSymboles;
 	bool accepte;
-	Lexer lexer;
+	//TODO Lexer a ajouter
 
 };
 
