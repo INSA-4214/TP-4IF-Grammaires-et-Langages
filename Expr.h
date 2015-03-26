@@ -8,9 +8,9 @@
 #ifndef EXPR_H_
 #define EXPR_H_
 
-#include "Symbole.h"
 #include <map>
 #include <string>
+#include "Symbole.h"
 
 class Expr : public Symbole {
 
@@ -25,20 +25,35 @@ public:
 
 class Variable : public Expr {
  public:
-    Variable(Symbole::Id id) : Expr(id) { }
-    virtual double eval(const std::map<std::string, double> &valeurs);
+    Variable(std::string leNom, int laValeur)
+ 	 	 : Expr(Symbole::var), nom(leNom), valeur(laValeur) { }
 
     std::string name() { return nom; }
 
  protected:
 	std::string nom;
+	int valeur;
 };
 
-class Number : public Expr {
+class Constante : public Expr {
  public:
-    explicit Number(Symbole::Id id) : Expr(id) { }
+    Constante(std::string leNom, int laValeur)
+ 	 	 : Expr(Symbole::cst), nom(leNom), valeur(laValeur) { }
+
+    std::string name() { return nom; }
+
+ protected:
+	std::string nom;
+	int valeur;
+};
+
+class Nombre : public Expr {
+ public:
+    explicit Nombre(int uneValeur)
+    	: Expr(Symbole::nb), valeur(uneValeur) { }
 
  private:
+    int valeur;
 };
 
 class BinExpr : public Expr {
@@ -52,12 +67,8 @@ class BinExpr : public Expr {
 	    	delete sym_droite;
 	    }
 
-	    Expr * left() const { return sym_gauche; }
-	    Expr * right() const { return sym_droite; }
-	    void left(Expr * left);
-	    void right(Expr * right);
-
-	    virtual double eval(const std::map<std::string, double> & values)=0;
+	    Expr * getLeft() const { return sym_gauche; }
+	    Expr * getRight() const { return sym_droite; }
 
  protected:
     Expr *sym_gauche;
@@ -66,35 +77,34 @@ class BinExpr : public Expr {
 
 class AddExpr : public BinExpr {
  public:
-    explicit AddExpr(Symbole::Id id, Expr *left = NULL, Expr *right = NULL);
 
-    virtual double eval(const std::map<std::string, double> & values);
+    explicit AddExpr(Expr *left, Expr *right, Symbole* plus);
 
- private:
-};
+    virtual ~AddExpr(){
+    	delete operateur;
+    }
 
-class SubExpr : public BinExpr {
- public:
-	explicit SubExpr(Symbole::Id id, Expr *left = NULL, Expr *right = NULL);
-    virtual double eval(const std::map<std::string, double> & values);
+    Symbole* const getOperateur(){return operateur;}
 
- private:
+ protected:
+
+    Symbole* operateur;
 };
 
 class MultExpr : public BinExpr {
  public:
-	explicit MultExpr(Symbole::Id id, Expr *left = NULL, Expr *right = NULL);
-    virtual double eval(const std::map<std::string, double> & values);
 
- private:
-};
+	explicit MultExpr(Expr *left , Expr *right, Symbole* mult);
 
-class DivExpr : public BinExpr {
- public:
-	explicit DivExpr(Symbole::Id id, Expr *left = NULL, Expr *right = NULL);
-    virtual double eval(const std::map<std::string, double> & values);
+    virtual ~MultExpr(){
+    	delete operateur;
+    }
 
- private:
+    Symbole* const getOperateur(){return operateur;}
+
+ protected:
+
+    Symbole* operateur;
 };
 
 

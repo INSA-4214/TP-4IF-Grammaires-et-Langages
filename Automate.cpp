@@ -35,6 +35,7 @@ bool Automate::lecture(){
 	//if( pileEtats.empty() )
 	//	return false;
 	//return accepte;
+    return true;
 }
 
 std::stack<Etat*> *Automate::getPileEtats(){
