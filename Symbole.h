@@ -15,7 +15,7 @@
 
 // 'r' = lire
 // 'aff' = affectation
-// 'plus' = `+`
+// 'OpePlus' = `+`
 // 'moins' = `-`
 // 'cst' = const
 // 'var' = var
