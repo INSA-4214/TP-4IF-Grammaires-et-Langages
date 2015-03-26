@@ -56,6 +56,7 @@ public:
 
    };
 
+    Symbole() {}
     Symbole(Symbole::Id id);
 	Symbole(Symbole::Id id, std::string s ) : ident(id), str(s) {}
 

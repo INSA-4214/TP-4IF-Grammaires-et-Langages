@@ -83,7 +83,7 @@ bool Lexer::analyze()
 
         int ligne = 1;
         int colonne = 1;
-        int i = 0;
+        unsigned i = 0;
         while (m_texteEntier.substr(i, 1) != m_symboleCourantStr && i < m_texteEntier.size())
         {
             colonne++;
