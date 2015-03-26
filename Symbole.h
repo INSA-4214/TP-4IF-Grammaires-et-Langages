@@ -66,7 +66,7 @@ public:
     Symbole::Id getIdent();
 
 
-private:
+protected:
    Symbole::Id ident;
    std::string str;
 

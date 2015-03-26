@@ -8,6 +8,7 @@
 #include "Symbole.h"
 #include "boost/assign/list_of.hpp"
 
+
 Symbole::Symbole(Id id) {
     ident = id;
     str = "";
