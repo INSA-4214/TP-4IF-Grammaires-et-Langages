@@ -40,6 +40,7 @@ class Lexer
         bool hasNext();
         void parse(std::string *filename);
         std::string m_str;
+        std::string m_texteEntier;
         std::string m_symboleCourantStr;
         Symbole * m_symboleCourant;
 };

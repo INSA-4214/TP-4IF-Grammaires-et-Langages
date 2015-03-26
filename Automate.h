@@ -36,6 +36,8 @@ protected:
 
 	std::stack<Etat*> pileEtats;
 	std::stack<Symbole*> pileSymboles;
+	std::map<std::string, Symbole*> mapConst; // Symbole D
+	std::map<std::string, Symbole*> mapVar; // Symbole D
 	bool accepte;
 	Lexer *lexer;
 

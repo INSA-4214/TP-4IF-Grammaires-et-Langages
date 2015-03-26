@@ -35,7 +35,8 @@ bool Automate::lecture(){
 	//if( pileEtats.empty() )
 	//	return false;
 	//return accepte;
-    return true;
+
+	return true; // pour enlever le warning
 }
 
 std::stack<Etat*> *Automate::getPileEtats(){

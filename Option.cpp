@@ -47,13 +47,13 @@ int main(int argc, char* argv[]) {
 
         if (fic_err)
         {
-            fic_err << "Erreur, veuillez specifier des arguments" << endl;
-            fic_err << "  Utilisation :" << endl;
-            fic_err << "    ../lut [-p] [-a] [-e] [-o] source.lt" << endl;
-            fic_err << "      [-p] affiche le code source reconnu" << endl;
-            fic_err << "      [-a] analyse le programme de maniere statique" << endl;
-            fic_err << "      [-e] execute interactivement le programme" << endl;
-            fic_err << "      [-o] optimise les expressions et instructions" << endl;
+            cerr << "Erreur, veuillez specifier des arguments" << endl;
+            cerr << "  Utilisation :" << endl;
+            cerr << "    ../lut [-p] [-a] [-e] [-o] source.lt" << endl;
+            cerr << "      [-p] affiche le code source reconnu" << endl;
+            cerr << "      [-a] analyse le programme de maniere statique" << endl;
+            cerr << "      [-e] execute interactivement le programme" << endl;
+            cerr << "      [-o] optimise les expressions et instructions" << endl;
         }
         return 1;
     }
@@ -66,8 +66,8 @@ int main(int argc, char* argv[]) {
 
             if (fic_err)
             {
-                fic_err << "Erreur a l'ouverture du fichier ";
-                fic_err << fileName << endl;
+                cerr << "Erreur a l'ouverture du fichier ";
+                cerr << *fileName << endl;
             }
             return 1;
         }
