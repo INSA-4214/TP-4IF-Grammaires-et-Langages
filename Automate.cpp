@@ -6,6 +6,7 @@
  */
 
 #include "Automate.h"
+#include "Etats/Etat00.h"
 
 Automate::~Automate() {
 
@@ -14,7 +15,7 @@ Automate::~Automate() {
 Automate::Automate(Lexer *unlexer) {
 
 	lexer = unlexer;
-	//TODO init pileEtat
+	pileEtats.push(new Etat00());
 	accepte = false;
 
 }
@@ -31,11 +32,20 @@ bool Automate::lecture(){
 	//TODO boucle exploration
     while (lexer->getSymboleCourant()->getIdent() != Symbole::FILEEND) {
     	lexer->shift();
-    }
-	//if( pileEtats.empty() )
-	//	return false;
-	//return accepte;
+            //symbole courant
+        if ( pileEtats.empty() )
+            return false;
+        Symbole *s = lexer->getSymboleCourant();
+        if ( s == NULL )
+            return false;
+        if ( !pileEtats.top()->transition(this, s) )
+            return false;
+        }
+        if ( pileEtats.empty() )
+            return false;
+        return true;
 }
+
 
 std::stack<Etat*> *Automate::getPileEtats(){
 

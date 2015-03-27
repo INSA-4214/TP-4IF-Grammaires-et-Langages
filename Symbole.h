@@ -50,7 +50,7 @@ public:
     enum Id {
 
        // Non-terminaux
-       Pprim,P, Lv, Lc, Bd, Bi, D, I, E,
+       Pprim,P, Lv, Lc, Bd, Bi, D, I, E,Opa,Opm,
        // Terminaux
        r, aff, plus, moins, cst, var, parf, pv, egal, w, multi, divi, paro, virg, nb, idvar, FILEEND
 

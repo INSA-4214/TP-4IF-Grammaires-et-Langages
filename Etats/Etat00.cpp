@@ -15,8 +15,11 @@ bool Etat00::transition(Automate *automate, Symbole * s) {
         case Symbole::Bd:
           automate->decalage(s, new Etat02());
             return true;
-        case Symbole::idvar:
+        case Symbole::var:
         case Symbole::cst :
+        case Symbole::w :
+        case Symbole::r :
+        case Symbole::FILEEND :
 // Reduction Règle 13 - 0 Level On pop Bd car Bd->.
            if (!automate->getPileEtats()->top()->transition(automate, &symb))
                 return false;
