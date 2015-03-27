@@ -26,7 +26,8 @@ void Lexer::parse(string* filename) {
 	ifstream t (filename->c_str());
 	stringstream buffer;
 	buffer << t.rdbuf();
-	m_str = buffer.str();
+	m_texteEntier = buffer.str();
+	m_str = m_texteEntier;
 	// On enlève les espaces au début du fichier
     m_str.erase(0, m_str.find_first_not_of(" \t\n\r\f\v"));
 }
@@ -36,11 +37,8 @@ bool Lexer::analyze()
 
     boost::cmatch matches;
     string premierMot = m_str.substr(0, m_str.find_first_of(" \t\n\r\f\v"));
-    cout << "\"" << premierMot << "\"" << endl;
+    cout << "\"" << m_symboleCourantStr << "\"" << endl;
     if (regex_search(premierMot.c_str(), matches, keyword)) {
-        //for (unsigned i = 0; i < matches.size(); i++) {
-        //    std::cout << matches[i] << std::endl;
-        //}
         m_symboleCourantStr = matches[1];
         switch (m_symboleCourantStr[0]) {
             case 'c': m_symboleCourant = new Symbole(Symbole::cst); break;
@@ -80,8 +78,23 @@ bool Lexer::analyze()
     }
     else
     {
-    	cerr << "AIE !" << endl;
-        return false;
+    	m_symboleCourantStr = m_str.substr(0, 1);
+        cout << "Caractere ignore : \"" << m_symboleCourantStr << "\"" << endl;
+
+        int ligne = 1;
+        int colonne = 1;
+        unsigned i = 0;
+        while (m_texteEntier.substr(i, 1) != m_symboleCourantStr && i < m_texteEntier.size())
+        {
+            colonne++;
+            if (m_texteEntier.substr(i, 1) == "\n")
+            {
+                ligne++;
+                colonne = 1;
+            }
+            i++;
+        }
+        cerr << "Erreur lexicale (" << ligne << ":" << colonne <<") caractere " << m_symboleCourantStr;
     }
     return true;
 }
@@ -96,7 +109,7 @@ void Lexer::shift() {
     	return;
     }
 
-    m_str=m_str.substr(m_str.find_first_of(" \t\n\r\f\v"));
+    m_str=m_str.substr(m_symboleCourantStr.size());
     m_str.erase(0, m_str.find_first_not_of(" \t\n\r\f\v"));
 }
 

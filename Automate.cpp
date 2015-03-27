@@ -44,6 +44,7 @@ bool Automate::lecture(){
         if ( pileEtats.empty() )
             return false;
         return true;
+
 }
 
 

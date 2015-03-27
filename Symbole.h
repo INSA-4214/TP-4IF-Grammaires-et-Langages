@@ -15,7 +15,7 @@
 
 // 'r' = lire
 // 'aff' = affectation
-// 'plus' = `+`
+// 'OpePlus' = `+`
 // 'moins' = `-`
 // 'cst' = const
 // 'var' = var
@@ -56,6 +56,7 @@ public:
 
    };
 
+    Symbole() {}
     Symbole(Symbole::Id id);
 	Symbole(Symbole::Id id, std::string s ) : ident(id), str(s) {}
 
@@ -66,7 +67,7 @@ public:
     Symbole::Id getIdent();
 
 
-private:
+protected:
    Symbole::Id ident;
    std::string str;
 

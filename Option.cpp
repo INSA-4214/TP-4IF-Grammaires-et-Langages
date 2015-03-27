@@ -1,7 +1,10 @@
 #include <iostream>
 #include <string>
+#include <fstream>
+
 #include "Lexer.h"
 #include "Automate.h"
+
 #define OPT_TRANSFORM "-o"
 #define OPT_PRINT "-p"
 #define OPT_STATIC "-a"
@@ -40,8 +43,34 @@ int main(int argc, char* argv[]) {
         }
     }
     if (fileName == NULL) {
-        cerr << "Pas de fichier d'entrée fourni" << endl;
+        std::ofstream fic_err("stderr", std::ios::out | std::ios::trunc);
+
+        if (fic_err)
+        {
+            cerr << "Erreur, veuillez specifier des arguments" << endl;
+            cerr << "  Utilisation :" << endl;
+            cerr << "    ../lut [-p] [-a] [-e] [-o] source.lt" << endl;
+            cerr << "      [-p] affiche le code source reconnu" << endl;
+            cerr << "      [-a] analyse le programme de maniere statique" << endl;
+            cerr << "      [-e] execute interactivement le programme" << endl;
+            cerr << "      [-o] optimise les expressions et instructions" << endl;
+        }
         return 1;
+    }
+    else {
+        std::ifstream fichier(fileName->c_str(), std::ios::in);
+
+        if (!fichier)
+        {
+            std::ofstream fic_err("stderr", std::ios::out | std::ios::trunc);
+
+            if (fic_err)
+            {
+                cerr << "Erreur a l'ouverture du fichier ";
+                cerr << *fileName << endl;
+            }
+            return 1;
+        }
     }
         // LEXER
         // PARSER
