@@ -5,8 +5,11 @@
  *      Author: Huber
  */
 
+#include <stdio.h>
 #include "Automate.h"
 #include "Etats/Etat00.h"
+
+using namespace std;
 
 Automate::~Automate() {
 
@@ -28,22 +31,28 @@ void Automate::decalage(Symbole *s, Etat *e){
 }
 
 bool Automate::lecture(){
+
 	//TODO get Token de la pile
 	//TODO boucle exploration
     while (lexer->getSymboleCourant()->getIdent() != Symbole::FILEEND) {
+
     	lexer->shift();
-            //symbole courant
+
+        //symbole courant
         if ( pileEtats.empty() )
             return false;
+
         Symbole *s = lexer->getSymboleCourant();
         if ( s == NULL )
             return false;
-        if ( !pileEtats.top()->transition(this, s) )
+
+        if ( !pileEtats.top()->transition(this, s) ) {
+        	cout << "Erreur : Transition non envisagee pour l'etat " << pileEtats.top()->numEtat() << endl;
+        	cout << "Symbole envoye : " << s->getIdent() << endl;
             return false;
         }
-        if ( pileEtats.empty() )
-            return false;
-        return true;
+    }
+    return true;
 
 }
 
