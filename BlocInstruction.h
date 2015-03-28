@@ -12,16 +12,16 @@
 #include "Symbole.h"
 #include <set>
 
-class BlocDeclaration: public Symbole {
+class BlocInstruction: public Symbole {
 public:
 
-	BlocDeclaration()
+	BlocInstruction()
 		:Symbole(Symbole::Bi), instructions(std::set<Instruction*>()){}
 
-	BlocDeclaration(std::set<Instruction*> lesDeclarations)
+	BlocInstruction(std::set<Instruction*> lesDeclarations)
 		:Symbole(Symbole::Bi), instructions(lesDeclarations){}
 
-	virtual ~BlocDeclaration(){}
+	virtual ~BlocInstruction(){}
 
 protected:
 
