@@ -15,11 +15,13 @@ class Lv: public Symbole{
 
 public:
 
-	Lv(std::set<Symbole*> setLv): Symbole(Symbole::Lv),setidvar(setLv){}
+	Lv(): Symbole(Symbole::Lv){}
 
 	std::set<Symbole*> getSetidvar();
 
 	void addidvar(Symbole* monSymb);
+
+	void setSetidvar(std::set<Symbole*> mesidvar);
 
 protected:
 
@@ -31,12 +33,13 @@ class DVar: public Symbole{
 public:
 
 
-	DVar(std::set<Symbole*> setLv): Symbole(Symbole::D),setidvar(setLv){}
+	DVar(): Symbole(Symbole::D){}
 
 	std::set<Symbole*> getSetidvar();
 
 	void addidvar(Symbole* monSymb);
 
+    void setSetidvar(std::set<Symbole*> mesidvar);
 protected:
 
 	std::set<Symbole*> setidvar;
