@@ -33,7 +33,7 @@ bool Etat31::transition(Automate *automate, Symbole * s) {
             return true;
         case Symbole::pv:
         case Symbole::FILEEND:
-         for ( int i = 0 ; i < 2 ; i++ ) {
+         for ( int i = 0 ; i < 3 ; i++ ) {
                automate->getPileSymboles()->pop();
                automate->getPileEtats()->pop();
             }

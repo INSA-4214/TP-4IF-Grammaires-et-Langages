@@ -10,7 +10,7 @@ bool Etat33::transition(Automate *automate, Symbole * s) {
         case Symbole::Lc:
         automate->decalage(s, new Etat38());
            return true;
-        case Symbole::pv:
+        case Symbole::pv :
         case Symbole::virg :
         case Symbole::FILEEND :
 // Reduction Règle 13 - 0 Level On pop Bd car Bd->.

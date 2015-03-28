@@ -26,6 +26,7 @@ bool Etat34::transition(Automate *automate, Symbole * s) {
         case Symbole::plus:
         case Symbole::moins:
         case Symbole::FILEEND:
+        case Symbole::pv :
          for ( int i = 0 ; i < 3 ; i++ ) {
                automate->getPileSymboles()->pop();
                automate->getPileEtats()->pop();

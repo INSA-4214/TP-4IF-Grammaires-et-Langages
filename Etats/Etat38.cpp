@@ -2,6 +2,7 @@
 #include "Etat38.h"
 #include "Etat39.h"
 
+
 Etat38::Etat38() : Etat() { }
 
 bool Etat38::transition(Automate *automate, Symbole * s) {
@@ -12,6 +13,7 @@ bool Etat38::transition(Automate *automate, Symbole * s) {
            return true;
         case Symbole::pv:
         case Symbole::FILEEND :
+
 // Reduction Règle 13 - 0 Level On pop Bd car Bd->.
             for ( int i = 0 ; i < 5 ; i++ ) {
                automate->getPileSymboles()->pop();

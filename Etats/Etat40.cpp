@@ -8,7 +8,7 @@ Etat40::Etat40() : Etat() { }
 bool Etat40::transition(Automate *automate, Symbole * s) {
     Symbole symb = Symbole(Symbole::Bd);
     switch ( s->getIdent() ) {
-        case Symbole::aff:
+        case Symbole::egal:
         automate->decalage(s, new Etat41());
            return true;
         default:

@@ -12,6 +12,7 @@ bool Etat18::transition(Automate *automate, Symbole * s) {
         case Symbole::multi :
         case Symbole::divi :
         case Symbole::FILEEND :
+        case Symbole::pv :
 // Reduction Règle 13 - 0 Level On pop Bd car Bd->.
            for ( int i = 0 ; i < 1 ; i++ ) {
                automate->getPileSymboles()->pop();

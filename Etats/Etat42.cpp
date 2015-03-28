@@ -4,7 +4,7 @@
 Etat42::Etat42() : Etat() { }
 
 bool Etat42::transition(Automate *automate, Symbole * s) {
-    Symbole symb = Symbole(Symbole::Lv);
+    Symbole symb = Symbole(Symbole::Lc);
     switch ( s->getIdent() ) {
         case Symbole::pv:
         case Symbole::virg :
