@@ -6,9 +6,14 @@
 #include "Etat05.h"
 #include "Etat04.h"
 
+#include <stdio.h>
+
+using namespace std;
+
 Etat02::Etat02() : Etat() { }
 
 bool Etat02::transition(Automate *automate, Symbole * s) {
+     cout << "Symbole courant : " << endl;
   Symbole symb = Symbole(Symbole::Bi);
     switch ( s->getIdent() ) {
         case Symbole::var:

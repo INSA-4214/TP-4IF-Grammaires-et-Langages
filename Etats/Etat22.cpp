@@ -21,7 +21,6 @@ bool Etat22::transition(Automate *automate, Symbole * s) {
            //On construit le symbole à partir des infos contenues dans le Lv
            symb->DVar::setSetidvar(top->getSetidvar());
 
-  //  std::set<Symbole*>::iterator it;
 
     switch ( s->getIdent() ) {
         case Symbole::virg:
@@ -44,9 +43,6 @@ bool Etat22::transition(Automate *automate, Symbole * s) {
                automate->getPileEtats()->pop();
             }
 
-       //         std::cout << "myset contains:";
-         //       for (it=symb->getSetidvar().begin(); it!=symb->getSetidvar().end(); ++it)
-           //         std::cout << ' ' << *it;
 
            if (!automate->getPileEtats()->top()->transition(automate, symb))
                 return false;

@@ -2,6 +2,8 @@
 #include "Etat33.h"
 #include "Etat38.h"
 
+#include <stdio.h>
+using namespace std;
 Etat33::Etat33() : Etat() { }
 
 bool Etat33::transition(Automate *automate, Symbole * s) {
