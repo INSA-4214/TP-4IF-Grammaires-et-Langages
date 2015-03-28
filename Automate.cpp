@@ -47,14 +47,16 @@ bool Automate::lecture(){
             return false;
 
         if ( !pileEtats.top()->transition(this, s) ) {
-        	cout << "Erreur : Transition non envisagee pour l'etat " << pileEtats.top()->numEtat() << endl;
-        	cout << "Symbole envoye : " << s->getIdent() << endl;
+                while( !pileEtats.empty()){
+                    cout << "Erreur : Transition non envisagee pour l'etat " << pileEtats.top()->numEtat() << endl;
+                    pileEtats.pop();
+                }
+                cout << "Symbole courant : " << s->getIdent() << endl;
+                while( !pileSymboles.empty()){
+                    cout << "Symbole pile : " << pileSymboles.top()->getIdent() << endl;
+                    pileSymboles.pop();
+                }
 
-        	cout << "Symbole pile : " << pileSymboles.top()->getIdent() << endl;
-        	 while( !pileSymboles.empty()){
-                cout << "Symbole pile : " << pileSymboles.top()->getIdent() << endl;
-                pileSymboles.pop();
-        	 }
             return false;
         }
     }
@@ -73,5 +75,7 @@ std::stack<Symbole*> *Automate::getPileSymboles(){
 }
 
 void Automate::setAccepter(bool b){
+    cout << "c'est la fiesta negro si on un symbole 1=P dessous"<< endl;
+     cout << "Symbole pile : " << pileSymboles.top()->getIdent() << endl;
 	this->accepte = b;
 }

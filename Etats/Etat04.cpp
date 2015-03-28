@@ -28,6 +28,11 @@ bool Etat04::transition(Automate *automate, Symbole * s) {
                automate->getPileSymboles()->pop();
                automate->getPileEtats()->pop();
             }
+            if (!automate->getPileEtats()->top()->transition(automate, &symb))
+                return false;
+            if (!automate->getPileEtats()->top()->transition(automate, s))
+                 return false;
+           return true;
         default:
             return false;
     }
