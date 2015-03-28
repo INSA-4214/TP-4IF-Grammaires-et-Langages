@@ -9,7 +9,7 @@
 Etat04::Etat04() : Etat() { }
 
 bool Etat04::transition(Automate *automate, Symbole * s) {
-    Symbole symb = Symbole(Symbole::Bd);
+    Symbole symb = Symbole(Symbole::P);
     switch ( s->getIdent() ) {
         case Symbole::idvar:
         automate->decalage(s, new Etat11());
@@ -23,6 +23,11 @@ bool Etat04::transition(Automate *automate, Symbole * s) {
         case Symbole::I:
             automate->decalage(s, new Etat09());
             return true;
+        case Symbole::FILEEND :
+           for ( int i = 0 ; i < 2 ; i++ ) {
+               automate->getPileSymboles()->pop();
+               automate->getPileEtats()->pop();
+            }
         default:
             return false;
 }

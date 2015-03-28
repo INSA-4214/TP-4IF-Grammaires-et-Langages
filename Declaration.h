@@ -9,10 +9,11 @@
 #define DECLARATION_H_
 #include "Symbole.h"
 
-class Declaration {
+class Declaration : public Symbole{
 public:
 	Declaration(Symbole::Id id) : s(Symbole(id)){}
 	virtual ~Declaration();
+
 
 protected:
 	Symbole s;
