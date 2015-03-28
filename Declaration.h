@@ -8,14 +8,40 @@
 #ifndef DECLARATION_H_
 #define DECLARATION_H_
 #include "Symbole.h"
+#include <set>
 
+
+class Lv: public Symbole{
+
+public:
+
+	Lv(std::set<Symbole*> setLv): Symbole(Symbole::Lv),setidvar(setLv){}
+
+	std::set<Symbole*> getSetidvar();
+
+	void addidvar(Symbole* monSymb);
+
+protected:
+
+	std::set<Symbole*> setidvar;
+};
 
 class DVar: public Symbole{
 
 public:
 
-	DVar(Symbole::Id id): Symbole(id){}
+
+	DVar(std::set<Symbole*> setLv): Symbole(Symbole::D),setidvar(setLv){}
+
+	std::set<Symbole*> getSetidvar();
+
+	void addidvar(Symbole* monSymb);
+
+protected:
+
+	std::set<Symbole*> setidvar;
 };
+
 
 class DCst: public Symbole{
 

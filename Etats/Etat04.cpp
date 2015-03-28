@@ -6,6 +6,10 @@
 #include "Etat08.h"
 #include "Etat09.h"
 
+#include <stdio.h>
+
+using namespace std;
+
 Etat04::Etat04() : Etat() { }
 
 bool Etat04::transition(Automate *automate, Symbole * s) {
@@ -13,6 +17,7 @@ bool Etat04::transition(Automate *automate, Symbole * s) {
     switch ( s->getIdent() ) {
         case Symbole::idvar:
         automate->decalage(s, new Etat11());
+        cout << "Symbole pile : " <<  automate->getPileSymboles()->top()->getStr() << endl;
            return true;
         case Symbole::w:
           automate->decalage(s, new Etat10());

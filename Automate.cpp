@@ -5,9 +5,10 @@
  *      Author: Huber
  */
 
-#include <stdio.h>
+
 #include "Automate.h"
 #include "Etats/Etat00.h"
+#include <stdio.h>
 
 using namespace std;
 
@@ -54,6 +55,8 @@ bool Automate::lecture(){
                 cout << "Symbole courant : " << s->getIdent() << endl;
                 while( !pileSymboles.empty()){
                     cout << "Symbole pile : " << pileSymboles.top()->getIdent() << endl;
+                    cout << "Symbole pile : " << pileSymboles.top()->getStr() << endl;
+
                     pileSymboles.pop();
                 }
 
