@@ -47,11 +47,9 @@ bool Automate::lecture(){
             return false;
 
         if ( !pileEtats.top()->transition(this, s) ) {
-                 while( !pileEtats.empty()){
         	cout << "Erreur : Transition non envisagee pour l'etat " << pileEtats.top()->numEtat() << endl;
-           pileEtats.pop();
-        	 }
         	cout << "Symbole envoye : " << s->getIdent() << endl;
+
         	cout << "Symbole pile : " << pileSymboles.top()->getIdent() << endl;
         	 while( !pileSymboles.empty()){
                 cout << "Symbole pile : " << pileSymboles.top()->getIdent() << endl;

@@ -16,16 +16,17 @@ class BlocDeclaration: public Symbole {
 public:
 
 	BlocDeclaration()
-		:Symbole(Symbole::Bd), declarations(std::set<Declaration*>()){}
+		:Symbole(Symbole::Bd), decConst(std::set<DCst*>()), decVar(std::set<DVar*>()){}
 
-	BlocDeclaration(std::set<Declaration*> lesDeclarations)
-		:Symbole(Symbole::Bd), declarations(lesDeclarations){}
+	BlocDeclaration(std::set<DVar*> lesDeclarationsVar, std::set<DCst*> lesDeclarationsConst)
+		:Symbole(Symbole::Bd), decConst(lesDeclarationsConst), decVar(lesDeclarationsVar){}
 
 	virtual ~BlocDeclaration(){}
 
 protected:
 
-	std::set<Declaration*> declarations;
+	std::set<DCst*> decConst;
+	std::set<DVar*> decVar;
 };
 
 #endif /* BLOCDECLARATION_H_ */

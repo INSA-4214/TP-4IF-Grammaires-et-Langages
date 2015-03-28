@@ -8,7 +8,3 @@
 #include "Declaration.h"
 
 
-Declaration::~Declaration() {
-	// TODO Auto-generated destructor stub
-}
-

@@ -9,28 +9,18 @@
 #define DECLARATION_H_
 #include "Symbole.h"
 
-class Declaration {
+class DVar: public Symbole{
+
 public:
-	Declaration(Symbole::Id id) : s(Symbole(id)){}
-	virtual ~Declaration();
 
-protected:
-	Symbole s;
-
+	DVar(Symbole::Id id): Symbole(id){}
 };
 
-class DVar : public Declaration{
+class DCst: public Symbole{
 
 public:
 
-	DVar(Symbole::Id id): Declaration(id){}
-};
-
-class DCst : public Declaration{
-
-public:
-
-	DCst(Symbole::Id id, int val) : Declaration(id), valeur(val){}
+	DCst(Symbole::Id id, int val) : Symbole(id), valeur(val){}
 
 protected:
 
