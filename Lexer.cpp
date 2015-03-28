@@ -37,7 +37,6 @@ bool Lexer::analyze()
 
     boost::cmatch matches;
     string premierMot = m_str.substr(0, m_str.find_first_of(" \t\n\r\f\v"));
-    cout << "\"" << m_symboleCourantStr << "\"" << endl;
     if (regex_search(premierMot.c_str(), matches, keyword)) {
         m_symboleCourantStr = matches[1];
         switch (m_symboleCourantStr[0]) {
@@ -94,14 +93,15 @@ bool Lexer::analyze()
             }
             i++;
         }
-        cerr << "Erreur lexicale (" << ligne << ":" << colonne <<") caractere " << m_symboleCourantStr;
+        cerr << "Erreur lexicale (" << ligne << ":" << colonne <<") caractere \"" << m_symboleCourantStr <<"\""<< endl;
     }
+    cout << "\"" << m_symboleCourantStr << "\"" << endl;
     return true;
 }
 
 void Lexer::shift() {
 
-    if (!hasNext()) {
+	if (!hasNext()) {
     	return;
     }
 
@@ -111,11 +111,13 @@ void Lexer::shift() {
 
     m_str=m_str.substr(m_symboleCourantStr.size());
     m_str.erase(0, m_str.find_first_not_of(" \t\n\r\f\v"));
+
 }
 
 bool Lexer::hasNext(){
 	bool continuer = m_str.length() > 0;
 	if (!continuer) {
+		cout << "Reste a parser : \"" << m_str << "\"" << endl;
 		m_symboleCourant = new Symbole(Symbole::FILEEND);
 	}
 	return continuer;

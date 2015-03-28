@@ -30,6 +30,6 @@ bool Etat04::transition(Automate *automate, Symbole * s) {
             }
         default:
             return false;
-}
-return false;
+    }
+    return false;
 }
