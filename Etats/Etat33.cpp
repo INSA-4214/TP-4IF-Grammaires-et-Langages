@@ -1,4 +1,5 @@
 #include "../Symbole.h"
+#include "../Declaration.h"
 #include "Etat33.h"
 #include "Etat38.h"
 
@@ -7,7 +8,7 @@ using namespace std;
 Etat33::Etat33() : Etat() { }
 
 bool Etat33::transition(Automate *automate, Symbole * s) {
-    Symbole symb = Symbole(Symbole::Lc);
+    Lc* symb = new Lc();
     switch ( s->getIdent() ) {
         case Symbole::Lc:
         automate->decalage(s, new Etat38());
@@ -16,7 +17,7 @@ bool Etat33::transition(Automate *automate, Symbole * s) {
         case Symbole::virg :
         case Symbole::FILEEND :
 // Reduction Règle 13 - 0 Level On pop Bd car Bd->.
-           if (!automate->getPileEtats()->top()->transition(automate, &symb))
+           if (!automate->getPileEtats()->top()->transition(automate, symb))
                 return false;
            if (!automate->getPileEtats()->top()->transition(automate, s))
                 return false;

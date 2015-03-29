@@ -20,6 +20,14 @@ public:
 	Programme(BlocInstruction *unBlocI, BlocDeclaration *unBlocD)
 		:Symbole(Symbole::P), blocI(unBlocI), blocD(unBlocD){}
 
+	void setBlocI(BlocInstruction* unBlocI) {
+		blocI = unBlocI;
+	}
+
+	void setBlocD(BlocDeclaration* unBlocD) {
+		blocD = unBlocD;
+	}
+
 	virtual ~Programme();
 
 protected:

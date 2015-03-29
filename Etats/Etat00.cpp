@@ -1,4 +1,4 @@
-
+#include "../BlocDeclaration.h"
 #include "../Symbole.h"
 #include "Etat00.h"
 #include "Etat01.h"
@@ -7,7 +7,7 @@
 Etat00::Etat00() : Etat() { }
 
 bool Etat00::transition(Automate *automate, Symbole * s) {
-    Symbole symb = Symbole(Symbole::Bd);
+    BlocDeclaration *symb = new BlocDeclaration();
     switch ( s->getIdent() ) {
         case Symbole::P:
         automate->decalage(s, new Etat01());
@@ -21,7 +21,7 @@ bool Etat00::transition(Automate *automate, Symbole * s) {
         case Symbole::r :
         case Symbole::FILEEND :
 // Reduction Règle 13 - 0 Level On pop Bd car Bd->.
-           if (!automate->getPileEtats()->top()->transition(automate, &symb))
+           if (!automate->getPileEtats()->top()->transition(automate, symb))
                 return false;
            if (!automate->getPileEtats()->top()->transition(automate, s))
                 return false;

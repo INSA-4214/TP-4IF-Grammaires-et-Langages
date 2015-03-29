@@ -7,9 +7,18 @@
 class Affectation : public Instruction
 {
     public:
-        Affectation();
+        Affectation():
+        	Instruction(Symbole::aff){}
         virtual ~Affectation();
-    protected:
+
+        void setIdVar(std::string unIdVar) {
+        	m_idVar = unIdVar;
+        }
+
+        void setExpr(Expr* uneExpr) {
+        	e = uneExpr;
+        }
+
     private:
         std::string m_idVar;
         Expr * e;

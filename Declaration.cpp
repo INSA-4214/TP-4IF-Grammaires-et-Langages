@@ -8,48 +8,44 @@
 #include "Declaration.h"
 
 
-std::set<Symbole*> Lv::getSetidvar(){
-        return this->setidvar;
+std::set<std::string> Lv::getSetidvar(){
+        return idVars;
 	}
 
-void Lv::addidvar(Symbole* monSymb){
-    setidvar.insert(monSymb);
+void Lv::addidvar(std::string uneVar){
+    idVars.insert(uneVar);
 }
 
-void Lv::setSetidvar(std::set<Symbole*> mesidvar){
-    this->setidvar = mesidvar;
+std::set<std::string> DVar::getIdVars(){
+    return this->idVars;
 }
 
-std::set<Symbole*> DVar::getSetidvar(){
-        return this->setidvar;
-	}
-
-void DVar::addidvar(Symbole* monSymb){
-    setidvar.insert(monSymb);
+void DVar::addidvar(std::string uneVar){
+    idVars.insert(uneVar);
 }
 
-void DVar::setSetidvar(std::set<Symbole*> mesidvar){
-    this->setidvar = mesidvar;
+void DVar::setIdvars(std::set<std::string> mesidvar){
+    idVars = mesidvar;
 }
 
-std::set< std::pair<Symbole*,int> > Lc::getPairsconst(){
-    return this->pairsconst;
+std::set< std::pair<std::string,int> > Lc::getPairsconst(){
+    return pairsconst;
 }
 
-void Lc::addidcons(Symbole* monSymb,int val){
-    this->pairsconst.insert(std::make_pair( monSymb, val));
+void Lc::addidcons(std::string maConst,int val){
+    this->pairsconst.insert(std::make_pair( maConst, val));
 }
-void Lc::setSetidvar(std::set< std::pair<Symbole*,int> > mesconst){
+void Lc::setPairsConst(std::set< std::pair<std::string,int> > mesconst){
  this->pairsconst=mesconst;
 }
 
-std::set< std::pair<Symbole*,int> > DCst::getPairsconst(){
+std::set< std::pair<std::string,int> > DCst::getPairsconst(){
     return this->pairsconst;
 }
 
-void DCst::addidcons(Symbole* monSymb,int val){
-    this->pairsconst.insert(std::make_pair( monSymb, val));
+void DCst::addidcons(std::string maConst,int val){
+    this->pairsconst.insert(std::make_pair( maConst, val));
 }
-void DCst::setSetidvar(std::set< std::pair<Symbole*,int> > mesconst){
- this->pairsconst=mesconst;
+void DCst::setPairsConst(std::set< std::pair<std::string,int> > mesconst){
+	this->pairsconst=mesconst;
 }

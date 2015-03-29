@@ -21,6 +21,10 @@ public:
 	BlocInstruction(std::set<Instruction*> lesDeclarations)
 		:Symbole(Symbole::Bi), instructions(lesDeclarations){}
 
+	void addInstruction(Instruction* uneInstruction) {
+		instructions.insert(uneInstruction);
+	}
+
 	virtual ~BlocInstruction(){}
 
 protected:

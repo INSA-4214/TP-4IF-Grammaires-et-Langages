@@ -1,4 +1,4 @@
-
+#include "../BlocInstruction.h"
 #include "../Symbole.h"
 #include "Etat02.h"
 #include "Etat06.h"
@@ -13,8 +13,7 @@ using namespace std;
 Etat02::Etat02() : Etat() { }
 
 bool Etat02::transition(Automate *automate, Symbole * s) {
-     cout << "Symbole courant : " << endl;
-  Symbole symb = Symbole(Symbole::Bi);
+	BlocInstruction *symb = new BlocInstruction();
     switch ( s->getIdent() ) {
         case Symbole::var:
         automate->decalage(s, new Etat06());
@@ -34,7 +33,7 @@ bool Etat02::transition(Automate *automate, Symbole * s) {
         case Symbole::FILEEND:
 // Reduction Règle 15 - 0 Level On pop Bi car Bi->.
 
-           if (!automate->getPileEtats()->top()->transition(automate, &symb))
+           if (!automate->getPileEtats()->top()->transition(automate, symb))
                 return false;
            if (!automate->getPileEtats()->top()->transition(automate, s))
                 return false;

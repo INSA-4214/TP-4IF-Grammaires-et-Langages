@@ -11,20 +11,23 @@
 
 class Operateur: public Symbole {
 public:
-	Operateur(Symbole::Id id );
+	Operateur(Symbole::Id id)
+		:Symbole(id){}
 	virtual ~Operateur();
 };
 
 class OpeMult: public Operateur {
 public:
-	OpeMult(Symbole::Id id) : Operateur(id){}
+	OpeMult(Symbole::Id id)
+		:Operateur(id){}
 
 };
 
 class OpePlus: public Operateur {
 
 public:
-	OpePlus(Symbole::Id id) : Operateur(id){}
+	OpePlus(Symbole::Id id)
+		: Operateur(id){}
 
 };
 

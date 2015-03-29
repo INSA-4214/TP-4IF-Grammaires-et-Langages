@@ -1,4 +1,4 @@
-
+#include "../Affectation.h"
 #include "../Symbole.h"
 #include "Etat31.h"
 #include "Etat26.h"
@@ -11,7 +11,11 @@
 Etat31::Etat31() : Etat() { }
 
 bool Etat31::transition(Automate *automate, Symbole * s) {
-    Symbole symb = Symbole(Symbole::I);
+
+    Affectation *symb = new Affectation();
+    Expr *e;
+    Symbole *idVar;
+
     switch ( s->getIdent() ) {
         case Symbole::multi:
         automate->decalage(s, new Etat26());
@@ -33,11 +37,25 @@ bool Etat31::transition(Automate *automate, Symbole * s) {
             return true;
         case Symbole::pv:
         case Symbole::FILEEND:
-         for ( int i = 0 ; i < 3 ; i++ ) {
-               automate->getPileSymboles()->pop();
-               automate->getPileEtats()->pop();
-            }
-           if (!automate->getPileEtats()->top()->transition(automate, &symb))
+
+        // Reduction
+
+			e = (Expr*) automate->getPileSymboles()->top();
+			symb -> setExpr(e);
+
+			automate->getPileSymboles()->pop();
+			automate->getPileSymboles()->pop();
+
+			idVar = automate->getPileSymboles()->top();
+			symb -> setIdVar(idVar->getStr());
+
+			automate->getPileSymboles()->pop();
+
+			for ( int i = 0 ; i < 3 ; i++ ) {
+				automate->getPileEtats()->pop();
+			}
+
+           if (!automate->getPileEtats()->top()->transition(automate, symb))
                 return false;
            if (!automate->getPileEtats()->top()->transition(automate, s))
                 return false;

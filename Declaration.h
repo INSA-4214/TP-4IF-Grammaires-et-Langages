@@ -15,15 +15,15 @@ class Lc: public Symbole{
 public:
 	Lc(): Symbole(Symbole::Lc){}
 
-	std::set< std::pair<Symbole*,int> > getPairsconst();
+	std::set< std::pair<std::string,int> > getPairsconst();
 
-	void addidcons(Symbole* monSymb,int val);
+	void addidcons(std::string uneConst,int val);
 
-	void setSetidvar(std::set< std::pair<Symbole*,int> > mesconst);
+	void setPairsConst(std::set< std::pair<std::string,int> > mesconst);
 
 protected:
 
-	std::set< std::pair<Symbole*,int> > pairsconst;
+	std::set< std::pair<std::string,int> > pairsconst;
 };
 
 class Lv: public Symbole{
@@ -32,17 +32,21 @@ public:
 
 	Lv(): Symbole(Symbole::Lv){}
 
-	std::set<Symbole*> getSetidvar();
+	std::set<std::string> getSetidvar();
 
-	void addidvar(Symbole* monSymb);
+	void addidvar(std::string uneVar);
 
-	void setSetidvar(std::set<Symbole*> mesidvar);
+	void setIdVars(std::set<std::string> mesidvar);
 
 protected:
 
-	std::set<Symbole*> setidvar;
+	std::set<std::string> idVars;
 };
 
+
+/**
+ * Représente toutes les variables déclarées sur une ligne
+ */
 class DVar: public Symbole{
 
 public:
@@ -50,14 +54,14 @@ public:
 
 	DVar(): Symbole(Symbole::D){}
 
-	std::set<Symbole*> getSetidvar();
+	std::set<std::string> getIdVars();
 
-	void addidvar(Symbole* monSymb);
+	void addidvar(std::string uneVar);
 
-    void setSetidvar(std::set<Symbole*> mesidvar);
+    void setIdvars(std::set<std::string> mesidvar);
 protected:
 
-	std::set<Symbole*> setidvar;
+	std::set<std::string> idVars;
 };
 
 
@@ -66,15 +70,15 @@ class DCst: public Symbole{
 public:
 	DCst(): Symbole(Symbole::D){}
 
-	std::set< std::pair<Symbole*,int> > getPairsconst();
+	std::set< std::pair<std::string,int> > getPairsconst();
 
-	void addidcons(Symbole* monSymb,int val);
+	void addidcons(std::string maConst, int val);
 
-	void setSetidvar(std::set< std::pair<Symbole*,int> > mesconst);
+	void setPairsConst(std::set< std::pair<std::string,int> > mesconst);
 
 protected:
 
-	std::set< std::pair<Symbole*,int> > pairsconst;
+	std::set< std::pair<std::string,int> > pairsconst;
 };
 
 #endif /* DECLARATION_H_ */

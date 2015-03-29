@@ -21,6 +21,14 @@ public:
 	BlocDeclaration(std::set<DVar*> lesDeclarationsVar, std::set<DCst*> lesDeclarationsConst)
 		:Symbole(Symbole::Bd), decConst(lesDeclarationsConst), decVar(lesDeclarationsVar){}
 
+	void addConst(DCst* uneDCst) {
+		decConst.insert(uneDCst);
+	}
+
+	void addVar(DVar* uneDVar) {
+		decVar.insert(uneDVar);
+	}
+
 	virtual ~BlocDeclaration(){}
 
 protected:

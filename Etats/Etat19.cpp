@@ -1,4 +1,4 @@
-
+#include "../Write.h"
 #include "../Symbole.h"
 #include "Etat19.h"
 #include "Etat26.h"
@@ -11,7 +11,10 @@
 Etat19::Etat19() : Etat() { }
 
 bool Etat19::transition(Automate *automate, Symbole * s) {
-    Symbole symb = Symbole(Symbole::I);
+
+    Write *symb = new Write();
+    Expr* e;
+
     switch ( s->getIdent() ) {
         case Symbole::multi:
         automate->decalage(s, new Etat26());
@@ -33,12 +36,18 @@ bool Etat19::transition(Automate *automate, Symbole * s) {
            return true;
         case Symbole::pv:
         case Symbole::FILEEND :
-// Reduction Règle 13 - 0 Level On pop Bd car Bd->.
+
+        	// Reduction
+
+            e = (Expr*) automate->getPileSymboles()->top();
+            symb->setExpr(e);
+
             for ( int i = 0 ; i < 2 ; i++ ) {
                automate->getPileSymboles()->pop();
                automate->getPileEtats()->pop();
             }
-           if (!automate->getPileEtats()->top()->transition(automate, &symb))
+
+           if (!automate->getPileEtats()->top()->transition(automate, symb))
                 return false;
            if (!automate->getPileEtats()->top()->transition(automate, s))
                 return false;

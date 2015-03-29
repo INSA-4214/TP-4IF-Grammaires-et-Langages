@@ -7,9 +7,17 @@
 class Write : public Instruction
 {
     public:
-        Write();
+		Write()
+    		:Instruction(Symbole::w){}
+		Write(Expr* uneExpr)
+			:Instruction(Symbole::w), e(uneExpr){}
+
+		void setExpr(Expr* uneExpr) {
+			e = uneExpr;
+		}
+
         virtual ~Write();
-    protected:
+
     private:
         Expr * e;
 };

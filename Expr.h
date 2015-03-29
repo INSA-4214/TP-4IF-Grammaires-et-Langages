@@ -8,6 +8,7 @@
 #ifndef EXPR_H_
 #define EXPR_H_
 
+#include "Operateur.h"
 #include <map>
 #include <string>
 #include "Symbole.h"
@@ -18,9 +19,6 @@ public:
 
 	Expr(Symbole::Id id) : Symbole(id){}
 	virtual ~Expr();
-
-	virtual double eval(const std::map<std::string, double> &valeurs) = 0;
-
 };
 
 class Variable : public Expr {
@@ -28,7 +26,14 @@ class Variable : public Expr {
     Variable(std::string leNom, int laValeur)
  	 	 : Expr(Symbole::var), nom(leNom), valeur(laValeur) { }
 
+    Variable()
+     	 	 : Expr(Symbole::var){}
+
     std::string name() { return nom; }
+
+    void setNom(std::string unNom) {
+    	nom = unNom;
+    }
 
  protected:
 	std::string nom;
@@ -52,6 +57,17 @@ class Nombre : public Expr {
     explicit Nombre(int uneValeur)
     	: Expr(Symbole::nb), valeur(uneValeur) { }
 
+    explicit Nombre()
+    	: Expr(Symbole::nb){}
+
+    const int getValeur() {
+    	return valeur;
+    }
+
+    void setValeur(int uneValeur) {
+    	valeur = uneValeur;
+    }
+
  private:
     int valeur;
 };
@@ -70,6 +86,14 @@ class BinExpr : public Expr {
 	    Expr * getLeft() const { return sym_gauche; }
 	    Expr * getRight() const { return sym_droite; }
 
+	    void setGauche(Expr *gauche) {
+	    	sym_gauche = gauche;
+	    }
+	    void setDroite(Expr *droite) {
+	    	sym_droite = droite;
+	    }
+
+
  protected:
     Expr *sym_gauche;
     Expr *sym_droite;
@@ -78,7 +102,8 @@ class BinExpr : public Expr {
 class AddExpr : public BinExpr {
  public:
 
-    explicit AddExpr(Expr *left, Expr *right, Symbole* plus);
+    explicit AddExpr()
+    	:BinExpr(Symbole::E){}
 
     virtual ~AddExpr(){
     	delete operateur;
@@ -86,15 +111,20 @@ class AddExpr : public BinExpr {
 
     Symbole* const getOperateur(){return operateur;}
 
+    void setOperateur(Operateur *ope) {
+    	operateur = ope;
+    }
+
  protected:
 
-    Symbole* operateur;
+    Operateur* operateur;
 };
 
 class MultExpr : public BinExpr {
  public:
 
-	explicit MultExpr(Expr *left , Expr *right, Symbole* mult);
+	explicit MultExpr()
+		:BinExpr(Symbole::E){}
 
     virtual ~MultExpr(){
     	delete operateur;
@@ -102,9 +132,13 @@ class MultExpr : public BinExpr {
 
     Symbole* const getOperateur(){return operateur;}
 
+    void setOperateur(Operateur *ope) {
+    	operateur = ope;
+    }
+
  protected:
 
-    Symbole* operateur;
+    Operateur* operateur;
 };
 
 
