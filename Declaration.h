@@ -10,6 +10,21 @@
 #include "Symbole.h"
 #include <set>
 
+class Lc: public Symbole{
+
+public:
+	Lc(): Symbole(Symbole::Lc){}
+
+	std::set< std::pair<Symbole*,int> > getPairsconst();
+
+	void addidcons(Symbole* monSymb,int val);
+
+	void setSetidvar(std::set< std::pair<Symbole*,int> > mesconst);
+
+protected:
+
+	std::set< std::pair<Symbole*,int> > pairsconst;
+};
 
 class Lv: public Symbole{
 
@@ -49,12 +64,17 @@ protected:
 class DCst: public Symbole{
 
 public:
+	DCst(): Symbole(Symbole::D){}
 
-	DCst(Symbole::Id id, int val) : Symbole(id), valeur(val){}
+	std::set< std::pair<Symbole*,int> > getPairsconst();
+
+	void addidcons(Symbole* monSymb,int val);
+
+	void setSetidvar(std::set< std::pair<Symbole*,int> > mesconst);
 
 protected:
 
-	int valeur;
+	std::set< std::pair<Symbole*,int> > pairsconst;
 };
 
 #endif /* DECLARATION_H_ */

@@ -31,3 +31,25 @@ void DVar::addidvar(Symbole* monSymb){
 void DVar::setSetidvar(std::set<Symbole*> mesidvar){
     this->setidvar = mesidvar;
 }
+
+std::set< std::pair<Symbole*,int> > Lc::getPairsconst(){
+    return this->pairsconst;
+}
+
+void Lc::addidcons(Symbole* monSymb,int val){
+    this->pairsconst.insert(std::make_pair( monSymb, val));
+}
+void Lc::setSetidvar(std::set< std::pair<Symbole*,int> > mesconst){
+ this->pairsconst=mesconst;
+}
+
+std::set< std::pair<Symbole*,int> > DCst::getPairsconst(){
+    return this->pairsconst;
+}
+
+void DCst::addidcons(Symbole* monSymb,int val){
+    this->pairsconst.insert(std::make_pair( monSymb, val));
+}
+void DCst::setSetidvar(std::set< std::pair<Symbole*,int> > mesconst){
+ this->pairsconst=mesconst;
+}
