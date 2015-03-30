@@ -10,7 +10,7 @@ bool Etat00::transition(Automate *automate, Symbole * s) {
     BlocDeclaration *symb = new BlocDeclaration();
     switch ( s->getIdent() ) {
         case Symbole::P:
-        automate->decalage(s, new Etat01());
+        	automate->decalage(s, new Etat01());
            return true;
         case Symbole::Bd:
           automate->decalage(s, new Etat02());

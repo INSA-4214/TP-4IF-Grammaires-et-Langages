@@ -7,8 +7,8 @@
 class Instruction : public Symbole
 {
     public:
-        Instruction(Symbole::Id id)
-    		:Symbole(id){}
+        Instruction()
+    		:Symbole(Symbole::I){}
         virtual ~Instruction();
     protected:
     private:

@@ -9,18 +9,18 @@ class Read : public Instruction
 {
     public:
         Read()
-    		:Instruction(Symbole::r){}
-        Read(Symbole* unSymbole)
-        	:Instruction(Symbole::r), idALire(unSymbole){}
+    		:Instruction(){}
+        Read(std::string unString)
+        	:Instruction(), idALire(unString){}
 
-        void setIdALire(Symbole* unSymbole) {
-        	idALire = unSymbole;
+        void setIdALire(std::string unString) {
+        	idALire = unString;
         }
 
         virtual ~Read();
 
     private:
-        Symbole *idALire;
+        std::string idALire;
 };
 
 #endif // READ_H

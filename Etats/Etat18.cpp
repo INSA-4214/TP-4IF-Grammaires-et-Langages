@@ -10,7 +10,7 @@ bool Etat18::transition(Automate *automate, Symbole * s) {
     Symbole *idVariable;
 
     switch ( s->getIdent() ) {
-        case Symbole::moins:
+        case Symbole::moins :
         case Symbole::plus :
         case Symbole::multi :
         case Symbole::divi :

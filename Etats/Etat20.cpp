@@ -13,6 +13,15 @@ bool Etat20::transition(Automate *automate, Symbole * s) {
         case Symbole::E:
         automate->decalage(s, new Etat30());
            return true;
+        case Symbole::idvar:
+                automate->decalage(s, new Etat18());
+                   return true;
+        case Symbole::nb:
+                automate->decalage(s, new Etat17());
+                   return true;
+        case Symbole::paro:
+                automate->decalage(s, new Etat20());
+                   return true;
         default:
             return false;
 }

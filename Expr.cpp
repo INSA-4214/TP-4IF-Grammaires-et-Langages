@@ -11,8 +11,8 @@
 
 // ----- Constructeurs -----
 
-BinExpr::BinExpr(Symbole::Id id, Expr * left, Expr * right)
-    : Expr(id), sym_gauche(left), sym_droite(right) { }
+BinExpr::BinExpr(Expr * left, Expr * right)
+    : Expr(), sym_gauche(left), sym_droite(right) { }
 
 Expr::~Expr() {
 	// TODO Auto-generated destructor stub

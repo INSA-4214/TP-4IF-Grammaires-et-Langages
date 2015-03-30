@@ -17,17 +17,17 @@ class Expr : public Symbole {
 
 public:
 
-	Expr(Symbole::Id id) : Symbole(id){}
+	Expr() : Symbole(Symbole::E){}
 	virtual ~Expr();
 };
 
 class Variable : public Expr {
  public:
     Variable(std::string leNom, int laValeur)
- 	 	 : Expr(Symbole::var), nom(leNom), valeur(laValeur) { }
+ 	 	 : Expr(), nom(leNom), valeur(laValeur) { }
 
     Variable()
-     	 	 : Expr(Symbole::var){}
+     	 	 : Expr(){}
 
     std::string name() { return nom; }
 
@@ -43,7 +43,7 @@ class Variable : public Expr {
 class Constante : public Expr {
  public:
     Constante(std::string leNom, int laValeur)
- 	 	 : Expr(Symbole::cst), nom(leNom), valeur(laValeur) { }
+ 	 	 : Expr(), nom(leNom), valeur(laValeur) { }
 
     std::string name() { return nom; }
 
@@ -55,10 +55,10 @@ class Constante : public Expr {
 class Nombre : public Expr {
  public:
     explicit Nombre(int uneValeur)
-    	: Expr(Symbole::nb), valeur(uneValeur) { }
+    	: Expr(), valeur(uneValeur) { }
 
     explicit Nombre()
-    	: Expr(Symbole::nb){}
+    	: Expr(){}
 
     const int getValeur() {
     	return valeur;
@@ -74,9 +74,7 @@ class Nombre : public Expr {
 
 class BinExpr : public Expr {
  public:
-	explicit BinExpr(Symbole::Id id,
-	                     Expr * left = NULL,
-	                     Expr * right = NULL);
+	explicit BinExpr(Expr * left = NULL, Expr * right = NULL);
 
 	    ~BinExpr() {
 	    	delete sym_gauche;
@@ -103,7 +101,7 @@ class AddExpr : public BinExpr {
  public:
 
     explicit AddExpr()
-    	:BinExpr(Symbole::E){}
+    	:BinExpr(){}
 
     virtual ~AddExpr(){
     	delete operateur;
@@ -124,7 +122,7 @@ class MultExpr : public BinExpr {
  public:
 
 	explicit MultExpr()
-		:BinExpr(Symbole::E){}
+		:BinExpr(){}
 
     virtual ~MultExpr(){
     	delete operateur;

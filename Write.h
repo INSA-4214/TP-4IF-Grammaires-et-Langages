@@ -8,9 +8,9 @@ class Write : public Instruction
 {
     public:
 		Write()
-    		:Instruction(Symbole::w){}
+    		:Instruction(){}
 		Write(Expr* uneExpr)
-			:Instruction(Symbole::w), e(uneExpr){}
+			:Instruction(), e(uneExpr){}
 
 		void setExpr(Expr* uneExpr) {
 			e = uneExpr;

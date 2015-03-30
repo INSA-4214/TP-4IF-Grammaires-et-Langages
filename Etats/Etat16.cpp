@@ -3,6 +3,8 @@
 #include "../Symbole.h"
 #include "Etat16.h"
 
+#include <stdio.h>
+
 Etat16::Etat16() : Etat() { }
 
 bool Etat16::transition(Automate *automate, Symbole * s) {
@@ -31,6 +33,7 @@ bool Etat16::transition(Automate *automate, Symbole * s) {
            symb->addInstruction(I);
 
            automate->getPileSymboles()->pop();
+
 
            if (!automate->getPileEtats()->top()->transition(automate, symb))
                 return false;

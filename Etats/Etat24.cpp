@@ -6,7 +6,7 @@ Etat24::Etat24() : Etat() { }
 
 bool Etat24::transition(Automate *automate, Symbole * s) {
 
-    OpePlus *symb = new OpePlus(Symbole::plus);
+    OpePlus *symb = new OpePlus(true);
 
     switch ( s->getIdent() ) {
             case Symbole::idvar:

@@ -23,7 +23,6 @@ bool Etat04::transition(Automate *automate, Symbole * s) {
     switch ( s->getIdent() ) {
         case Symbole::idvar:
         automate->decalage(s, new Etat11());
-        cout << "Symbole pile : " <<  automate->getPileSymboles()->top()->getStr() << endl;
            return true;
         case Symbole::w:
           automate->decalage(s, new Etat10());
@@ -44,7 +43,7 @@ bool Etat04::transition(Automate *automate, Symbole * s) {
                symb->setBlocD(Bd);
                automate -> getPileSymboles()->pop();
 
-               for ( int i = 0 ; i <= 2 ; ++i ) {
+               for ( int i = 0 ; i < 2 ; ++i ) {
             	   automate->getPileEtats()->pop();
                }
 

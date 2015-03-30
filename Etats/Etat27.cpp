@@ -6,7 +6,7 @@ Etat27::Etat27() : Etat() { }
 
 bool Etat27::transition(Automate *automate, Symbole * s) {
 
-    OpeMult *symb = new OpeMult(Symbole::divi);
+    OpeMult *symb = new OpeMult(false);
 
     switch ( s->getIdent() ) {
             case Symbole::idvar:

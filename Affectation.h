@@ -8,7 +8,7 @@ class Affectation : public Instruction
 {
     public:
         Affectation():
-        	Instruction(Symbole::aff){}
+        	Instruction(){}
         virtual ~Affectation();
 
         void setIdVar(std::string unIdVar) {

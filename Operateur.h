@@ -18,17 +18,20 @@ public:
 
 class OpeMult: public Operateur {
 public:
-	OpeMult(Symbole::Id id)
-		:Operateur(id){}
+	OpeMult(bool isMult)
+		:Operateur(Symbole::Opm), isSymboleMult(isMult){}
 
+private:
+	bool isSymboleMult;
 };
 
 class OpePlus: public Operateur {
-
 public:
-	OpePlus(Symbole::Id id)
-		: Operateur(id){}
+	OpePlus(bool isPlus)
+		:Operateur(Symbole::Opa), isSymbolePlus(isPlus){}
 
+private:
+	bool isSymbolePlus;
 };
 
 class OuvrePar: public Operateur {
