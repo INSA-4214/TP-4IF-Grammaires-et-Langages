@@ -19,7 +19,7 @@ public:
 
 	Expr() : Symbole(Symbole::E){}
 	virtual ~Expr();
-
+	virtual void print()=0;
     virtual void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) = 0;
 
 };
@@ -98,6 +98,8 @@ class BinExpr : public Expr {
 	    	sym_droite = droite;
 	    }
 
+	    virtual void print() = 0;
+
 
  protected:
     Expr *sym_gauche;
@@ -119,6 +121,8 @@ class AddExpr : public BinExpr {
     void setOperateur(Operateur *ope) {
     	operateur = ope;
     }
+
+    void print();
 
  protected:
 
