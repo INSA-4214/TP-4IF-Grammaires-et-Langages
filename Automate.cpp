@@ -84,9 +84,28 @@ void Automate::setAccepter(bool b){
 
 void Automate::print()
 {
-
-	//recuperation du programme parse
-
+	// Recuperation du programme parse
 	Programme * p = (Programme *) pileSymboles.top();
 	p->print();
-	}
+}
+
+void Automate::staticAnalysis()
+{
+	// Recuperation du programme parse
+	Programme * p = (Programme *) pileSymboles.top();
+	p->staticAnalysis();
+}
+
+void Automate::exec()
+{
+	// Recuperation du programme parse
+	Programme * p = (Programme *) pileSymboles.top();
+	p->exec();
+}
+
+void Automate::transform(){
+
+	// Recuperation du programme parse
+	Programme * p = (Programme *) pileSymboles.top();
+	p->transform();
+}
