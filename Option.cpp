@@ -72,15 +72,20 @@ int main(int argc, char* argv[]) {
             return 1;
         }
     }
-        // LEXER
-        // PARSER
+
+    Lexer lexer = Lexer(fileName);
+    Automate automate = Automate(&lexer);
+    automate.lecture();
+
     if (transformActive) {
         cout << "Transform (optimize) input" << endl;
         // TRANSFORM
     }
     if (printActive) {
         cout << "Print (transformed?) input" << endl;
+        automate.print();
         // PRINT
+
     }
     if (staticActive) {
         cout << "Analyse statique" << endl;
@@ -91,9 +96,7 @@ int main(int argc, char* argv[]) {
         // EXEC
     }
 
-    Lexer lexer = Lexer(fileName);
-    Automate automate = Automate(&lexer);
-    automate.lecture();
+
     return 0;
 }
 

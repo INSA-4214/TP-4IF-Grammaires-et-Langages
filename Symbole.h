@@ -61,8 +61,6 @@ public:
 	Symbole(Symbole::Id id, std::string s ) : ident(id), str(s) {}
 
 	virtual ~Symbole(){}
-
-	void print();
     std::string getStr();
     Symbole::Id getIdent();
 

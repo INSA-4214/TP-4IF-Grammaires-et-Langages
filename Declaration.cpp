@@ -6,7 +6,7 @@
  */
 
 #include "Declaration.h"
-
+#include <iostream>
 
 std::set<std::string> Lv::getSetidvar(){
         return idVars;
@@ -49,3 +49,16 @@ void DCst::addidcons(std::string maConst,int val){
 void DCst::setPairsConst(std::set< std::pair<std::string,int> > mesconst){
 	this->pairsconst=mesconst;
 }
+
+void DCst::printDCst(){
+	for (std::set<std::pair<std::string,int> >::iterator it= pairsconst.begin(); it!=pairsconst.end(); ++it)
+	    std::cout << "const " << (*it).first << " = " << (*it).second << " ; " << std::endl;
+
+}
+
+void DVar::printDVar(){
+
+	for (std::set<std::string>::iterator it= idVars.begin(); it!=idVars.end(); ++it)
+		std::cout << "var " << *it << " ; " << std::endl;
+}
+//*/

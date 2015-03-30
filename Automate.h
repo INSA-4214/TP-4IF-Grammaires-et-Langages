@@ -9,6 +9,7 @@
 #define AUTOMATE_H_
 
 #include "Symbole.h"
+#include "Programme.h"
 #include "Etat.h"
 #include "Lexer.h"
 #include "Transition.h"
@@ -23,6 +24,7 @@ public:
 	std::stack<Etat*> *getPileEtats();
 	std::stack<Symbole*> *getPileSymboles();
 	void setAccepter(bool b);
+	void print();
 	virtual ~Automate();
 
 protected:

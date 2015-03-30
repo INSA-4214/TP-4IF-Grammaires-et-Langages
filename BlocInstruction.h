@@ -25,6 +25,7 @@ public:
 		instructions.insert(uneInstruction);
 	}
 
+	void printBlocI();
 	virtual ~BlocInstruction(){}
 
 protected:

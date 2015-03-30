@@ -28,6 +28,8 @@ public:
 		blocD = unBlocD;
 	}
 
+	void print();
+
 	virtual ~Programme();
 
 protected:

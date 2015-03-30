@@ -78,6 +78,15 @@ std::stack<Symbole*> *Automate::getPileSymboles(){
 }
 
 void Automate::setAccepter(bool b){
-    cout << "... Parsing terminé !"<< endl;
+    cout << "... Parsing termine !"<< endl;
 	this->accepte = b;
 }
+
+void Automate::print()
+{
+
+	//recuperation du programme parse
+
+	Programme * p = (Programme *) pileSymboles.top();
+	p->print();
+	}

@@ -29,6 +29,8 @@ public:
 		decVar.insert(uneDVar);
 	}
 
+	void printBlocD();
+
 	virtual ~BlocDeclaration(){}
 
 protected:

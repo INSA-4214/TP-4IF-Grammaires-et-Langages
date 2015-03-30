@@ -59,6 +59,8 @@ public:
 	void addidvar(std::string uneVar);
 
     void setIdvars(std::set<std::string> mesidvar);
+
+    void printDVar();
 protected:
 
 	std::set<std::string> idVars;
@@ -75,6 +77,8 @@ public:
 	void addidcons(std::string maConst, int val);
 
 	void setPairsConst(std::set< std::pair<std::string,int> > mesconst);
+
+	void printDCst();
 
 protected:
 
