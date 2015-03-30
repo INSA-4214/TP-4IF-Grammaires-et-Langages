@@ -26,7 +26,7 @@ class Lexer
         /**
          * Décale la tête de lecture d'un mot vers la droite
          */
-        void shift(bool shift);
+        void shift();
 
         /**
          * Regarde le prochain symbole terminal sans déplacer la tête de lecture

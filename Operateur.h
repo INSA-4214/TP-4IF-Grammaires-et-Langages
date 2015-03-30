@@ -14,13 +14,14 @@ public:
 	Operateur(Symbole::Id id)
 		:Symbole(id){}
 	virtual ~Operateur();
+	virtual bool getope(){return false;}
 };
 
 class OpeMult: public Operateur {
 public:
 	OpeMult(bool isMult)
 		:Operateur(Symbole::Opm), isSymboleMult(isMult){}
-
+	bool getope();
 private:
 	bool isSymboleMult;
 };
@@ -29,7 +30,7 @@ class OpePlus: public Operateur {
 public:
 	OpePlus(bool isPlus)
 		:Operateur(Symbole::Opa), isSymbolePlus(isPlus){}
-
+	bool getope();
 private:
 	bool isSymbolePlus;
 };

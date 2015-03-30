@@ -1,6 +1,7 @@
 #include "Affectation.h"
 #include <iostream>
 #include <map>
+
 using namespace std;
 
 void Affectation::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
@@ -33,9 +34,9 @@ Affectation::~Affectation()
 }
 void Affectation::print(){
 
-	//Cast de e en nombre
-	Nombre *n = (Nombre*)e;
-	//std::cout << m_idVar << " := " <<  n->getValeur() << " ;"<< std::endl;
+	cout << m_idVar << " := ";
+	(*e).print();
+	cout << " ;" << endl;
 }
 
 void Affectation::exec(map<string, pair<double, bool> > *table){

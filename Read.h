@@ -16,6 +16,11 @@ class Read : public Instruction
         void setIdALire(std::string unString) {
         	idALire = unString;
         }
+
+        std::string getIdALire() {
+
+        	return idALire;
+        };
         void print();
         void exec(map<string, pair<double, bool> > *table);
         void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);

@@ -12,3 +12,6 @@ Operateur::~Operateur() {
 	// TODO Auto-generated destructor stub
 }
 
+bool OpeMult::getope(){return isSymboleMult;}
+
+bool OpePlus::getope(){return isSymbolePlus;}
