@@ -60,10 +60,8 @@ public:
 
     void setIdvars(std::set<std::string> mesidvar);
 
-    void printDVar();
-
 	void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
-
+    void print();
 protected:
 
 	std::set<std::string> idVars;
@@ -81,7 +79,7 @@ public:
 
 	void setPairsConst(std::set< std::pair<std::string,int> > mesconst);
 
-	void printDCst();
+	void print();
 
 	void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 

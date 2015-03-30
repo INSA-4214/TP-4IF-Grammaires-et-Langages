@@ -55,7 +55,7 @@ void DCst::setPairsConst(std::set< std::pair<std::string,int> > mesconst){
 	this->pairsconst=mesconst;
 }
 
-void DCst::printDCst(){
+void DCst::print(){
 	for (std::set<std::pair<std::string,int> >::iterator it= pairsconst.begin(); it!=pairsconst.end(); ++it)
 	    std::cout << "const " << (*it).first << " = " << (*it).second << " ; " << std::endl;
 }
@@ -65,7 +65,7 @@ void DCst::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) 
 		table->insert(std::make_pair((*it).first,std::make_pair(1,1)));
 }
 
-void DVar::printDVar(){
+void DVar::print(){
 
 	for (std::set<std::string>::iterator it= idVars.begin(); it!=idVars.end(); ++it)
 		std::cout << "var " << *it << " ; " << std::endl;

@@ -2,8 +2,8 @@
 #include "../Symbole.h"
 #include "Etat20.h"
 #include "Etat30.h"
-#include "Etat18.h"
 #include "Etat17.h"
+#include "Etat18.h"
 
 Etat20::Etat20() : Etat() { }
 

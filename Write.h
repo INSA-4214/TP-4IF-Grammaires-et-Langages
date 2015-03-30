@@ -15,9 +15,9 @@ class Write : public Instruction
 		void setExpr(Expr* uneExpr) {
 			e = uneExpr;
 		}
-
+		
         void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
-
+		void print();
         virtual ~Write();
 
     private:

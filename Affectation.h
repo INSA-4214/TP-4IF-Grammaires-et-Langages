@@ -3,10 +3,12 @@
 
 #include "Instruction.h"
 #include "Expr.h"
+#include <iostream>
 
 class Affectation : public Instruction
 {
     public:
+	using Instruction::print;
         Affectation():
         	Instruction(){}
         virtual ~Affectation();
@@ -20,7 +22,7 @@ class Affectation : public Instruction
         }
 
         void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
-
+        void print();
     private:
         std::string m_idVar;
         Expr * e;

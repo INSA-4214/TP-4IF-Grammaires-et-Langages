@@ -30,7 +30,7 @@ public:
 		decVar.insert(uneDVar);
 	}
 
-	void printBlocD();
+	void print();
 	void exec();
 	void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 
