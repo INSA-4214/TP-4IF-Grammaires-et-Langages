@@ -29,7 +29,7 @@ Read::~Read()
 
 void Read::print(){
 
-	std::cout << "lire " << getIdALire << " ;"<< std::endl;
+	std::cout << "lire " << getIdALire() << " ;"<< std::endl;
 }
 
 void Read::exec(map<string, pair<double, bool> > *table){

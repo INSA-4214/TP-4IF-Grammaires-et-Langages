@@ -66,22 +66,26 @@ void Nombre::print() {
 void MultExpr::print(){
 
 	string symOp = "";
-	if(operateur)
+	if(operateur->getope())
 		symOp = " * ";
 	else
 		symOp = " / ";
-	std::cout << sym_gauche->print() << symOp << sym_droite->print();
+	sym_gauche->print();
+	cout << symOp;
+	sym_droite->print();
 
 }
 
 void AddExpr::print(){
 
 	string symOp = "";
-	if(operateur)
+	if(operateur->getope())
 		symOp = " + ";
 	else
 		symOp = " - ";
-	std::cout << sym_gauche->print() << symOp << sym_droite->print() ;
+	sym_gauche->print();
+	cout << symOp;
+	sym_droite->print();
 
 }
 
