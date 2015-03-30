@@ -15,7 +15,7 @@ class Write : public Instruction
 		void setExpr(Expr* uneExpr) {
 			e = uneExpr;
 		}
-
+        void exec(map<string, pair<double, bool> > *table);
         virtual ~Write();
 
     private:

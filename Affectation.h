@@ -18,7 +18,7 @@ class Affectation : public Instruction
         void setExpr(Expr* uneExpr) {
         	e = uneExpr;
         }
-
+        void exec(map<string, pair<double, bool> > *table);
     private:
         std::string m_idVar;
         Expr * e;

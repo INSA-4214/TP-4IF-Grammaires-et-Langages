@@ -18,8 +18,8 @@ void Programme::print(){
 	blocI->printBlocI();
 }
 
-void Programme::exec(){
-	blocD->exec();
-	blocI->exec();
+void Programme::exec(map<string, pair<double, bool> > *table){
+	blocD->exec(table);
+	blocI->exec(table);
 }
 //*/

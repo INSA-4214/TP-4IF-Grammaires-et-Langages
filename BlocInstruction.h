@@ -26,7 +26,7 @@ public:
 	}
 
 	void printBlocI();
-	void exec();
+	void exec(map<string, pair<double, bool> > *table);
 	virtual ~BlocInstruction(){}
 
 protected:

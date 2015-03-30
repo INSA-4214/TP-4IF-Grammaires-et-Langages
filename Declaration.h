@@ -15,15 +15,15 @@ class Lc: public Symbole{
 public:
 	Lc(): Symbole(Symbole::Lc){}
 
-	std::set< std::pair<std::string,int> > getPairsconst();
+	std::set< std::pair<std::string,double> > getPairsconst();
 
-	void addidcons(std::string uneConst,int val);
+	void addidcons(std::string uneConst,double val);
 
-	void setPairsConst(std::set< std::pair<std::string,int> > mesconst);
+	void setPairsConst(std::set< std::pair<std::string,double> > mesconst);
 
 protected:
 
-	std::set< std::pair<std::string,int> > pairsconst;
+	std::set< std::pair<std::string,double> > pairsconst;
 };
 
 class Lv: public Symbole{
@@ -61,6 +61,8 @@ public:
     void setIdvars(std::set<std::string> mesidvar);
 
     void printDVar();
+
+    void exec(map<string, pair<double, bool> > *table);
 protected:
 
 	std::set<std::string> idVars;
@@ -72,17 +74,19 @@ class DCst: public Symbole{
 public:
 	DCst(): Symbole(Symbole::D){}
 
-	std::set< std::pair<std::string,int> > getPairsconst();
+	std::set< std::pair<std::string,double> > getPairsconst();
 
-	void addidcons(std::string maConst, int val);
+	void addidcons(std::string maConst, double val);
 
-	void setPairsConst(std::set< std::pair<std::string,int> > mesconst);
+	void setPairsConst(std::set< std::pair<std::string,double> > mesconst);
 
 	void printDCst();
 
+	void exec(map<string, pair<double, bool> > *table);
+
 protected:
 
-	std::set< std::pair<std::string,int> > pairsconst;
+	std::set< std::pair<std::string,double> > pairsconst;
 };
 
 #endif /* DECLARATION_H_ */

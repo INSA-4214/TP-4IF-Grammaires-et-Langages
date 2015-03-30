@@ -32,7 +32,7 @@ public:
 	void staticAnalysis();
 	void transform();
 
-	void exec();
+	void exec(map<string, pair<double, bool> > *table);
 
 	virtual ~Programme();
 

@@ -30,7 +30,7 @@ public:
 	}
 
 	void printBlocD();
-	void exec();
+	void exec(map<string, pair<double, bool> > *table);
 
 	virtual ~BlocDeclaration(){}
 

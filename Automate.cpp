@@ -99,10 +99,17 @@ void Automate::staticAnalysis()
 
 void Automate::exec()
 {
-	// Recuperation du programme parse
-	Programme * p = (Programme *) pileSymboles.top();
 
-	p->exec();
+
+	if (this->accepte) {
+    //table des declarations
+map<string, pair<double, bool> > *table = new map<string, pair<double, bool> >();
+
+	// Recuperation du programme parse
+Programme * p = (Programme *) pileSymboles.top();
+p->exec(table);
+}
+cout << "l'execution en peut pas être faite sans le parsing"<< endl;
 }
 
 void Automate::transform(){

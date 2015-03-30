@@ -22,4 +22,18 @@ void BlocDeclaration::printBlocD() {
 	}
 }
 
+void BlocDeclaration::exec(map<string, pair<double, bool> > *table) {
+
+	//Affichage set de declaration des const
+	for ( std::set<DCst*>::iterator it = decConst.begin(); it != decConst.end(); ++it ) {
+
+		(*it)->exec();
+	}
+
+	//Affichage set de declaration des var
+	for (std::set<DVar*>::iterator it=decVar.begin(); it!=decVar.end(); ++it){
+
+		(*it)->exec();
+	}
+}
 //*/

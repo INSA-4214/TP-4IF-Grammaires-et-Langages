@@ -11,6 +11,7 @@ class Instruction : public Symbole
     		:Symbole(Symbole::I){}
         virtual ~Instruction();
         void printI();
+        virtual void exec(map<string, pair<double, bool> > *table);
     protected:
     private:
 };

@@ -13,3 +13,8 @@
 	 (*it)->printI();
  }
  //*/
+
+ void BlocInstruction::exec(map<string, pair<double, bool> > *table){
+ for (std::set<Instruction*>::iterator it=instructions.begin(); it!=instructions.end(); ++it)
+	 (*it)->exec(table);
+ }
