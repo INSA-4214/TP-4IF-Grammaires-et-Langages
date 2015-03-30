@@ -40,6 +40,7 @@ class Variable : public Expr {
     	nom = unNom;
     }
 
+    void print();
  protected:
 	std::string nom;
 	int valeur;
@@ -54,6 +55,7 @@ class Constante : public Expr {
 
     void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 
+    void print();
  protected:
 	std::string nom;
 	int valeur;
@@ -74,6 +76,8 @@ class Nombre : public Expr {
     void setValeur(int uneValeur) {
     	valeur = uneValeur;
     }
+
+    void print();
 
     void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 
@@ -144,6 +148,8 @@ class MultExpr : public BinExpr {
     void setOperateur(Operateur *ope) {
     	operateur = ope;
     }
+
+    void print();
 
  protected:
 
