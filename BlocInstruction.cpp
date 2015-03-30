@@ -8,8 +8,8 @@
 #include "BlocInstruction.h"
 #include <iostream>
 //*TODO
- void BlocInstruction::printBlocI(){
+ void BlocInstruction::print(){
  for (std::set<Instruction*>::iterator it=instructions.begin(); it!=instructions.end(); ++it)
-	 (*it)->printI();
+	 (*it)->print();
  }
  //*/

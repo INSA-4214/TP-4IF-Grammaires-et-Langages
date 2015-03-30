@@ -19,6 +19,7 @@ public:
 
 	Expr() : Symbole(Symbole::E){}
 	virtual ~Expr();
+	virtual void print() {};
 };
 
 class Variable : public Expr {
@@ -34,6 +35,8 @@ class Variable : public Expr {
     void setNom(std::string unNom) {
     	nom = unNom;
     }
+
+
 
  protected:
 	std::string nom;
@@ -90,6 +93,7 @@ class BinExpr : public Expr {
 	    void setDroite(Expr *droite) {
 	    	sym_droite = droite;
 	    }
+
 
 
  protected:

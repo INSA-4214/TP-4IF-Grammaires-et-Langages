@@ -10,7 +10,7 @@ class Instruction : public Symbole
         Instruction()
     		:Symbole(Symbole::I){}
         virtual ~Instruction();
-        void printI();
+        virtual void print() {};
     protected:
     private:
 };

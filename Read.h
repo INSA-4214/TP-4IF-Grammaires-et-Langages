@@ -19,6 +19,8 @@ class Read : public Instruction
 
         virtual ~Read();
 
+        void print();
+
     private:
         std::string idALire;
 };

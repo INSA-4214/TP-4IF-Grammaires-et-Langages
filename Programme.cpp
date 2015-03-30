@@ -10,11 +10,10 @@
 Programme::~Programme() {
 	// TODO Auto-generated destructor stub
 
-
 }
 //*TODO
 	void Programme::print(){
-	blocD->printBlocD();
-	blocI->printBlocI();
+	blocD->print();
+	blocI->print();
 }
 //*/

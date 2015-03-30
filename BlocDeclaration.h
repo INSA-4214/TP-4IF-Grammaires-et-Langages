@@ -29,7 +29,7 @@ public:
 		decVar.insert(uneDVar);
 	}
 
-	void printBlocD();
+	void print();
 
 	virtual ~BlocDeclaration(){}
 

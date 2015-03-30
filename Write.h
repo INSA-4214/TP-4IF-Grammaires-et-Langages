@@ -15,7 +15,7 @@ class Write : public Instruction
 		void setExpr(Expr* uneExpr) {
 			e = uneExpr;
 		}
-
+		void print();
         virtual ~Write();
 
     private:

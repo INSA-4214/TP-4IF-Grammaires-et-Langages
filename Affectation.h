@@ -3,10 +3,12 @@
 
 #include "Instruction.h"
 #include "Expr.h"
+#include <iostream>
 
 class Affectation : public Instruction
 {
     public:
+	using Instruction::print;
         Affectation():
         	Instruction(){}
         virtual ~Affectation();
@@ -19,6 +21,7 @@ class Affectation : public Instruction
         	e = uneExpr;
         }
 
+        void print();
     private:
         std::string m_idVar;
         Expr * e;

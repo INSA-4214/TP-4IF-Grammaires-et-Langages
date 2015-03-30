@@ -6,7 +6,7 @@
  */
 
 #ifndef ETAT42_H_
-#define ETA42_H_
+#define ETAT42_H_
 
 #include <string>
 #include "../Symbole.h"
