@@ -93,6 +93,7 @@ void Automate::print()
 
 void Automate::staticAnalysis()
 {
+	// pair <isSet, isConst>
 	map<string, pair<bool, bool> > *table = new map<string, pair<bool, bool> >();
 	// Recuperation du programme parse
 	Programme * p = (Programme *) pileSymboles.top();
