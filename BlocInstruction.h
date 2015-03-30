@@ -28,7 +28,6 @@ public:
 
 	void exec(map<string, pair<double, bool> > *table);
 	void print();
-	void exec();
 	void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 
 	virtual ~BlocInstruction(){}

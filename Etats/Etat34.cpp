@@ -60,7 +60,6 @@ bool Etat34::transition(Automate *automate, Symbole * s) {
 				 return false;
 			     return true;
 			default:
-            automate->erreurSyntax("operateur de calcul attendu");
 				return false;
 }
 return false;

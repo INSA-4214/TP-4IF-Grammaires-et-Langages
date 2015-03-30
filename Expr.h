@@ -19,7 +19,9 @@ public:
 
 	Expr() : Symbole(Symbole::E){}
 	virtual ~Expr();
-	virtual void print() {};
+
+    virtual void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) = 0;
+
 };
 
 class Variable : public Expr {
@@ -30,13 +32,13 @@ class Variable : public Expr {
     Variable()
      	 	 : Expr(){}
 
+    void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
+
     std::string name() { return nom; }
 
     void setNom(std::string unNom) {
     	nom = unNom;
     }
-
-
 
  protected:
 	std::string nom;
@@ -49,6 +51,8 @@ class Constante : public Expr {
  	 	 : Expr(), nom(leNom), valeur(laValeur) { }
 
     std::string name() { return nom; }
+
+    void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 
  protected:
 	std::string nom;
@@ -71,18 +75,18 @@ class Nombre : public Expr {
     	valeur = uneValeur;
     }
 
+    void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
+
  private:
     int valeur;
 };
 
 class BinExpr : public Expr {
  public:
+
 	explicit BinExpr(Expr * left = NULL, Expr * right = NULL);
 
-	    ~BinExpr() {
-	    	delete sym_gauche;
-	    	delete sym_droite;
-	    }
+        void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 
 	    Expr * getLeft() const { return sym_gauche; }
 	    Expr * getRight() const { return sym_droite; }
@@ -93,7 +97,6 @@ class BinExpr : public Expr {
 	    void setDroite(Expr *droite) {
 	    	sym_droite = droite;
 	    }
-
 
 
  protected:

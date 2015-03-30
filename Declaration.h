@@ -69,6 +69,7 @@ public:
 	void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
     void print();
 
+
 protected:
 
 	std::set<std::string> idVars;

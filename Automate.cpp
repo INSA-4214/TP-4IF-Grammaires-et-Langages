@@ -62,27 +62,13 @@ bool Automate::lecture(){
                     pileSymboles.pop();
                 }
 
-            //return false;
+            return false;
         }
     }
     return true;
 
 }
 
-void Automate::erreurSyntax(std::string type) {
-    int *pos = lexer->getCurrPos();
-    cerr << "Erreur syntaxique (" << pos[0] << ":" << pos[1] << ") " << type << endl;
-}
-
-void Automate::erreurSyntax(std::string type, std::string strAtt) {
-    int *pos = lexer->getCurrPos();
-    cerr << "Erreur syntaxique (" << pos[0] << ":" << pos[1] << ") " << type << " " << strAtt << " attendu" << endl;
-}
-
-void Automate::erreurSyntax(std::string type, std::string strAtt, std::string strAtt2) {
-    int *pos = lexer->getCurrPos();
-    cerr << "Erreur syntaxique (" << pos[0] << ":" << pos[1] << ") " << type << " " << strAtt << " ou " << strAtt2 << " attendu" << endl;
-}
 
 std::stack<Etat*> *Automate::getPileEtats(){
 
@@ -94,7 +80,7 @@ std::stack<Symbole*> *Automate::getPileSymboles(){
 }
 
 void Automate::setAccepter(bool b){
-    cout << "... Parsing termine !" << endl;
+    cout << "... Parsing termine !"<< endl;
 	this->accepte = b;
 }
 
@@ -135,4 +121,6 @@ void Automate::transform(){
 	Programme * p = (Programme *) pileSymboles.top();
 	p->transform();
 }
+<<<<<<< HEAD
 */
+

@@ -1,9 +1,12 @@
 #include "Write.h"
 #include <iostream>
 
-void Write::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
 
+
+void Write::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
+	e->staticAnalysis(table);
 }
+
 
 Write::~Write()
 {
@@ -18,3 +21,4 @@ void Write::print(){
 void Write::exec(map<string, pair<double, bool> > *table){
 
 }
+

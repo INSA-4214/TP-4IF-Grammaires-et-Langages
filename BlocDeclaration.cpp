@@ -7,6 +7,7 @@
 
 #include "BlocDeclaration.h"
 //*
+
 void BlocDeclaration::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
 
 	for ( std::set<DCst*>::iterator it = decConst.begin(); it != decConst.end(); ++it ) {

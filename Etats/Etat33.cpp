@@ -23,7 +23,6 @@ bool Etat33::transition(Automate *automate, Symbole * s) {
                 return false;
            return true;
         default:
-        automate->erreurSyntax("symbole", ",", ";");
             return false;
 }
 return false;

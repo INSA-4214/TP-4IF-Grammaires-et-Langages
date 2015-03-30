@@ -36,7 +36,6 @@ bool Etat30::transition(Automate *automate, Symbole * s) {
             automate->decalage(s, new Etat29());
             return true;
         default:
-        automate->erreurSyntax("operateur de calcul ou ')' attendu");
             return false;
 }
 return false;

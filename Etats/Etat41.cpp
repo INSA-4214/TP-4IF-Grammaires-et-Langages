@@ -12,7 +12,6 @@ bool Etat41::transition(Automate *automate, Symbole * s) {
         automate->decalage(s, new Etat42());
            return true;
         default:
-        automate->erreurSyntax("valeur attendue");
             return false;
 }
 return false;
