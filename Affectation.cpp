@@ -33,7 +33,4 @@ void Affectation::exec(map<string, pair<double, bool> > *table){
 
 }
 
-void Affectation::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table){
-
-}
 
