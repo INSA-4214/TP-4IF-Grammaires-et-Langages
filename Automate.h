@@ -25,6 +25,9 @@ public:
 	std::stack<Symbole*> *getPileSymboles();
 	void setAccepter(bool b);
 	void print();
+	void staticAnalysis();
+	void exec();
+	void transform();
 	virtual ~Automate();
 
 protected:

@@ -30,6 +30,7 @@ public:
 	}
 
 	void printBlocD();
+	void exec();
 
 	virtual ~BlocDeclaration(){}
 
