@@ -21,7 +21,6 @@ public:
     bool transition(Automate *automate, Symbole * s);
     inline int numEtat() {return 3;}
 
-
 };
 
 #endif /* ETAT03_H_ */

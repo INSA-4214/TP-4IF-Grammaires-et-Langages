@@ -29,6 +29,10 @@ public:
 	}
 
 	void print();
+	void staticAnalysis();
+	void transform();
+
+	void exec();
 
 	virtual ~Programme();
 

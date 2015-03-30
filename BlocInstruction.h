@@ -26,6 +26,7 @@ public:
 	}
 
 	void print();
+	void exec();
 	virtual ~BlocInstruction(){}
 
 protected:

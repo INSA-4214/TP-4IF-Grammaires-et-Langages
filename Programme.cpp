@@ -12,8 +12,13 @@ Programme::~Programme() {
 
 }
 //*TODO
+
 	void Programme::print(){
 	blocD->print();
 	blocI->print();
+	}
+	void Programme::exec(){
+	blocD->exec();
+	blocI->exec();
 }
 //*/

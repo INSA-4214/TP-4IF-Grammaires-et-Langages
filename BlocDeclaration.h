@@ -30,7 +30,7 @@ public:
 	}
 
 	void print();
-
+	void exec();
 	virtual ~BlocDeclaration(){}
 
 protected:
