@@ -80,20 +80,18 @@ bool Lexer::analyze()
     	m_symboleCourantStr = m_str.substr(0, 1);
         cout << "Caractere ignore : \"" << m_symboleCourantStr << "\"" << endl;
 
-        int ligne = 1;
-        int colonne = 1;
-        unsigned i = 0;
-        while (m_texteEntier.substr(i, 1) != m_symboleCourantStr && i < m_texteEntier.size())
+        // On cherche la ligne du problème
+        m_debutTexte = m_texteEntier.substr(0, m_texteEntier.size() - m_str.size()); // m_debutTexte + m_str = m_texteEntier
+        int ligne = 1 + std::count(m_debutTexte.begin(), m_debutTexte.end(), '\n');
+
+        // On cherche la colonne du problème
+        while (m_debutTexte.find('\n') != std::string::npos)
         {
-            colonne++;
-            if (m_texteEntier.substr(i, 1) == "\n")
-            {
-                ligne++;
-                colonne = 1;
-            }
-            i++;
+            m_debutTexte = m_debutTexte.substr(m_debutTexte.find('\n') + 1);
         }
-        cerr << "Erreur lexicale (" << ligne << ":" << colonne <<") caractere \"" << m_symboleCourantStr <<"\""<< endl;
+        int colonne = 1 + m_debutTexte.size();
+
+        cerr << "Erreur lexicale (" << ligne << ":" << colonne <<") caractere " << m_symboleCourantStr << endl;
     }
     cout << "\"" << m_symboleCourantStr << "\"" << endl;
     return true;
