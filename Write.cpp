@@ -1,17 +1,11 @@
 #include "Write.h"
-#include <iostream>
 
-void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
-
+void Write::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
+	e->staticAnalysis(table);
 }
+
 
 Write::~Write()
 {
     //dtor
-}
-
-void Write::print(){
-
-	std::cout << 'TODO'<<std::endl;
-
 }

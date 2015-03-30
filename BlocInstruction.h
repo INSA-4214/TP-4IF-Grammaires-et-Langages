@@ -25,7 +25,7 @@ public:
 		instructions.insert(uneInstruction);
 	}
 
-	void print();
+	void printBlocI();
 	void exec();
 	void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 	virtual ~BlocInstruction(){}

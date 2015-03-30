@@ -33,21 +33,17 @@ class Lexer
          */
         bool analyze();
 
-        int * getCurrPos();
-
         Symbole *getSymboleCourant();
 
     private:
 
-        void parse(std::string *filename);
         bool hasNext();
-
+        void parse(std::string *filename);
         std::string m_str;
         std::string m_texteEntier;
         std::string m_debutTexte;
         std::string m_symboleCourantStr;
         Symbole * m_symboleCourant;
-        int *m_pos = new int [2];
 };
 
 #endif // LEXER_H

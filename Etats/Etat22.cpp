@@ -50,7 +50,6 @@ bool Etat22::transition(Automate *automate, Symbole * s) {
 
            return true;
         default:
-        automate->erreurSyntax("symbole", ",", ";");
             return false;
 }
 return false;

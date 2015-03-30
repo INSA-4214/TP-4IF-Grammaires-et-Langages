@@ -14,6 +14,7 @@ using namespace std;
 Programme::~Programme() {
 	// TODO Auto-generated destructor stub
 
+
 }
 
 void Programme::staticAnalysis(map<string, pair<bool, bool> > *table) {
@@ -22,12 +23,12 @@ void Programme::staticAnalysis(map<string, pair<bool, bool> > *table) {
 }
 
 //*TODO
+void Programme::print(){
+	blocD->printBlocD();
+	blocI->printBlocI();
+}
 
-	void Programme::print(){
-	blocD->print();
-	blocI->print();
-	}
-	void Programme::exec(){
+void Programme::exec(){
 	blocD->exec();
 	blocI->exec();
 }

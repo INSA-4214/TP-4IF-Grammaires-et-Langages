@@ -13,10 +13,10 @@ class Instruction : public Symbole
 
         virtual ~Instruction();
 
+        void printI();
+
         virtual void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table)=0;
 
-        virtual void print() {};
-		
     protected:
     private:
 };

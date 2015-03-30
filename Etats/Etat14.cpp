@@ -12,7 +12,6 @@ bool Etat14::transition(Automate *automate, Symbole * s) {
         automate->decalage(s, new Etat23());
            return true;
         default:
-        automate->erreurSyntax("operateur", ":=");
             return false;
 }
 return false;
