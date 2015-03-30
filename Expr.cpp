@@ -45,8 +45,45 @@ void Constante::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *ta
 		cerr << "Cette constante n'est pas affectee" << endl;
 
 	}
+
 }
 
+void Constante::print() {
+
+	std::cout <<  name();
+}
+
+void Variable::print() {
+
+	std::cout << name();
+}
+
+void Nombre::print() {
+
+	std::cout << getValeur();
+}
+
+void MultExpr::print(){
+
+	string symOp = "";
+	if(operateur)
+		symOp = " * ";
+	else
+		symOp = " / ";
+	std::cout << sym_gauche->print() << symOp << sym_droite->print();
+
+}
+
+void AddExpr::print(){
+
+	string symOp = "";
+	if(operateur)
+		symOp = " + ";
+	else
+		symOp = " - ";
+	std::cout << sym_gauche->print() << symOp << sym_droite->print() ;
+
+}
 
 void BinExpr::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
 	sym_gauche->staticAnalysis(table);
