@@ -32,7 +32,7 @@ class Lexer
          * Regarde le prochain symbole terminal sans déplacer la tête de lecture
          */
         bool analyze();
-
+        int * getCurrPos();
         Symbole *getSymboleCourant();
 
     private:
@@ -44,6 +44,8 @@ class Lexer
         std::string m_debutTexte;
         std::string m_symboleCourantStr;
         Symbole * m_symboleCourant;
+        int *m_pos = new int [2];
+
 };
 
 #endif // LEXER_H
