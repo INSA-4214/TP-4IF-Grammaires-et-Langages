@@ -90,3 +90,12 @@ void Automate::print()
 	Programme * p = (Programme *) pileSymboles.top();
 	p->print();
 	}
+
+void Automate::exec()
+{
+
+	//recuperation du programme parse
+
+	Programme * p = (Programme *) pileSymboles.top();
+	p->exec();
+	}

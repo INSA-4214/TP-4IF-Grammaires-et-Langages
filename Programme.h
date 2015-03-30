@@ -30,6 +30,8 @@ public:
 
 	void print();
 
+	void exec();
+
 	virtual ~Programme();
 
 protected:
