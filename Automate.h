@@ -21,6 +21,9 @@ public:
 	Automate(Lexer *lexer);
 	bool lecture();
 	void decalage(Symbole *s,Etat *e);
+	void erreurSyntax(std::string type);
+	void erreurSyntax(std::string type, std::string strAtt);
+	void erreurSyntax(std::string type, std::string strAtt, std::string strAtt2);
 	std::stack<Etat*> *getPileEtats();
 	std::stack<Symbole*> *getPileSymboles();
 	void setAccepter(bool b);

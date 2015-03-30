@@ -13,6 +13,7 @@ bool Etat23::transition(Automate *automate, Symbole * s) {
            return true;
 
         default:
+        automate->erreurSyntax("valeur attendue");
             return false;
 }
 return false;

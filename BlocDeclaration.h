@@ -11,6 +11,7 @@
 #include "Declaration.h"
 #include "Symbole.h"
 #include <set>
+#include <map>
 
 class BlocDeclaration: public Symbole {
 public:
@@ -29,8 +30,12 @@ public:
 		decVar.insert(uneDVar);
 	}
 
-	void printBlocD();
+
 	void exec(map<string, pair<double, bool> > *table);
+	void print();
+	void exec();
+	void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
+
 
 	virtual ~BlocDeclaration(){}
 

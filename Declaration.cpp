@@ -28,7 +28,11 @@ void DVar::setIdvars(std::set<std::string> mesidvar){
     idVars = mesidvar;
 }
 
-std::set< std::pair<std::string,int> > Lc::getPairsconst(){
+void DVar::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
+	for (std::set<std::string>::iterator it= idVars.begin(); it!=idVars.end(); ++it)
+		table->insert(std::make_pair((*it),std::make_pair(0,0)));
+}
+std::set< std::pair<std::string,double> > Lc::getPairsconst(){
     return pairsconst;
 }
 
@@ -50,13 +54,19 @@ void DCst::setPairsConst(std::set< std::pair<std::string,double> > mesconst){
 	this->pairsconst=mesconst;
 }
 
-void DCst::printDCst(){
+
+void DCst::print(){
 	for (std::set<std::pair<std::string,double> >::iterator it= pairsconst.begin(); it!=pairsconst.end(); ++it)
 	    std::cout << "const " << (*it).first << " = " << (*it).second << " ; " << std::endl;
+}
+
+void DCst::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
+	for (std::set<std::pair<std::string,double> >::iterator it= pairsconst.begin(); it!=pairsconst.end(); ++it)
+		table->insert(std::make_pair((*it).first,std::make_pair(1,1)));
 
 }
 
-void DVar::printDVar(){
+void DVar::print(){
 
 	for (std::set<std::string>::iterator it= idVars.begin(); it!=idVars.end(); ++it)
 		std::cout << "var " << *it << " ; " << std::endl;
@@ -66,7 +76,7 @@ void DVar::printDVar(){
 void DVar::exec(map<string, pair<double, bool> > *table){
 
 	for (std::set<std::string>::iterator it= idVars.begin(); it!=idVars.end(); ++it)
-		table->insert(std::make_pair((*it)t,0));
+		table->insert(std::make_pair((*it),std::make_pair(NULL,0)));
 }
 //*/
 

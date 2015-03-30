@@ -9,6 +9,9 @@
 #define DECLARATION_H_
 #include "Symbole.h"
 #include <set>
+#include <map>
+
+using namespace std;
 
 class Lc: public Symbole{
 
@@ -60,9 +63,12 @@ public:
 
     void setIdvars(std::set<std::string> mesidvar);
 
-    void printDVar();
+
 
     void exec(map<string, pair<double, bool> > *table);
+	void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
+    void print();
+
 protected:
 
 	std::set<std::string> idVars;
@@ -80,7 +86,9 @@ public:
 
 	void setPairsConst(std::set< std::pair<std::string,double> > mesconst);
 
-	void printDCst();
+	void print();
+
+	void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 
 	void exec(map<string, pair<double, bool> > *table);
 
