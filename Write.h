@@ -16,6 +16,8 @@ class Write : public Instruction
 			e = uneExpr;
 		}
 
+        void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
+
         virtual ~Write();
 
     private:

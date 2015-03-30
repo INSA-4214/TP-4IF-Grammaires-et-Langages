@@ -17,6 +17,8 @@ class Read : public Instruction
         	idALire = unString;
         }
 
+        void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
+
         virtual ~Read();
 
     private:

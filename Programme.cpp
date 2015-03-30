@@ -6,12 +6,22 @@
  */
 
 #include "Programme.h"
+#include <map>
+#include <string>
+
+using namespace std;
 
 Programme::~Programme() {
 	// TODO Auto-generated destructor stub
 
 
 }
+
+void Programme::staticAnalysis(map<string, pair<bool, bool> > *table) {
+	blocD->staticAnalysis(table);
+	blocI->staticAnalysis(table);
+}
+
 //*TODO
 void Programme::print(){
 	blocD->printBlocD();

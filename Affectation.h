@@ -19,6 +19,8 @@ class Affectation : public Instruction
         	e = uneExpr;
         }
 
+        void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
+
     private:
         std::string m_idVar;
         Expr * e;

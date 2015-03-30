@@ -9,6 +9,7 @@
 #include "Automate.h"
 #include "Etats/Etat00.h"
 #include <stdio.h>
+#include <map>
 #include "Programme.h"
 
 using namespace std;
@@ -92,16 +93,16 @@ void Automate::print()
 
 void Automate::staticAnalysis()
 {
+	map<string, pair<bool, bool> > *table = new map<string, pair<bool, bool> >();
 	// Recuperation du programme parse
 	Programme * p = (Programme *) pileSymboles.top();
-	p->staticAnalysis();
+	p->staticAnalysis(table);
 }
 
 void Automate::exec()
 {
 	// Recuperation du programme parse
 	Programme * p = (Programme *) pileSymboles.top();
-
 	p->exec();
 }
 

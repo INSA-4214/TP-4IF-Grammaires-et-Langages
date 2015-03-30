@@ -8,6 +8,8 @@
 #ifndef PROGRAMME_H_
 #define PROGRAMME_H_
 
+#include <map>
+#include <string>
 #include "BlocInstruction.h"
 #include "BlocDeclaration.h"
 
@@ -29,7 +31,7 @@ public:
 	}
 
 	void print();
-	void staticAnalysis();
+	void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 	void transform();
 
 	void exec();
