@@ -21,13 +21,13 @@ void Variable::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *tab
 
 	std::map<std::string, std::pair<bool, bool> >::iterator it = table->find(nom);
 
-	if (it == table->end() || it->second.second == 1) {
+	if (it == table->end() && it->second.second < 1) {
 
-		cerr << "Cette variable n'a pas ete declaree" << endl;
+		cerr << "La variable " << nom << " n'a pas ete declaree" << endl;
 
-	} else if (it->second.first < 1) {
+	} else if (it->second.first < 1 && it->second.second < 1) {
 
-		cerr << "Cette variable n'est pas affectee" << endl;
+		cerr << "La variable " << nom << " n'est pas affectee" << endl;
 
 	}
 }

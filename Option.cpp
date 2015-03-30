@@ -89,7 +89,7 @@ int main(int argc, char* argv[]) {
     }
     if (staticActive) {
         cout << "Analyse statique" << endl;
-        // STATIC
+        automate.staticAnalysis();
     }
     if (execActive) {
         cout << "Execute" << endl;

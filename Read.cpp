@@ -16,6 +16,10 @@ void Read::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) 
 
 		cerr << "Vous essayez d'assigner une valeur a une constante" <<endl;
 
+	} else {
+
+		it->second.first = 1;
+
 	}
 
 }
