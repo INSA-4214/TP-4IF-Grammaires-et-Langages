@@ -49,7 +49,12 @@ bool Etat22::transition(Automate *automate, Symbole * s) {
                 return false;
 
            return true;
+        case Symbole::idvar: // on a 2 variables, il faut les séparer d'une virgule
+            automate->decalage(new Symbole(Symbole::virg), new Etat32());
+            automate->erreurSyntax("symbole", ",");
+
         default:
+            automate->erreurSyntax("symbole", ",", ";");
             return false;
 }
 return false;

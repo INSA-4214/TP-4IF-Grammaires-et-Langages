@@ -62,13 +62,27 @@ bool Automate::lecture(){
                     pileSymboles.pop();
                 }
 
-            return false;
+            //return false;
         }
     }
     return true;
 
 }
 
+void Automate::erreurSyntax(std::string type) {
+    int *pos = lexer->getCurrPos();
+    cerr << "Erreur syntaxique (" << pos[0] << ":" << pos[1] << ") " << type << endl;
+}
+
+void Automate::erreurSyntax(std::string type, std::string strAtt) {
+    int *pos = lexer->getCurrPos();
+    cerr << "Erreur syntaxique (" << pos[0] << ":" << pos[1] << ") " << type << " " << strAtt << " attendu" << endl;
+}
+
+void Automate::erreurSyntax(std::string type, std::string strAtt, std::string strAtt2) {
+    int *pos = lexer->getCurrPos();
+    cerr << "Erreur syntaxique (" << pos[0] << ":" << pos[1] << ") " << type << " " << strAtt << " ou " << strAtt2 << " attendu" << endl;
+}
 
 std::stack<Etat*> *Automate::getPileEtats(){
 
@@ -80,7 +94,7 @@ std::stack<Symbole*> *Automate::getPileSymboles(){
 }
 
 void Automate::setAccepter(bool b){
-    cout << "... Parsing termine !"<< endl;
+    cout << "... Parsing termine !" << endl;
 	this->accepte = b;
 }
 
@@ -101,26 +115,14 @@ void Automate::staticAnalysis()
 
 void Automate::exec()
 {
-
-
-	if (this->accepte) {
-        //table des declarations
-        map<string, pair<double, bool> > *table = new map<string, pair<double, bool> >();
-
-        // Recuperation du programme parse
-        Programme * p = (Programme *) pileSymboles.top();
-        p->exec(table);
-    }
-    cout << "l'execution en peut pas être faite sans le parsing"<< endl;
-
+	// Recuperation du programme parse
+	Programme * p = (Programme *) pileSymboles.top();
+	p->exec();
 }
-/*
+
 void Automate::transform(){
 
 	// Recuperation du programme parse
 	Programme * p = (Programme *) pileSymboles.top();
 	p->transform();
 }
-<<<<<<< HEAD
-*/
-

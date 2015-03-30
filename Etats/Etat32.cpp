@@ -13,6 +13,7 @@ bool Etat32::transition(Automate *automate, Symbole * s) {
            return true;
 
         default:
+        automate->erreurSyntax("nom de variable attendu");
             return false;
 }
 return false;

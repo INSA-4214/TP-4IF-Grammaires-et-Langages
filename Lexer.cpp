@@ -80,18 +80,10 @@ bool Lexer::analyze()
     	m_symboleCourantStr = m_str.substr(0, 1);
         cout << "Caractere ignore : \"" << m_symboleCourantStr << "\"" << endl;
 
-        // On cherche la ligne du problème
-        m_debutTexte = m_texteEntier.substr(0, m_texteEntier.size() - m_str.size()); // m_debutTexte + m_str = m_texteEntier
-        int ligne = 1 + std::count(m_debutTexte.begin(), m_debutTexte.end(), '\n');
+        getCurrPos();
 
-        // On cherche la colonne du problème
-        while (m_debutTexte.find('\n') != std::string::npos)
-        {
-            m_debutTexte = m_debutTexte.substr(m_debutTexte.find('\n') + 1);
-        }
-        int colonne = 1 + m_debutTexte.size();
-
-        cerr << "Erreur lexicale (" << ligne << ":" << colonne <<") caractere " << m_symboleCourantStr << endl;
+        cerr << "Erreur lexicale (" << m_pos[0] << ":" << m_pos[1] << ") caractere " << m_symboleCourantStr << endl;
+        return false;
     }
     cout << "\"" << m_symboleCourantStr << "\"" << endl;
     return true;
@@ -103,12 +95,14 @@ void Lexer::shift() {
     	return;
     }
 
-    if (!analyze()) {
-    	return;
-    }
-
     m_str=m_str.substr(m_symboleCourantStr.size());
     m_str.erase(0, m_str.find_first_not_of(" \t\n\r\f\v"));
+
+    // Si un caractère n'est pas reconnu, on l'efface et on passe à la suite
+    while (!analyze() && m_str.size() > 0) {
+        m_str=m_str.substr(m_symboleCourantStr.size());
+        m_str.erase(0, m_str.find_first_not_of(" \t\n\r\f\v"));
+    }
 
 }
 
@@ -119,6 +113,23 @@ bool Lexer::hasNext(){
 		m_symboleCourant = new Symbole(Symbole::FILEEND);
 	}
 	return continuer;
+}
+
+int * Lexer::getCurrPos() // On cherche la position du problème
+{
+	m_debutTexte = m_texteEntier.substr(0, m_texteEntier.size() - m_str.size()); // m_debutTexte + m_str = m_texteEntier
+    int ligne = 1 + std::count(m_debutTexte.begin(), m_debutTexte.end(), '\n');
+
+    while (m_debutTexte.find('\n') != std::string::npos)
+    {
+        m_debutTexte = m_debutTexte.substr(m_debutTexte.find('\n') + 1);
+    }
+    int colonne = 1 + m_debutTexte.size();
+
+    m_pos[0] = ligne;
+    m_pos[1] = colonne;
+
+    return m_pos;
 }
 
 Lexer::~Lexer()

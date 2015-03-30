@@ -5,7 +5,7 @@
  *
  */
 
-#ifndef ETA18_H_
+#ifndef ETAT18_H_
 #define ETAT18_H_
 
 #include <string>
