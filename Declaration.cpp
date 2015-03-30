@@ -32,42 +32,56 @@ void DVar::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) 
 	for (std::set<std::string>::iterator it= idVars.begin(); it!=idVars.end(); ++it)
 		table->insert(std::make_pair((*it),std::make_pair(0,0)));
 }
-
-std::set< std::pair<std::string,int> > Lc::getPairsconst(){
+std::set< std::pair<std::string,double> > Lc::getPairsconst(){
     return pairsconst;
 }
 
-void Lc::addidcons(std::string maConst,int val){
+void Lc::addidcons(std::string maConst,double val){
     this->pairsconst.insert(std::make_pair( maConst, val));
 }
-void Lc::setPairsConst(std::set< std::pair<std::string,int> > mesconst){
+void Lc::setPairsConst(std::set< std::pair<std::string,double> > mesconst){
  this->pairsconst=mesconst;
 }
 
-std::set< std::pair<std::string,int> > DCst::getPairsconst(){
+std::set< std::pair<std::string,double> > DCst::getPairsconst(){
     return this->pairsconst;
 }
 
-void DCst::addidcons(std::string maConst,int val){
+void DCst::addidcons(std::string maConst,double val){
     this->pairsconst.insert(std::make_pair( maConst, val));
 }
-void DCst::setPairsConst(std::set< std::pair<std::string,int> > mesconst){
+void DCst::setPairsConst(std::set< std::pair<std::string,double> > mesconst){
 	this->pairsconst=mesconst;
 }
 
-void DCst::printDCst(){
-	for (std::set<std::pair<std::string,int> >::iterator it= pairsconst.begin(); it!=pairsconst.end(); ++it)
+
+void DCst::print(){
+	for (std::set<std::pair<std::string,double> >::iterator it= pairsconst.begin(); it!=pairsconst.end(); ++it)
 	    std::cout << "const " << (*it).first << " = " << (*it).second << " ; " << std::endl;
 }
 
 void DCst::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
-	for (std::set<std::pair<std::string,int> >::iterator it= pairsconst.begin(); it!=pairsconst.end(); ++it)
+	for (std::set<std::pair<std::string,double> >::iterator it= pairsconst.begin(); it!=pairsconst.end(); ++it)
 		table->insert(std::make_pair((*it).first,std::make_pair(1,1)));
+
 }
 
-void DVar::printDVar(){
+void DVar::print(){
 
 	for (std::set<std::string>::iterator it= idVars.begin(); it!=idVars.end(); ++it)
 		std::cout << "var " << *it << " ; " << std::endl;
 }
 //*/
+
+void DVar::exec(map<string, pair<double, bool> > *table){
+
+	for (std::set<std::string>::iterator it= idVars.begin(); it!=idVars.end(); ++it)
+		table->insert(std::make_pair((*it),std::make_pair(NULL,0)));
+}
+//*/
+
+void DCst::exec(map<string, pair<double, bool> > *table){
+	for (std::set<std::pair<std::string,double> >::iterator it= pairsconst.begin(); it!=pairsconst.end(); ++it)
+	     table->insert(std::make_pair((*it).first,std::make_pair((*it).second,1)));
+
+}

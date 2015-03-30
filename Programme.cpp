@@ -23,13 +23,15 @@ void Programme::staticAnalysis(map<string, pair<bool, bool> > *table) {
 }
 
 //*TODO
-void Programme::print(){
-	blocD->printBlocD();
-	blocI->printBlocI();
-}
 
-void Programme::exec(){
-	blocD->exec();
-	blocI->exec();
+void Programme::exec(map<string, pair<double, bool> > *table){
+	blocD->exec(table);
+	blocI->exec(table);
 }
+	void Programme::print(){
+	blocD->print();
+	blocI->print();
+	}
+
+
 //*/

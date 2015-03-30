@@ -5,6 +5,7 @@ using namespace std;
 
 void Read::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
 
+
 	std::map<std::string, std::pair<bool, bool> >::iterator it = table->find(idALire);
 
 	if (it == table->end()) {
@@ -20,7 +21,17 @@ void Read::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) 
 }
 
 
+
 Read::~Read()
 {
     //dtor
 }
+
+void Read::print(){
+
+}
+
+void Read::exec(map<string, pair<double, bool> > *table){
+
+}
+

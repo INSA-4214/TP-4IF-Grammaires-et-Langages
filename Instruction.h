@@ -2,7 +2,9 @@
 #define INSTRUCTION_H
 
 #include "Symbole.h"
+#include <map>
 
+using namespace std;
 
 class Instruction : public Symbole
 {
@@ -13,9 +15,14 @@ class Instruction : public Symbole
 
         virtual ~Instruction();
 
-        void printI();
+
+        virtual void exec(map<string, pair<double, bool> > *table)=0;
+
 
         virtual void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table)=0;
+
+        virtual void print()=0;
+
 
     protected:
     private:

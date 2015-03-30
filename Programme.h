@@ -34,7 +34,7 @@ public:
 	void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 	void transform();
 
-	void exec();
+	void exec(map<string, pair<double, bool> > *table);
 
 	virtual ~Programme();
 

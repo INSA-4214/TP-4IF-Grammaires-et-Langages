@@ -3,6 +3,8 @@
 
 #include "Instruction.h"
 #include "Expr.h"
+#include <stdio.h>
+#include <map>
 
 class Affectation : public Instruction
 {
@@ -18,8 +20,11 @@ class Affectation : public Instruction
         void setExpr(Expr* uneExpr) {
         	e = uneExpr;
         }
+        void exec(map<string, pair<double, bool> > *table);
 
         void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
+        void print();
+
 
     private:
         std::string m_idVar;

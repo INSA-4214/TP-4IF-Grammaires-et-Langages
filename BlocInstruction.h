@@ -25,9 +25,11 @@ public:
 		instructions.insert(uneInstruction);
 	}
 
-	void printBlocI();
-	void exec();
+
+	void exec(map<string, pair<double, bool> > *table);
+	void print();
 	void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
+
 	virtual ~BlocInstruction(){}
 
 protected:
