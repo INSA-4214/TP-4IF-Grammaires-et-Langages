@@ -23,15 +23,15 @@ void Variable::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *tab
 
 	if (it == table->end() && it->second.second < 1) {
 
-		cerr << "La variable " << nom << " n'a pas ete declaree" << endl;
+		cerr << "la variable " << nom << " n'a pas ete declaree." << endl;
 
 	} else if (it == table->end() && it->second.second == 1) {
 
-		cerr << "La constante " << nom << " n'a pas ete declaree" << endl;
+		cerr << "la constante " << nom << " n'a pas ete declaree." << endl;
 
 	} else if (it->second.first < 1 && it->second.second < 1) {
 
-		cerr << "La variable " << nom << " n'est pas affectee" << endl;
+		cerr << "la variable " << nom << " n'est pas affectee." << endl;
 
 	}
 }
@@ -104,15 +104,15 @@ double Variable::exec(map<string, pair<double, bool> > *table){
 
 	if (it == table->end() && it->second.second < 1) {
 
-		cerr << "La variable " << nom << " n'a pas ete declaree" << endl;
+		cerr << "la variable " << nom << " n'a pas ete declaree." << endl;
 
 	} else if (it == table->end() && it->second.second == 1) {
 
-		cerr << "La constante " << nom << " n'a pas ete declaree" << endl;
+		cerr << "la constante " << nom << " n'a pas ete declaree." << endl;
 
 	} else if (it->second.first ==NULL && it->second.second < 1) {
 
-		cerr << "La variable " << nom << " n'est pas affectee" << endl;
+		cerr << "La variable " << nom << " n'est pas affectee." << endl;
 
 	}
 	else{
