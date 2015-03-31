@@ -10,11 +10,11 @@ void Read::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) 
 
 	if (it == table->end()) {
 
-		cerr << "Cette variable n'a pas ete declaree" << endl;
+		cerr << "La variable " << idALire << " n'a pas ete declaree" << endl;
 
 	} else if (it->second.second == 1) {
 
-		cerr << "Vous essayez d'assigner une valeur a une constante" <<endl;
+		cerr << "Vous essayez d'assigner une valeur a la constante " << idALire <<endl;
 
 	} else {
 

@@ -38,11 +38,11 @@ void Constante::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *ta
 
 	if (it == table->end() || it->second.second < 1) {
 
-		cerr << "Cette constante n'a pas ete declaree" << endl;
+		cerr << "La constante " << nom << " n'a pas ete declaree" << endl;
 
 	} else if (it->second.first < 1) {
 
-		cerr << "Cette constante n'est pas affectee" << endl;
+		cerr << "La constante " << nom << " n'est pas affectee" << endl;
 
 	}
 
