@@ -1,8 +1,8 @@
 var x,o;
 o:=2;
-x:=13;
+x:=3;
 lire o;
-ecrire o+u;
+ecrire (o+3)*2;
 ecrire 3;
 ecrire 5;
 ecrire 1;

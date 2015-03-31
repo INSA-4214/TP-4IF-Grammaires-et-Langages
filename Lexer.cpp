@@ -59,8 +59,8 @@ bool Lexer::analyze()
             case '*': m_symboleCourant = new Symbole(Symbole::multi); break;
             case '/': m_symboleCourant = new Symbole(Symbole::divi); break;
             case '=': m_symboleCourant = new Symbole(Symbole::egal); break;
-            case '(': m_symboleCourant = new Symbole(Symbole::parf); break;
-            case ')': m_symboleCourant = new Symbole(Symbole::paro); break;
+            case '(': m_symboleCourant = new Symbole(Symbole::paro); break;
+            case ')': m_symboleCourant = new Symbole(Symbole::parf); break;
             case ',': m_symboleCourant = new Symbole(Symbole::virg); break;
             case ';': m_symboleCourant = new Symbole(Symbole::pv); break;
             default: break;
