@@ -33,6 +33,7 @@ bool Etat34::transition(Automate *automate, Symbole * s) {
         case Symbole::moins:
         case Symbole::FILEEND:
         case Symbole::pv :
+        case Symbole::parf :
 
         	//Reduction
 

@@ -16,6 +16,7 @@ bool Etat18::transition(Automate *automate, Symbole * s) {
         case Symbole::divi :
         case Symbole::FILEEND :
         case Symbole::pv :
+        case Symbole::parf :
 
            //Reduction
 

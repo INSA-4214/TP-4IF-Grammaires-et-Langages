@@ -95,7 +95,9 @@ int main(int argc, char* argv[]) {
     }
     if (execActive) {
         cout << "Execute" << endl;
-        // EXEC
+        if (automate.getAccepte()) {
+        	automate.exec();
+        }
     }
 
 
