@@ -12,6 +12,7 @@ bool Etat09::transition(Automate *automate, Symbole * s) {
         automate->decalage(s, new Etat16());
            return true;
         default:
+        automate->decalage(new Symbole(Symbole::pv), new Etat16());
         automate->erreurSyntax("symbole", ";");
             return false;
 }

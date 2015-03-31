@@ -6,12 +6,13 @@
 Etat05::Etat05() : Etat() { }
 
 bool Etat05::transition(Automate *automate, Symbole * s) {
-    Symbole symb = Symbole(Symbole::Bd);
+    BlocDeclaration* symb = new BlocDeclaration;
     switch ( s->getIdent() ) {
         case Symbole::pv:
         automate->decalage(s, new Etat12());
            return true;
         default:
+        automate->decalage(symb, new Etat12());
         automate->erreurSyntax("symbole", ";");
             return false;
 }

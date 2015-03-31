@@ -23,7 +23,14 @@ bool Etat33::transition(Automate *automate, Symbole * s) {
                 return false;
            return true;
         default:
-        automate->erreurSyntax("symbole", ",", ";");
+
+        if (!automate->getPileEtats()->top()->transition(automate, symb))
+                return false;
+           if (!automate->getPileEtats()->top()->transition(automate, s))
+                return false;
+
+        automate->erreurSyntax("symbole", ",");
+        cout << "et33" << endl;
             return false;
 }
 return false;

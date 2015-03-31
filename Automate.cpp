@@ -23,7 +23,6 @@ Automate::Automate(Lexer *unlexer) {
 	lexer = unlexer;
 	pileEtats.push(new Etat00());
 	accepte = false;
-
 }
 
 void Automate::decalage(Symbole *s, Etat *e){
@@ -39,7 +38,7 @@ bool Automate::lecture(){
 	//TODO boucle exploration
     while (lexer->getSymboleCourant()->getIdent() != Symbole::FILEEND) {
 
-    	lexer->shift();
+        lexer->shift();
 
         //symbole courant
         if ( pileEtats.empty() )
@@ -50,7 +49,7 @@ bool Automate::lecture(){
             return false;
 
         if ( !pileEtats.top()->transition(this, s) ) {
-                while( !pileEtats.empty()){
+                /*while( !pileEtats.empty()){
                     cout << "Erreur : Transition non envisagee pour l'etat " << pileEtats.top()->numEtat() << endl;
                     pileEtats.pop();
                 }
@@ -60,9 +59,7 @@ bool Automate::lecture(){
                     cout << "Symbole pile : " << pileSymboles.top()->getStr() << endl;
 
                     pileSymboles.pop();
-                }
-
-            //return false;
+                }*/
         }
     }
     return true;
@@ -107,7 +104,7 @@ void Automate::print()
 
 void Automate::staticAnalysis()
 {
-	// pair <isSet, isConst>
+    // pair <isSet, isConst>
 	map<string, pair<bool, bool> > *table = new map<string, pair<bool, bool> >();
 	// Recuperation du programme parse
 	Programme * p = (Programme *) pileSymboles.top();
