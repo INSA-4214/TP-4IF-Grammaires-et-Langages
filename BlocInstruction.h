@@ -11,18 +11,19 @@
 #include "Instruction.h"
 #include "Symbole.h"
 #include <set>
+#include <vector>
 
 class BlocInstruction: public Symbole {
 public:
 
 	BlocInstruction()
-		:Symbole(Symbole::Bi), instructions(std::set<Instruction*>()){}
+		:Symbole(Symbole::Bi), instructions(std::vector<Instruction*>()){}
 
-	BlocInstruction(std::set<Instruction*> lesDeclarations)
+	BlocInstruction(std::vector<Instruction*> lesDeclarations)
 		:Symbole(Symbole::Bi), instructions(lesDeclarations){}
 
 	void addInstruction(Instruction* uneInstruction) {
-		instructions.insert(uneInstruction);
+		instructions.push_back(uneInstruction);
 	}
 
 
@@ -34,7 +35,7 @@ public:
 
 protected:
 
-	std::set<Instruction*> instructions;
+	std::vector<Instruction*> instructions;
 };
 
 

@@ -91,6 +91,8 @@ int main(int argc, char* argv[]) {
         cout << "--- Analyse statique ---" << endl;
         if (automate.getAccepte()) {
         	automate.staticAnalysis();
+        } else {
+        	cerr << "Parsing mal termine" <<endl;
         }
     }
     if (execActive) {

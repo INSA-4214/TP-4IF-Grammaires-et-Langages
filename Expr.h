@@ -49,21 +49,6 @@ class Variable : public Expr {
 	int valeur;
 };
 
-class Constante : public Expr {
- public:
-    Constante(std::string leNom, int laValeur)
- 	 	 : Expr(), nom(leNom), valeur(laValeur) { }
-
-    std::string name() { return nom; }
-   double exec(std::map<std::string, std::pair<double, bool> > *table);
-    void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
-
-    void print();
- protected:
-	std::string nom;
-	int valeur;
-};
-
 class Nombre : public Expr {
  public:
     explicit Nombre(double uneValeur)

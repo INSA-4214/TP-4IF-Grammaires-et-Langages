@@ -25,6 +25,10 @@ void Variable::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *tab
 
 		cerr << "La variable " << nom << " n'a pas ete declaree" << endl;
 
+	} else if (it == table->end() && it->second.second == 1) {
+
+		cerr << "La constante " << nom << " n'a pas ete declaree" << endl;
+
 	} else if (it->second.first < 1 && it->second.second < 1) {
 
 		cerr << "La variable " << nom << " n'est pas affectee" << endl;
@@ -32,26 +36,6 @@ void Variable::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *tab
 	}
 }
 
-void Constante::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
-
-	std::map<std::string, std::pair<bool, bool> >::iterator it = table->find(nom);
-
-	if (it == table->end() || it->second.second < 1) {
-
-		cerr << "La constante " << nom << " n'a pas ete declaree" << endl;
-
-	} else if (it->second.first < 1) {
-
-		cerr << "La constante " << nom << " n'est pas affectee" << endl;
-
-	}
-
-}
-
-void Constante::print() {
-
-	std::cout <<  name();
-}
 
 void Variable::print() {
 
@@ -90,6 +74,7 @@ void AddExpr::print(){
 }
 
 void BinExpr::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
+	cout << sym_gauche->getStr();
 	sym_gauche->staticAnalysis(table);
 	sym_droite->staticAnalysis(table);
 }
