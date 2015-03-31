@@ -82,8 +82,43 @@ void BinExpr::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *tabl
 void Nombre::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
 
 }
+double Nombre::exec(map<string, pair<double, bool> > *table){
+    return getValeur();
+}
 
-
+double AddExpr::exec(map<string, pair<double, bool> > *table){
+    if(operateur->getope())
+        return (double)sym_gauche->exec(table) +(double) sym_droite->exec(table);
+    else
+        return (double)sym_gauche->exec(table) -(double) sym_droite->exec(table);
+}
+double MultExpr::exec(map<string, pair<double, bool> > *table){
+     if(operateur->getope())
+        return (double)sym_gauche->exec(table) * (double) sym_droite->exec(table);
+    else
+        return (double)sym_gauche->exec(table) / (double) sym_droite->exec(table);
+}
+double Constante::exec(map<string, pair<double, bool> > *table){
+    std::map<std::string, std::pair<double, bool> >::iterator it = table->find(nom);
+    if (it == table->end() || it->second.second == 0) {
+        return it->second.first;//on a trouvé la contante
+    }
+    else  {
+        cerr << "La contante n existe pas" << endl;
+        return 0;
+    }
+}
+double Variable::exec(map<string, pair<double, bool> > *table){
+    std::map<std::string, std::pair<double, bool> >::iterator it = table->find(nom);
+    if (it == table->end() || it->second.second == 1) {
+        if(it->second.first!=NULL)
+            return it->second.first;//on a trouvé la variable
+    }
+    else  {
+        cerr << "La variable n existe pas" << endl;
+        return 0;
+    }
+}
 Expr::~Expr() {
 	// TODO Auto-generated destructor stub
 }

@@ -22,6 +22,8 @@ public:
 	virtual void print()=0;
     virtual void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) = 0;
 
+    virtual double exec(std::map<std::string, std::pair<double, bool> > *table)=0;
+
 };
 
 class Variable : public Expr {
@@ -36,6 +38,7 @@ class Variable : public Expr {
 
     std::string name() { return nom; }
 
+    double exec(std::map<std::string, std::pair<double, bool> > *table);
     void setNom(std::string unNom) {
     	nom = unNom;
     }
@@ -48,26 +51,28 @@ class Variable : public Expr {
 
 class Nombre : public Expr {
  public:
-    explicit Nombre(int uneValeur)
+    explicit Nombre(double uneValeur)
     	: Expr(), valeur(uneValeur) { }
 
     explicit Nombre()
     	: Expr(){}
 
-    const int getValeur() {
+    const double getValeur() {
     	return valeur;
     }
 
-    void setValeur(int uneValeur) {
+    void setValeur(double uneValeur) {
     	valeur = uneValeur;
     }
+
+    double exec(std::map<std::string, std::pair<double, bool> > *table);
 
     void print();
 
     void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 
  private:
-    int valeur;
+    double valeur;
 };
 
 class BinExpr : public Expr {
@@ -87,7 +92,9 @@ class BinExpr : public Expr {
 	    	sym_droite = droite;
 	    }
 
-	    virtual void print() = 0;
+    virtual double exec(std::map<std::string, std::pair<double, bool> > *table)=0;
+
+    virtual void print() = 0;
 
 
  protected:
@@ -106,7 +113,7 @@ class AddExpr : public BinExpr {
     }
 
     Symbole* const getOperateur(){return operateur;}
-
+    double exec(std::map<std::string, std::pair<double, bool> > *table);
     void setOperateur(Operateur *ope) {
     	operateur = ope;
     }
@@ -133,6 +140,9 @@ class MultExpr : public BinExpr {
     void setOperateur(Operateur *ope) {
     	operateur = ope;
     }
+
+   double exec(std::map<std::string, std::pair<double, bool> > *table);
+
 
     void print();
 
