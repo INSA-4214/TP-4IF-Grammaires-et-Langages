@@ -27,6 +27,7 @@ public:
 	std::stack<Etat*> *getPileEtats();
 	std::stack<Symbole*> *getPileSymboles();
 	void setAccepter(bool b);
+	bool getAccepte();
 	void print();
 	void staticAnalysis();
 	void exec();

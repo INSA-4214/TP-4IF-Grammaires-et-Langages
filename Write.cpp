@@ -15,7 +15,8 @@ Write::~Write()
 
 void Write::print(){
 
-	std::cout << 'TODO'<<std::endl;
+	(*e).print();
+	cout << " ;" << std::endl;
 
 }
 void Write::exec(map<string, pair<double, bool> > *table){

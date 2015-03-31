@@ -6,8 +6,11 @@
  */
 
 #include <map>
+#include <iostream>
 #include <cstdlib>
 #include "Expr.h"
+
+using namespace std;
 
 // ----- Constructeurs -----
 
@@ -16,14 +19,79 @@ BinExpr::BinExpr(Expr * left, Expr * right)
 
 void Variable::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
 
+	std::map<std::string, std::pair<bool, bool> >::iterator it = table->find(nom);
+
+	if (it == table->end() && it->second.second < 1) {
+
+		cerr << "La variable " << nom << " n'a pas ete declaree" << endl;
+
+	} else if (it->second.first < 1 && it->second.second < 1) {
+
+		cerr << "La variable " << nom << " n'est pas affectee" << endl;
+
+	}
 }
 
 void Constante::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
 
+	std::map<std::string, std::pair<bool, bool> >::iterator it = table->find(nom);
+
+	if (it == table->end() || it->second.second < 1) {
+
+		cerr << "Cette constante n'a pas ete declaree" << endl;
+
+	} else if (it->second.first < 1) {
+
+		cerr << "Cette constante n'est pas affectee" << endl;
+
+	}
+
+}
+
+void Constante::print() {
+
+	std::cout <<  name();
+}
+
+void Variable::print() {
+
+	std::cout << name();
+}
+
+void Nombre::print() {
+
+	std::cout << getValeur();
+}
+
+void MultExpr::print(){
+
+	string symOp = "";
+	if(operateur->getope())
+		symOp = " * ";
+	else
+		symOp = " / ";
+	sym_gauche->print();
+	cout << symOp;
+	sym_droite->print();
+
+}
+
+void AddExpr::print(){
+
+	string symOp = "";
+	if(operateur->getope())
+		symOp = " + ";
+	else
+		symOp = " - ";
+	sym_gauche->print();
+	cout << symOp;
+	sym_droite->print();
+
 }
 
 void BinExpr::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
-
+	sym_gauche->staticAnalysis(table);
+	sym_droite->staticAnalysis(table);
 }
 
 void Nombre::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
@@ -34,16 +102,16 @@ double Nombre::exec(map<string, pair<double, bool> > *table){
 }
 
 double AddExpr::exec(map<string, pair<double, bool> > *table){
-    if(Operateur->getOpe())
-        return (double)exec(sym_gauche) +(double) exec(sym_droite);
+    if(operateur->getope())
+        return (double)sym_gauche->exec(table) +(double) sym_droite->exec(table);
     else
-        return (double)exec(sym_gauche) - (double)exec(sym_droite);
+        return (double)sym_gauche->exec(table) -(double) sym_droite->exec(table);
 }
 double MultExpr::exec(map<string, pair<double, bool> > *table){
-    if(Operateur->getOpe())
-        return (double)exec(sym_gauche) * (double)exec(sym_droite);
+     if(operateur->getope())
+        return (double)sym_gauche->exec(table) * (double) sym_droite->exec(table);
     else
-        return (double)exec(sym_gauche) / (double)exec(sym_droite);
+        return (double)sym_gauche->exec(table) / (double) sym_droite->exec(table);
 }
 double Constante::exec(map<string, pair<double, bool> > *table){
     std::map<std::string, std::pair<double, bool> >::iterator it = table->find(nom);

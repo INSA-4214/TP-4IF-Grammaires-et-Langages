@@ -9,8 +9,8 @@
 #include <iostream>
 
 std::set<std::string> Lv::getSetidvar(){
-        return idVars;
-	}
+	return idVars;
+}
 
 void Lv::addidvar(std::string uneVar){
     idVars.insert(uneVar);

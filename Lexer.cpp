@@ -75,7 +75,7 @@ bool Lexer::analyze()
     	m_symboleCourantStr = matches[1];
         m_symboleCourant = new Symbole(Symbole::nb, m_symboleCourantStr);
     }
-    else
+    else if (m_symboleCourant->getIdent() != Symbole::FILEEND)
     {
     	m_symboleCourantStr = m_str.substr(0, 1);
         cout << "Caractere ignore : \"" << m_symboleCourantStr << "\"" << endl;
@@ -95,14 +95,12 @@ void Lexer::shift() {
     	return;
     }
 
-    m_str=m_str.substr(m_symboleCourantStr.size());
-    m_str.erase(0, m_str.find_first_not_of(" \t\n\r\f\v"));
-
-    // Si un caractère n'est pas reconnu, on l'efface et on passe à la suite
-    while (!analyze() && m_str.size() > 0) {
-        m_str=m_str.substr(m_symboleCourantStr.size());
-        m_str.erase(0, m_str.find_first_not_of(" \t\n\r\f\v"));
+	if (!analyze()) {
+    	return;
     }
+
+	m_str=m_str.substr(m_symboleCourantStr.size());
+	m_str.erase(0, m_str.find_first_not_of(" \t\n\r\f\v"));
 
 }
 

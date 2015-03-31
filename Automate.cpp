@@ -107,6 +107,7 @@ void Automate::print()
 
 void Automate::staticAnalysis()
 {
+	// pair <isSet, isConst>
 	map<string, pair<bool, bool> > *table = new map<string, pair<bool, bool> >();
 	// Recuperation du programme parse
 	Programme * p = (Programme *) pileSymboles.top();
@@ -122,7 +123,11 @@ void Automate::exec()
         Programme * p = (Programme *) pileSymboles.top();
         p->exec(table);
     }
-    cout << "l'execution en peut pas �tre faite sans le parsing"<< endl;
+    cout << "l'execution ne peut pas etre faite sans le parsing"<< endl;
+}
+
+bool Automate::getAccepte() {
+	return accepte;
 }
 /*
 void Automate::transform(){

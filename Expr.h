@@ -19,10 +19,10 @@ public:
 
 	Expr() : Symbole(Symbole::E){}
 	virtual ~Expr();
-
+	virtual void print()=0;
     virtual void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) = 0;
 
-    virtual double exec(map<string, pair<double, bool> > *table)=0;
+    virtual double exec(std::map<std::string, std::pair<double, bool> > *table)=0;
 
 };
 
@@ -37,11 +37,13 @@ class Variable : public Expr {
     void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 
     std::string name() { return nom; }
-    double exec(map<string, pair<double, bool> > *table);
+
+    double exec(std::map<std::string, std::pair<double, bool> > *table);
     void setNom(std::string unNom) {
     	nom = unNom;
     }
 
+    void print();
  protected:
 	std::string nom;
 	int valeur;
@@ -53,9 +55,10 @@ class Constante : public Expr {
  	 	 : Expr(), nom(leNom), valeur(laValeur) { }
 
     std::string name() { return nom; }
-    double exec(map<string, pair<double, bool> > *table);
+   double exec(std::map<std::string, std::pair<double, bool> > *table);
     void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 
+    void print();
  protected:
 	std::string nom;
 	int valeur;
@@ -73,10 +76,14 @@ class Nombre : public Expr {
     	return valeur;
     }
 
-    void setValeur(doucle uneValeur) {
+    void setValeur(double uneValeur) {
     	valeur = uneValeur;
     }
-    double exec(map<string, pair<double, bool> > *table);
+
+    double exec(std::map<std::string, std::pair<double, bool> > *table);
+
+    void print();
+
     void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 
  private:
@@ -99,7 +106,11 @@ class BinExpr : public Expr {
 	    void setDroite(Expr *droite) {
 	    	sym_droite = droite;
 	    }
-    virtual double exec(map<string, pair<double, bool> > *table)=0;
+
+    virtual double exec(std::map<std::string, std::pair<double, bool> > *table)=0;
+
+    virtual void print() = 0;
+
 
  protected:
     Expr *sym_gauche;
@@ -117,10 +128,12 @@ class AddExpr : public BinExpr {
     }
 
     Symbole* const getOperateur(){return operateur;}
-    double exec(map<string, pair<double, bool> > *table);
+    double exec(std::map<std::string, std::pair<double, bool> > *table);
     void setOperateur(Operateur *ope) {
     	operateur = ope;
     }
+
+    void print();
 
  protected:
 
@@ -142,7 +155,12 @@ class MultExpr : public BinExpr {
     void setOperateur(Operateur *ope) {
     	operateur = ope;
     }
-    double exec(map<string, pair<double, bool> > *table);
+
+   double exec(std::map<std::string, std::pair<double, bool> > *table);
+
+
+    void print();
+
  protected:
 
     Operateur* operateur;
