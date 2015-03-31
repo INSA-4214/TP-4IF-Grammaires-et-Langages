@@ -26,7 +26,6 @@ void Programme::staticAnalysis(map<string, pair<bool, bool> > *table) {
 //*TODO
 
 void Programme::exec(map<string, pair<double, bool> > *table){
-    cout <<" est ma variable" << endl;
 	blocD->exec(table);
 	blocI->exec(table);
 }

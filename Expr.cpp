@@ -98,26 +98,26 @@ double MultExpr::exec(map<string, pair<double, bool> > *table){
     else
         return (double)sym_gauche->exec(table) / (double) sym_droite->exec(table);
 }
-double Constante::exec(map<string, pair<double, bool> > *table){
-    std::map<std::string, std::pair<double, bool> >::iterator it = table->find(nom);
-    if (it == table->end() || it->second.second == 0) {
-        return it->second.first;//on a trouvé la contante
-    }
-    else  {
-        cerr << "La contante n existe pas" << endl;
-        return 0;
-    }
-}
+
 double Variable::exec(map<string, pair<double, bool> > *table){
     std::map<std::string, std::pair<double, bool> >::iterator it = table->find(nom);
-    if (it == table->end() || it->second.second == 1) {
-        if(it->second.first!=NULL)
-            return it->second.first;//on a trouvé la variable
-    }
-    else  {
-        cerr << "La variable n existe pas" << endl;
-        return 0;
-    }
+
+	if (it == table->end() && it->second.second < 1) {
+
+		cerr << "La variable " << nom << " n'a pas ete declaree" << endl;
+
+	} else if (it == table->end() && it->second.second == 1) {
+
+		cerr << "La constante " << nom << " n'a pas ete declaree" << endl;
+
+	} else if (it->second.first ==NULL && it->second.second < 1) {
+
+		cerr << "La variable " << nom << " n'est pas affectee" << endl;
+
+	}
+	else{
+        return it->second.first;
+	}
 }
 Expr::~Expr() {
 	// TODO Auto-generated destructor stub

@@ -1,6 +1,8 @@
 var x,o;
 o:=2;
-ecrire o;
+x:=13;
+lire o;
+ecrire o+u;
 ecrire 3;
 ecrire 5;
 ecrire 1;

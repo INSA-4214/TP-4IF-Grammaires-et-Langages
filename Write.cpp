@@ -14,7 +14,7 @@ Write::~Write()
 }
 
 void Write::print(){
-
+    cout << " ecrire ";
 	(*e).print();
 	cout << " ;" << std::endl;
 
