@@ -11,7 +11,7 @@ bool Etat38::transition(Automate *automate, Symbole * s) {
 
 	DCst *symb = new DCst();
     Lc *lc;
-    Nombre *nb;
+    double nb;
     std::string id;
 
     switch ( s->getIdent() ) {
@@ -29,7 +29,7 @@ bool Etat38::transition(Automate *automate, Symbole * s) {
 
         	automate->getPileSymboles()->pop();
 
-        	nb = (Nombre*) automate->getPileSymboles()->top();
+        	nb = boost::lexical_cast<double>(automate->getPileSymboles()->top()->getStr());
 
         	automate->getPileSymboles()->pop();
         	automate->getPileSymboles()->pop();
@@ -37,7 +37,7 @@ bool Etat38::transition(Automate *automate, Symbole * s) {
         	id = automate->getPileSymboles()->top()->getStr();
 
         	// On ajoute la nouvelle paire
-        	symb->addidcons(id, nb->getValeur());
+        	symb->addidcons(id, nb);
 
         	automate->getPileSymboles()->pop();
         	automate->getPileSymboles()->pop();
@@ -52,7 +52,6 @@ bool Etat38::transition(Automate *automate, Symbole * s) {
                 return false;
            return true;
         default: // Recuperation sur erreur
-        cout << "et38" << endl;
 
         // Reduction
 
@@ -62,7 +61,7 @@ bool Etat38::transition(Automate *automate, Symbole * s) {
 
         	automate->getPileSymboles()->pop();
 
-        	nb = (Nombre*) automate->getPileSymboles()->top();
+        	nb = boost::lexical_cast<double>(automate->getPileSymboles()->top()->getStr());
 
         	automate->getPileSymboles()->pop();
         	automate->getPileSymboles()->pop();
@@ -70,7 +69,7 @@ bool Etat38::transition(Automate *automate, Symbole * s) {
         	id = automate->getPileSymboles()->top()->getStr();
 
         	// On ajoute la nouvelle paire
-        	symb->addidcons(id, nb->getValeur());
+        	symb->addidcons(id, nb);
 
         	automate->getPileSymboles()->pop();
         	automate->getPileSymboles()->pop();

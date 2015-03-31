@@ -112,7 +112,7 @@ double Variable::exec(map<string, pair<double, bool> > *table){
 
 	} else if (it->second.first ==NULL && it->second.second < 1) {
 
-		cerr << "La variable " << nom << " n'est pas affectee." << endl;
+		cerr << "la variable " << nom << " n'est pas affectee." << endl;
 
 	}
 	else{

@@ -9,7 +9,7 @@ Etat42::Etat42() : Etat() { }
 bool Etat42::transition(Automate *automate, Symbole * s) {
 
     Lc *symb;
-    Nombre* nb;
+    double nb;
     std::string id;
 
     switch ( s->getIdent() ) {
@@ -19,7 +19,7 @@ bool Etat42::transition(Automate *automate, Symbole * s) {
 
         	// Reduction
 
-        	nb = (Nombre*) automate->getPileSymboles()->top();
+        	nb = boost::lexical_cast<double>(automate->getPileSymboles()->top()->getStr());
 
         	automate->getPileSymboles()->pop();
         	automate->getPileSymboles()->pop();
@@ -30,7 +30,7 @@ bool Etat42::transition(Automate *automate, Symbole * s) {
         	automate->getPileSymboles()->pop();
 
         	symb = (Lc*) automate->getPileSymboles()->top();
-        	symb->addidcons(id, nb->getValeur());
+        	symb->addidcons(id, nb);
 
         	automate->getPileSymboles()->pop();
 

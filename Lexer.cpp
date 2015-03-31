@@ -85,7 +85,7 @@ bool Lexer::analyze()
         cerr << "Erreur lexicale (" << m_pos[0] << ":" << m_pos[1] << ") caractere " << m_symboleCourantStr << endl;
         return false;
     }
-    cout << "\"" << m_symboleCourantStr << "\"" << endl;
+    //cout << "\"" << m_symboleCourantStr << "\"" << endl;
     return true;
 }
 
@@ -96,9 +96,9 @@ void Lexer::shift() {
     }
 
 	while (!analyze()) {
-		m_str=m_str.substr(m_symboleCourantStr.size());
-		m_str.erase(0, m_str.find_first_not_of(" \t\n\r\f\v"));
-		analyze();
+        m_str=m_str.substr(m_symboleCourantStr.size());
+        m_str.erase(0, m_str.find_first_not_of(" \t\n\r\f\v"));
+        analyze();
     }
 
 	m_str=m_str.substr(m_symboleCourantStr.size());
@@ -109,7 +109,7 @@ void Lexer::shift() {
 bool Lexer::hasNext(){
 	bool continuer = m_str.length() > 0;
 	if (!continuer) {
-		cout << "Reste a parser : \"" << m_str << "\"" << endl;
+		//cout << "Reste a parser : \"" << m_str << "\"" << endl;
 		m_symboleCourant = new Symbole(Symbole::FILEEND);
 	}
 	return continuer;

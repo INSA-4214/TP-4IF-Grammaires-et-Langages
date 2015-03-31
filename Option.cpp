@@ -78,17 +78,17 @@ int main(int argc, char* argv[]) {
     automate.lecture();
 
     if (transformActive) {
-        cout << "Transform (optimize) input" << endl;
+        //cout << "Transform (optimize) input" << endl;
         // TRANSFORM
     }
     if (printActive) {
-        cout << "Print (transformed?) input" << endl;
+        //cout << "Print (transformed?) input" << endl;
         automate.print();
         // PRINT
 
     }
     if (staticActive) {
-        cout << "--- Analyse statique ---" << endl;
+        //cout << "--- Analyse statique ---" << endl;
         if (automate.getAccepte()) {
         	automate.staticAnalysis();
         } else {
@@ -96,7 +96,7 @@ int main(int argc, char* argv[]) {
         }
     }
     if (execActive) {
-        cout << "Execute" << endl;
+        //cout << "Execute" << endl;
         if (automate.getAccepte()) {
         	automate.exec();
         }

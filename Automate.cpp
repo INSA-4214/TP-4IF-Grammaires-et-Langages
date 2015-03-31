@@ -120,7 +120,8 @@ void Automate::exec()
         Programme * p = (Programme *) pileSymboles.top();
         p->exec(table);
     }
-    cout << "l'execution ne peut pas etre faite sans le parsing"<< endl;
+    else
+        cout << "l'execution ne peut pas etre faite sans le parsing"<< endl;
 }
 
 bool Automate::getAccepte() {

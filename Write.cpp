@@ -14,14 +14,14 @@ Write::~Write()
 }
 
 void Write::print(){
-    cout << " ecrire ";
+    cout << "ecrire ";
 	(*e).print();
 	cout << " ;" << std::endl;
 
 }
 void Write::exec(map<string, pair<double, bool> > *table){
     double b = e->exec(table);
-    std::cout << "notre expression est " << b << std::endl;
+    std::cout << b << std::endl;
 
 }
 

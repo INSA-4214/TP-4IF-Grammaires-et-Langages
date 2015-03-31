@@ -20,7 +20,6 @@ bool Etat22::transition(Automate *automate, Symbole * s) {
     switch ( s->getIdent() ) {
         case Symbole::virg:
         automate->decalage(s, new Etat32());
-        cout << "et22" << endl;
            return true;
         case Symbole::pv:
 

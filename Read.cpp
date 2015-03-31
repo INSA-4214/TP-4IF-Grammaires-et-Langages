@@ -11,7 +11,7 @@ void Read::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) 
 
 	if (it == table->end()) {
 
-		cerr << "La variable " << idALire << " n'a pas ete declaree" << endl;
+		cerr << "la variable " << idALire << " n'a pas ete declaree." << endl;
 
 	} else if (it->second.second == 1) {
 
