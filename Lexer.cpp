@@ -95,8 +95,10 @@ void Lexer::shift() {
     	return;
     }
 
-	if (!analyze()) {
-    	return;
+	while (!analyze()) {
+		m_str=m_str.substr(m_symboleCourantStr.size());
+		m_str.erase(0, m_str.find_first_not_of(" \t\n\r\f\v"));
+		analyze();
     }
 
 	m_str=m_str.substr(m_symboleCourantStr.size());
