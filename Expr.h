@@ -22,6 +22,8 @@ public:
 
     virtual void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) = 0;
 
+    virtual double exec(map<string, pair<double, bool> > *table)=0;
+
 };
 
 class Variable : public Expr {
@@ -35,7 +37,7 @@ class Variable : public Expr {
     void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 
     std::string name() { return nom; }
-
+    double exec(map<string, pair<double, bool> > *table);
     void setNom(std::string unNom) {
     	nom = unNom;
     }
@@ -51,7 +53,7 @@ class Constante : public Expr {
  	 	 : Expr(), nom(leNom), valeur(laValeur) { }
 
     std::string name() { return nom; }
-
+    double exec(map<string, pair<double, bool> > *table);
     void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 
  protected:
@@ -61,24 +63,24 @@ class Constante : public Expr {
 
 class Nombre : public Expr {
  public:
-    explicit Nombre(int uneValeur)
+    explicit Nombre(double uneValeur)
     	: Expr(), valeur(uneValeur) { }
 
     explicit Nombre()
     	: Expr(){}
 
-    const int getValeur() {
+    const double getValeur() {
     	return valeur;
     }
 
-    void setValeur(int uneValeur) {
+    void setValeur(doucle uneValeur) {
     	valeur = uneValeur;
     }
-
+    double exec(map<string, pair<double, bool> > *table);
     void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 
  private:
-    int valeur;
+    double valeur;
 };
 
 class BinExpr : public Expr {
@@ -97,7 +99,7 @@ class BinExpr : public Expr {
 	    void setDroite(Expr *droite) {
 	    	sym_droite = droite;
 	    }
-
+    virtual double exec(map<string, pair<double, bool> > *table)=0;
 
  protected:
     Expr *sym_gauche;
@@ -115,7 +117,7 @@ class AddExpr : public BinExpr {
     }
 
     Symbole* const getOperateur(){return operateur;}
-
+    double exec(map<string, pair<double, bool> > *table);
     void setOperateur(Operateur *ope) {
     	operateur = ope;
     }
@@ -140,7 +142,7 @@ class MultExpr : public BinExpr {
     void setOperateur(Operateur *ope) {
     	operateur = ope;
     }
-
+    double exec(map<string, pair<double, bool> > *table);
  protected:
 
     Operateur* operateur;
