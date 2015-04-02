@@ -22,6 +22,7 @@ bool Etat36::transition(Automate *automate, Symbole * s) {
         	automate->getPileSymboles()->pop();
 
         	symb = (Expr*) automate->getPileSymboles()->top();
+        	symb->inParenthesis = true;
 
         	automate->getPileSymboles()->pop();
         	automate->getPileSymboles()->pop();

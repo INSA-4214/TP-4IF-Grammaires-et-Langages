@@ -17,12 +17,14 @@ class Expr : public Symbole {
 
 public:
 
-	Expr() : Symbole(Symbole::E){}
+	Expr(bool inParenthesis = false) : Symbole(Symbole::E){}
 	virtual ~Expr();
 	virtual void print()=0;
     virtual void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) = 0;
 
     virtual double exec(std::map<std::string, std::pair<double, bool> > *table)=0;
+
+    bool inParenthesis;
 
 };
 

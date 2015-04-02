@@ -51,9 +51,9 @@ void MultExpr::print(){
 
 	string symOp = "";
 	if(operateur->getope())
-		symOp = " * ";
+		symOp = "*";
 	else
-		symOp = " / ";
+		symOp = "/";
 	sym_gauche->print();
 	cout << symOp;
 	sym_droite->print();
@@ -64,9 +64,9 @@ void AddExpr::print(){
 
 	string symOp = "";
 	if(operateur->getope())
-		symOp = " + ";
+		symOp = "+";
 	else
-		symOp = " - ";
+		symOp = "-";
 	sym_gauche->print();
 	cout << symOp;
 	sym_droite->print();
@@ -118,6 +118,7 @@ double Variable::exec(map<string, pair<double, bool> > *table){
 	else{
         return it->second.first;
 	}
+	return 0;
 }
 Expr::~Expr() {
 	// TODO Auto-generated destructor stub

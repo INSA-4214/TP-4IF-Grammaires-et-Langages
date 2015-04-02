@@ -36,7 +36,7 @@ void Affectation::print(){
 
 	cout << m_idVar << " := ";
 	(*e).print();
-	cout << " ;" << endl;
+	cout << ";" << endl;
 }
 
 void Affectation::exec(map<string, pair<double, bool> > *table){

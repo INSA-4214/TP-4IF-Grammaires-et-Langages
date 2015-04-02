@@ -36,17 +36,22 @@ void BlocDeclaration::staticAnalysis(std::map<std::string, std::pair<bool, bool>
 
 void BlocDeclaration::print() {
 
-	//Affichage set de declaration des const
-	for ( std::set<DCst*>::iterator it = decConst.begin(); it != decConst.end(); ++it ) {
+    constNumber = 0;
+    varNumber = 0;
 
-		(*it)->print();
-	}
-
-	//Affichage set de declaration des var
-	for (std::set<DVar*>::iterator it=decVar.begin(); it!=decVar.end(); ++it){
-
-		(*it)->print();
-	}
+    while (constNumber + varNumber < isConst.size())
+    {
+        if (isConst[constNumber + varNumber] == true)
+        {
+            (*std::next(decConst.begin(), constNumber))->print();
+            constNumber++;
+        }
+        else
+        {
+            (*std::next(decVar.begin(), varNumber))->print();
+            varNumber++;
+        }
+    }
 }
 
 void BlocDeclaration::exec(map<string, pair<double, bool> > *table) {

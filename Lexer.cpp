@@ -134,4 +134,5 @@ int * Lexer::getCurrPos() // On cherche la position du problème
 
 Lexer::~Lexer()
 {
+    delete[] m_pos;
 }

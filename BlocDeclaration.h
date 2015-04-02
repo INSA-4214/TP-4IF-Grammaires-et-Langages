@@ -12,6 +12,7 @@
 #include "Symbole.h"
 #include <iostream>
 #include <set>
+#include <vector>
 #include <map>
 
 class BlocDeclaration: public Symbole {
@@ -25,10 +26,12 @@ public:
 
 	void addConst(DCst* uneDCst) {
 		decConst.insert(uneDCst);
+		isConst.push_back (true);
 	}
 
 	void addVar(DVar* uneDVar) {
 		decVar.insert(uneDVar);
+		isConst.push_back (false);
 	}
 
 
@@ -45,6 +48,9 @@ protected:
 
 	std::set<DCst*> decConst;
 	std::set<DVar*> decVar;
+	std::vector<bool> isConst;
+	unsigned constNumber;
+	unsigned varNumber;
 };
 
 #endif /* BLOCDECLARATION_H_ */
