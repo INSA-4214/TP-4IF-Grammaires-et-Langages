@@ -43,18 +43,13 @@ int main(int argc, char* argv[]) {
         }
     }
     if (fileName == NULL) {
-        std::ofstream fic_err("stderr", std::ios::out | std::ios::trunc);
-
-        if (fic_err)
-        {
-            cerr << "Erreur, veuillez specifier des arguments" << endl;
-            cerr << "  Utilisation :" << endl;
-            cerr << "    ../lut [-p] [-a] [-e] [-o] source.lt" << endl;
-            cerr << "      [-p] affiche le code source reconnu" << endl;
-            cerr << "      [-a] analyse le programme de maniere statique" << endl;
-            cerr << "      [-e] execute interactivement le programme" << endl;
-            cerr << "      [-o] optimise les expressions et instructions" << endl;
-        }
+        cerr << "Erreur, veuillez specifier des arguments" << endl;
+        cerr << "  Utilisation :" << endl;
+        cerr << "    ../lut [-p] [-a] [-e] [-o] source.lt" << endl;
+        cerr << "      [-p] affiche le code source reconnu" << endl;
+        cerr << "      [-a] analyse le programme de maniere statique" << endl;
+        cerr << "      [-e] execute interactivement le programme" << endl;
+        cerr << "      [-o] optimise les expressions et instructions" << endl;
         return 1;
     }
     else {
@@ -62,13 +57,8 @@ int main(int argc, char* argv[]) {
 
         if (!fichier)
         {
-            std::ofstream fic_err("stderr", std::ios::out | std::ios::trunc);
-
-            if (fic_err)
-            {
-                cerr << "Erreur a l'ouverture du fichier ";
-                cerr << *fileName << endl;
-            }
+            cerr << "Erreur a l'ouverture du fichier ";
+            cerr << *fileName << endl;
             return 1;
         }
     }
@@ -76,6 +66,7 @@ int main(int argc, char* argv[]) {
     Lexer lexer = Lexer(fileName);
     Automate automate = Automate(&lexer);
     automate.lecture();
+    automate.multDeclaration();
 
     if (transformActive) {
         //cout << "Transform (optimize) input" << endl;

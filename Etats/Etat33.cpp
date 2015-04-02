@@ -30,7 +30,6 @@ bool Etat33::transition(Automate *automate, Symbole * s) {
                 return false;
 
         automate->erreurSyntax("symbole", ",");
-        cout << "et33" << endl;
             return false;
 }
 return false;

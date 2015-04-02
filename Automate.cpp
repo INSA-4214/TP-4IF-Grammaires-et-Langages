@@ -95,6 +95,14 @@ void Automate::setAccepter(bool b){
 	this->accepte = b;
 }
 
+void Automate::multDeclaration()
+{
+	map<string, pair<bool, bool> > *table = new map<string, pair<bool, bool> >();
+	// Recuperation du programme parse
+	Programme * p = (Programme *) pileSymboles.top();
+	p->multDeclaration(table);
+}
+
 void Automate::print()
 {
 	// Recuperation du programme parse

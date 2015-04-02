@@ -28,6 +28,7 @@ public:
 	std::stack<Symbole*> *getPileSymboles();
 	void setAccepter(bool b);
 	bool getAccepte();
+	void multDeclaration();
 	void print();
 	void staticAnalysis();
 	void exec();

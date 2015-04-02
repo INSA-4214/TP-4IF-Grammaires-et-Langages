@@ -10,6 +10,7 @@
 
 #include "Declaration.h"
 #include "Symbole.h"
+#include <iostream>
 #include <set>
 #include <map>
 
@@ -34,6 +35,7 @@ public:
 	void exec(map<string, pair<double, bool> > *table);
 	void print();
 
+	void multDeclaration(std::map<std::string, std::pair<bool, bool> > *table);
 	void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 
 

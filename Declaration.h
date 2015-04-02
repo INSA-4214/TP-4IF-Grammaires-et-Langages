@@ -66,6 +66,7 @@ public:
 
 
     void exec(map<string, pair<double, bool> > *table);
+	void multDeclaration(std::map<std::string, std::pair<bool, bool> > *table);
 	void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
     void print();
 
@@ -89,6 +90,7 @@ public:
 
 	void print();
 
+	void multDeclaration(std::map<std::string, std::pair<bool, bool> > *table);
 	void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 
 	void exec(map<string, pair<double, bool> > *table);

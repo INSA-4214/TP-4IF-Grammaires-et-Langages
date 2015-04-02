@@ -28,6 +28,22 @@ void DVar::setIdvars(std::set<std::string> mesidvar){
     idVars = mesidvar;
 }
 
+void DVar::multDeclaration(std::map<std::string, std::pair<bool, bool> > *table) {
+	for (std::set<std::string>::iterator it= idVars.begin(); it!=idVars.end(); ++it){
+
+
+        auto it2= table->find((*it));
+		if (!(it2 == table->end()))
+            cerr << "la variable " + (*it) + " est deja declaree" << endl;
+		else
+        {
+            table->insert(std::make_pair((*it),std::make_pair(1,1)));
+        }
+	}
+
+
+}
+
 void DVar::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
 	for (std::set<std::string>::iterator it= idVars.begin(); it!=idVars.end(); ++it){
 		table->insert(std::make_pair((*it),std::make_pair(0,0)));
@@ -59,6 +75,20 @@ void DCst::setPairsConst(std::set< std::pair<std::string,double> > mesconst){
 void DCst::print(){
 	for (std::set<std::pair<std::string,double> >::iterator it= pairsconst.begin(); it!=pairsconst.end(); ++it)
 	    std::cout << "const " << (*it).first << " = " << (*it).second << " ; " << std::endl;
+}
+
+void DCst::multDeclaration(std::map<std::string, std::pair<bool, bool> > *table) {
+	for (std::set<std::pair<std::string,double> >::iterator it= pairsconst.begin(); it!=pairsconst.end(); ++it){
+
+
+        auto it2= table->find((*it).first);
+		if (!(it2 == table->end()))
+            cerr << "la constante " + (*it).first + " est deja declaree" << endl;
+		else
+            table->insert(std::make_pair((*it).first,std::make_pair(1,1)));
+	}
+
+
 }
 
 void DCst::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {

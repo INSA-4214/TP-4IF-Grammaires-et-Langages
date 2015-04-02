@@ -8,6 +8,19 @@
 #include "BlocDeclaration.h"
 //*
 
+void BlocDeclaration::multDeclaration(std::map<std::string, std::pair<bool, bool> > *table) {
+
+	for ( std::set<DCst*>::iterator it = decConst.begin(); it != decConst.end(); ++it ) {
+
+		(*it)->multDeclaration(table);
+	}
+
+	for (std::set<DVar*>::iterator it=decVar.begin(); it!=decVar.end(); ++it){
+
+		(*it)->multDeclaration(table);
+	}
+}
+
 void BlocDeclaration::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table) {
 
 	for ( std::set<DCst*>::iterator it = decConst.begin(); it != decConst.end(); ++it ) {

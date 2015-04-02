@@ -30,6 +30,7 @@ public:
 		blocD = unBlocD;
 	}
 
+	void multDeclaration(std::map<std::string, std::pair<bool, bool> > *table);
 	void print();
 	void staticAnalysis(std::map<std::string, std::pair<bool, bool> > *table);
 	void transform();
