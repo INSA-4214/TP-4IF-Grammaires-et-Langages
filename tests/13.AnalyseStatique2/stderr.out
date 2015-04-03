@@ -1,0 +1,5 @@
+variable non affectee : a
+b est une constante
+la variable d n'a pas ete declaree.
+variable non affectee : c
+la constante e n'a pas ete declaree.

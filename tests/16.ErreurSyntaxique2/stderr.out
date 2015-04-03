@@ -1,0 +1,3 @@
+Erreur syntaxique (1:8) symbole , attendu
+Erreur syntaxique (4:4) operateur := attendu
+Erreur syntaxique (5:7) symbole ; attendu

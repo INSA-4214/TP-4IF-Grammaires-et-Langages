@@ -31,7 +31,7 @@ void Variable::staticAnalysis(std::map<std::string, std::pair<bool, bool> > *tab
 
 	} else if (it->second.first < 1 && it->second.second < 1) {
 
-		cerr << "la variable " << nom << " n'est pas affectee." << endl;
+		cerr << "variable non affectee : " << nom << endl;
 
 	}
 }
@@ -112,7 +112,7 @@ double Variable::exec(map<string, pair<double, bool> > *table){
 
 	} else if (it->second.first ==NULL && it->second.second < 1) {
 
-		cerr << "la variable " << nom << " n'est pas affectee." << endl;
+		cerr << "variable non affectee : " << nom << endl;
 
 	}
 	else{

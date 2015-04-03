@@ -91,7 +91,6 @@ std::stack<Symbole*> *Automate::getPileSymboles(){
 }
 
 void Automate::setAccepter(bool b){
-    cout << "... Parsing termine !" << endl;
 	this->accepte = b;
 }
 

@@ -1,0 +1,8 @@
+var a;
+const b=5;
+var c;
+
+ecrire a;
+b := 5;
+d := c;
+ecrire e;

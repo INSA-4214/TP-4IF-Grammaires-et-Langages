@@ -14,6 +14,7 @@ const boost::regex number("([-+]?[0-9]*\\.?[0-9]+)");
 Lexer::Lexer(string* filename)
 {
 	parse(filename);
+	m_symboleCourant = new Symbole();
 }
 
 Symbole* Lexer::getSymboleCourant(){
@@ -22,7 +23,6 @@ Symbole* Lexer::getSymboleCourant(){
 
 void Lexer::parse(string* filename) {
 
-	cout << "Parsing du fichier..." <<endl;
 	ifstream t (filename->c_str());
 	stringstream buffer;
 	buffer << t.rdbuf();
